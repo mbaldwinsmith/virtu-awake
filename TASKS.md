@@ -27,7 +27,19 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# ⚙ Core Systems
+# Bug Fixes & Load Issues
+
+## TASK-BUG-001
+**Description:** Fix initial load errors (Hediff root tag, invalid inspector tab, placeholder VR pod texture)  
+**Category:** Bugfix  
+**Dependencies:** None  
+**Status:** DONE  
+**Output:** Validated Hediff defs root, VR pod inspector tab corrected, placeholder texture at `Textures/Things/Building/VA_VRPod_Basic.png`  
+**Owner:** AI
+
+---
+
+# �sT Core Systems
 
 ## TASK-CORE-001
 **Description:** Implement VR Pod building + basic recreation job driver  
@@ -55,7 +67,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🧠 Psychological Systems
+# �Y�� Psychological Systems
 
 ## TASK-PSY-001
 **Description:** Implement Need_Lucidity  
@@ -66,7 +78,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Owner:** Unassigned
 
 ## TASK-PSY-002
-**Description:** Implement Hediff_Instability (3–4 stages)  
+**Description:** Implement Hediff_Instability (3�?"4 stages)  
 **Category:** C# / Hediffs  
 **Dependencies:** PSY-001  
 **Status:** TODO  
@@ -74,7 +86,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Owner:** Unassigned
 
 ## TASK-PSY-003
-**Description:** Link pod usage → Lucidity + Instability progression  
+**Description:** Link pod usage ��' Lucidity + Instability progression  
 **Category:** C#  
 **Dependencies:** PSY-001, PSY-002  
 **Status:** TODO  
@@ -91,7 +103,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🌐 VR Event System
+# �YO? VR Event System
 
 ## TASK-EVT-001
 **Description:** Create MapComponent_MatrixEvents (VirtuAwakeEvents)  
@@ -135,7 +147,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🧩 VR Sim Types & Content
+# �Y�� VR Sim Types & Content
 
 ## TASK-SIM-001
 **Description:** Create SimType definitions (Combat, Artistic, Nature, Meditation, etc.)  
@@ -171,7 +183,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🧬 Trait-Based Memories
+# �Y�� Trait-Based Memories
 
 ## TASK-TRT-001
 **Description:** Implement trait-aware VR memory chooser  
@@ -207,7 +219,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 💥 Breakout System
+# �Y'� Breakout System
 
 ## TASK-BRK-001
 **Description:** Implement Breakout conditions (Lucidity + Instability thresholds)  
@@ -235,7 +247,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🧭 Lore & Polish
+# �Y�� Lore & Polish
 
 ## TASK-LORE-001
 **Description:** Add lore text for pods, glitch logs, ancient messages  
@@ -255,7 +267,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🎨 Art & Visuals
+# �YZ� Art & Visuals
 
 ## TASK-ART-001
 **Description:** Create RimWorld-style VR Pod sprites  
@@ -283,7 +295,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 📦 Release & Packaging
+# �Y"� Release & Packaging
 
 ## TASK-REL-001
 **Description:** Create About folder metadata  
@@ -311,7 +323,7 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# ✔ Rules for AI Agents
+# �o" Rules for AI Agents
 
 - Agents may claim tasks by updating:
   - `Owner: AI`
@@ -324,6 +336,6 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
-# 🌟 End of Task Spec
+# �YOY End of Task Spec
 This TASKS.md is living documentation.  
 Update it with new features, fixes, and discoveries as Virtu-Awake evolves.

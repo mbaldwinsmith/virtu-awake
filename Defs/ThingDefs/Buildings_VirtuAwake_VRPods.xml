@@ -13,9 +13,6 @@
     <size>(2,1)</size>
     <altitudeLayer>Building</altitudeLayer>
     <designationCategory>Misc</designationCategory>
-    <inspectorTabs>
-      <li>ITab_Building_Contents</li>
-    </inspectorTabs>
     <costList>
       <Steel>120</Steel>
       <ComponentIndustrial>3</ComponentIndustrial>

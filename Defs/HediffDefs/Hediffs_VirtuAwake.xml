@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HediffDefs>
+<Defs>
   <HediffDef>
     <defName>VA_Lucidity</defName>
     <label>heightened awareness</label>
@@ -18,4 +18,4 @@
     <initialSeverity>0</initialSeverity>
     <maxSeverity>1</maxSeverity>
   </HediffDef>
-</HediffDefs>
+</Defs>
