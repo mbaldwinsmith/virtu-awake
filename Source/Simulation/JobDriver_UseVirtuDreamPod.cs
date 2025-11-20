@@ -8,8 +8,6 @@ namespace VirtuAwake
 {
     public class JobDriver_UseVirtuDreamPod : JobDriver
     {
-        private const int SessionDurationTicks = GenDate.TicksPerDay; // long-term immersion (~1 day)
-
         private Building Pod => this.job.targetA.Thing as Building;
         private CompVRPod PodComp => Pod?.GetComp<CompVRPod>();
 
@@ -30,8 +28,7 @@ namespace VirtuAwake
             // 2. Lie inside and remain immersed
             var immerse = new Toil
             {
-                defaultCompleteMode = ToilCompleteMode.Delay,
-                defaultDuration = SessionDurationTicks,
+                defaultCompleteMode = ToilCompleteMode.Never,
                 handlingFacing = true
             };
 
@@ -53,11 +50,6 @@ namespace VirtuAwake
                 if (joy != null)
                 {
                     joy.GainJoy(0.00035f, JoyKindDefOf.Meditative);
-                    if (joy.CurLevel >= 0.999f)
-                    {
-                        pawn.jobs.curDriver?.EndJobWith(JobCondition.Succeeded);
-                        return;
-                    }
                 }
 
                 var rest = pawn.needs?.rest;
@@ -72,9 +64,6 @@ namespace VirtuAwake
                 pawn.jobs.posture = PawnPosture.Standing;
                 PodComp?.SetUser(null);
             });
-
-            immerse.WithProgressBar(TargetIndex.A, () =>
-                1f - (immerse.actor.jobs.curDriver.ticksLeftThisToil / (float)SessionDurationTicks));
 
             yield return immerse;
         }
