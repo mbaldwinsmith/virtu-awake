@@ -1,0 +1,83 @@
+# ==============================
+#   RimWorld Mod Git Ignore
+#   Virtu-Awake
+# ==============================
+
+# --- Build output ---
+# MSBuild output
+Source/bin/
+Source/obj/
+
+# VS Code debugging & tasks
+.vscode/
+
+# DotNet intermediate files
+*.user
+*.suo
+*.userprefs
+
+# --- RimWorld mod build artifacts ---
+# Do NOT ignore Assemblies/*.dll because this is your mod’s runtime DLL.
+# But ignore unwanted temp files.
+Assemblies/*.pdb
+Assemblies/*.xml
+Assemblies/*.mdb
+
+# --- Logs ---
+*.log
+*.log.*
+
+# --- OS-generated files ---
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Mac
+.DS_Store
+
+# Linux
+.Trash-*
+
+# --- IDE-specific ---
+# Rider / JetBrains
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Visual Studio
+.vs/
+
+# MonoDevelop
+*.pidb
+
+# --- Archive / temp / backup ---
+*.tmp
+*.bak
+*.old
+*.orig
+*.save
+
+# --- Node / JS tooling (you have a JS directory) ---
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+.cache/
+
+# --- Textures .psd / .xcf (if you store raw source art elsewhere) ---
+# (Optional, comment out if you want raw PSDs in git)
+Textures/**/*.psd
+Textures/**/*.xcf
+
+# --- Unity cache files (if used, optional) ---
+Library/
+Temp/
+Obj/
+Logs/
+MemoryCaptures/
+
+# --- Experimental files ---
+# Ignore anything ending in .generated
+*.generated.*
