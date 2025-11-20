@@ -8,4 +8,12 @@
     <playerInterruptible>true</playerInterruptible>
     <joyKind>Meditative</joyKind>
   </JobDef>
+  <JobDef>
+    <defName>VA_UseVirtuDreamPod</defName>
+    <driverClass>VirtuAwake.JobDriver_UseVirtuDreamPod</driverClass>
+    <reportString>suspended in deep simulation.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
 </Defs>
