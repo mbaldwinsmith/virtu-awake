@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ecoch\\OneDrive\\Documents\\Dev\\JavaScript\\virtu-awake\\Source\\VirtuAwake.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ecoch\\OneDrive\\Documents\\Dev\\JavaScript\\virtu-awake\\Source\\VirtuAwake.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ecoch\\OneDrive\\Documents\\Dev\\JavaScript\\virtu-awake\\Source\\VirtuAwake.csproj",
+        "projectName": "VirtuAwake",
+        "projectPath": "C:\\Users\\ecoch\\OneDrive\\Documents\\Dev\\JavaScript\\virtu-awake\\Source\\VirtuAwake.csproj",
+        "packagesPath": "C:\\Users\\ecoch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ecoch\\OneDrive\\Documents\\Dev\\JavaScript\\virtu-awake\\Source\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\ecoch\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
