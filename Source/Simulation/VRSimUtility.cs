@@ -65,6 +65,43 @@ namespace VirtuAwake
             };
         }
 
+        public static SimTypeDef ResolveBestSimTypeForPawn(Pawn pawn, SimTypeDef fallback)
+        {
+            if (fallback != null && fallback.primarySkill != null)
+            {
+                return fallback;
+            }
+
+            SimTypeDef best = null;
+            float bestScore = 0f;
+            foreach (SimTypeDef sim in DefDatabase<SimTypeDef>.AllDefsListForReading)
+            {
+                if (sim.primarySkill == null || sim.skillWeights == null || sim.skillWeights.Count == 0)
+                {
+                    continue;
+                }
+
+                float score = 0f;
+                foreach (var pair in sim.skillWeights)
+                {
+                    if (pair.Key == null || pair.Value <= 0f)
+                    {
+                        continue;
+                    }
+
+                    score += pair.Value * PassionFactor(pawn, pair.Key);
+                }
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    best = sim;
+                }
+            }
+
+            return best ?? fallback ?? DefaultSimType;
+        }
+
         public static void TryGiveSimMemory(Pawn pawn, SimTypeDef simType)
         {
             if (pawn == null || simType?.thoughtOnSession == null)

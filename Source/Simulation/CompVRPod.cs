@@ -8,6 +8,7 @@ namespace VirtuAwake
     public class CompVRPod : ThingComp
     {
         private readonly HashSet<Pawn> currentUsers = new HashSet<Pawn>();
+        private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
 
@@ -32,15 +33,16 @@ namespace VirtuAwake
                 return;
             }
 
-            SimTypeDef simType = this.Props.simType ?? VRSimUtility.DefaultSimType;
             foreach (Pawn pawn in this.currentUsers.ToList())
             {
                 if (pawn == null || pawn.Dead || !pawn.Spawned)
                 {
                     this.currentUsers.Remove(pawn);
+                    this.sessionSimTypes.Remove(pawn);
                     continue;
                 }
 
+                SimTypeDef simType = this.ResolveSimTypeFor(pawn);
                 VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
                 // TODO: Hook Lucidity/Instability progression here.
             }
@@ -49,9 +51,11 @@ namespace VirtuAwake
         public void SetUser(Pawn pawn)
         {
             this.currentUsers.Clear();
+            this.sessionSimTypes.Clear();
             if (pawn != null)
             {
                 this.currentUsers.Add(pawn);
+                this.ResolveSimTypeFor(pawn);
             }
         }
 
@@ -60,6 +64,7 @@ namespace VirtuAwake
             if (pawn != null)
             {
                 this.currentUsers.Add(pawn);
+                this.ResolveSimTypeFor(pawn);
             }
         }
 
@@ -68,12 +73,30 @@ namespace VirtuAwake
             if (pawn != null)
             {
                 this.currentUsers.Remove(pawn);
+                this.sessionSimTypes.Remove(pawn);
             }
         }
 
         public bool HasOtherUser(Pawn pawn)
         {
             return this.currentUsers.Any() && this.currentUsers.Any(u => u != pawn);
+        }
+
+        public SimTypeDef ResolveSimTypeFor(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return this.Props.simType ?? VRSimUtility.DefaultSimType;
+            }
+
+            if (this.sessionSimTypes.TryGetValue(pawn, out var sim))
+            {
+                return sim;
+            }
+
+            SimTypeDef chosen = VRSimUtility.ResolveBestSimTypeForPawn(pawn, this.Props.simType);
+            this.sessionSimTypes[pawn] = chosen;
+            return chosen;
         }
 
         public override string CompInspectStringExtra()
