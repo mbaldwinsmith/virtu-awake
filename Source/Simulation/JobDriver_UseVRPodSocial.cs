@@ -59,6 +59,11 @@ namespace VirtuAwake
                     float bonus = (Partner != null && Partner.Spawned && Partner.Position.InHorDistOf(pawn.Position, 2f)) ? 0.0008f : 0.0004f;
                     joy.GainJoy(bonus, JoyKindDefOf.Social);
                 }
+
+                if (PodComp?.Props?.simType != null)
+                {
+                    VRSimUtility.ApplySimTraining(pawn, PodComp.Props.simType, 1);
+                }
             };
 
             immerse.AddFinishAction(() =>

@@ -32,7 +32,18 @@ namespace VirtuAwake
                 return;
             }
 
-            // TODO: Hook Lucidity/Instability progression here.
+            SimTypeDef simType = this.Props.simType ?? VRSimUtility.DefaultSimType;
+            foreach (Pawn pawn in this.currentUsers.ToList())
+            {
+                if (pawn == null || pawn.Dead || !pawn.Spawned)
+                {
+                    this.currentUsers.Remove(pawn);
+                    continue;
+                }
+
+                VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
+                // TODO: Hook Lucidity/Instability progression here.
+            }
         }
 
         public void SetUser(Pawn pawn)

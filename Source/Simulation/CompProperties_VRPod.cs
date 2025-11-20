@@ -5,6 +5,7 @@ namespace VirtuAwake
     public class CompProperties_VRPod : CompProperties
     {
         public int tickInterval = 250;
+        public SimTypeDef simType;
 
         public CompProperties_VRPod()
         {

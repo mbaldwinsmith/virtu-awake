@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <SimTypeDef>
+    <defName>VA_Sim_Recreation</defName>
+    <label>recreation sim</label>
+    <description>Soft scenic simulations meant for rest, reflection, and gentle reverie.</description>
+    <xpPerTick>0</xpPerTick>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_CombatTraining</defName>
+    <label>combat training sim</label>
+    <description>Looped sparring arenas and timed drills that hone reaction and movement.</description>
+    <xpPerTick>0.10</xpPerTick>
+    <skillWeights>
+      <Shooting>0.6</Shooting>
+      <Melee>0.4</Melee>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Intellectual</defName>
+    <label>scholarly sim</label>
+    <description>Quiet problem-spaces and layered thought puzzles that train analysis.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <skillWeights>
+      <Intellectual>1.0</Intellectual>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Medicine</defName>
+    <label>clinical sim</label>
+    <description>Clinical practice rooms that rehearse clean procedures and diagnostics.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <skillWeights>
+      <Medicine>1.0</Medicine>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Artistic</defName>
+    <label>artistic sim</label>
+    <description>Creative sandboxes with slow visual glitches that spark new motifs.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <skillWeights>
+      <Artistic>1.0</Artistic>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Social</defName>
+    <label>social sim</label>
+    <description>Soft salons and shared memory paths for refining empathy and presence.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <skillWeights>
+      <Social>1.0</Social>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Crafting</defName>
+    <label>crafting sim</label>
+    <description>Virtual benches and timed assembly drills that reward precision and pace.</description>
+    <xpPerTick>0.09</xpPerTick>
+    <skillWeights>
+      <Crafting>0.6</Crafting>
+      <Construction>0.4</Construction>
+    </skillWeights>
+  </SimTypeDef>
+
+  <SimTypeDef>
+    <defName>VA_Sim_Plants</defName>
+    <label>botany sim</label>
+    <description>Pattern gardens with accelerated growth cycles for careful tending.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <skillWeights>
+      <Plants>1.0</Plants>
+    </skillWeights>
+  </SimTypeDef>
+</Defs>

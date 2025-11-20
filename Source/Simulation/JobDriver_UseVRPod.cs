@@ -61,6 +61,11 @@ namespace VirtuAwake
                         pawn.jobs.curDriver?.EndJobWith(JobCondition.Succeeded);
                     }
                 }
+
+                if (PodComp?.Props?.simType != null)
+                {
+                    VRSimUtility.ApplySimTraining(pawn, PodComp.Props.simType, 1);
+                }
             };
 
             lieDown.AddFinishAction(() =>

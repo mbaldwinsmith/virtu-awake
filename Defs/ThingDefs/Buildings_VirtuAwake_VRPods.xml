@@ -28,6 +28,7 @@
     <comps>
       <li Class="VirtuAwake.CompProperties_VRPod">
         <tickInterval>250</tickInterval>
+        <simType>VA_Sim_Recreation</simType>
       </li>
     </comps>
   </ThingDef>
@@ -62,6 +63,7 @@
     <comps>
       <li Class="VirtuAwake.CompProperties_VRPod">
         <tickInterval>200</tickInterval>
+        <simType>VA_Sim_Social</simType>
       </li>
     </comps>
   </ThingDef>

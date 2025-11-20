@@ -64,9 +64,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Implement SimType-aware training for VR Pod sessions  
 **Category:** C# / Mechanics  
 **Dependencies:** CORE-001, SIM-001  
-**Status:** TODO  
+**Status:** DONE  
 **Output:** VRSimUtility with skill XP application; configuration via comp/SimType defs  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-CORE-005
 **Description:** Add nutrient/power maintenance hooks for Virtu-Dream Pod (optional VFE nutrient pipe support)  
