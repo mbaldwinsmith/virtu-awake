@@ -20,11 +20,12 @@ namespace VirtuAwake
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            this.FailOn(() => PodComp != null && PodComp.CurrentUser != null && PodComp.CurrentUser != pawn);
             this.AddEndCondition(() =>
                 Pod != null && Pod.Spawned ? JobCondition.Ongoing : JobCondition.Incompletable);
 
             // 1. Go stand on the pod's cell
-            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
+            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.InteractionCell);
 
             // 2. Lie down on the pod and "immerse"
             var lieDown = new Toil
@@ -54,6 +55,7 @@ namespace VirtuAwake
                 if (pawn.needs?.joy != null)
                 {
                     pawn.needs.joy.GainJoy(0.0005f, JoyKindDefOf.Meditative);
+                    JoyUtility.JoyTickCheckEnd(pawn, JoyTickFullJoyAction.EndJob, 1f);
                 }
             };
 

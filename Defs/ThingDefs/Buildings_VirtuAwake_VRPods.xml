@@ -4,7 +4,7 @@
     <defName>VA_VRPod_Basic</defName>
     <label>VR pod</label>
     <description>A reclining pod for quiet, dreamlike immersion. Pawns slip inside to drift through soft simulations.</description>
-    <thingClass>Building</thingClass>
+    <thingClass>VirtuAwake.Building_VRPod</thingClass>
     <graphicData>
       <texPath>Things/Building/VA_VRPod_Basic</texPath>
       <graphicClass>Graphic_Single</graphicClass>

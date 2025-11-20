@@ -37,6 +37,22 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Output:** Validated Hediff defs root, VR pod inspector tab corrected, placeholder texture at `Textures/Things/Building/VA_VRPod_Basic.png`  
 **Owner:** AI
 
+## TASK-BUG-002
+**Description:** Make VR pod usage a recreation/joy activity instead of work  
+**Category:** Bugfix  
+**Dependencies:** BUG-001  
+**Status:** DONE  
+**Output:** Joy giver def for VR pod; work giver removed/disabled; pawns use pods via recreation schedule  
+**Owner:** AI
+
+## TASK-BUG-003
+**Description:** Allow right-clicking the VR pod to start a joy session  
+**Category:** Bugfix  
+**Dependencies:** BUG-002  
+**Status:** DONE  
+**Output:** VR pod float-menu option that queues VA_UseVRPod job  
+**Owner:** AI
+
 ---
 
 # �sT Core Systems

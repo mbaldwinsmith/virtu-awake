@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JoyGiverDef>
+    <defName>VA_Joy_UseVRPod</defName>
+    <giverClass>JoyGiver_InteractBuilding</giverClass>
+    <jobDef>VA_UseVRPod</jobDef>
+    <joyKind>Meditative</joyKind>
+    <baseChance>1.0</baseChance>
+    <pctPawnsEverDo>1.0</pctPawnsEverDo>
+    <thingDefs>
+      <li>VA_VRPod_Basic</li>
+    </thingDefs>
+  </JoyGiverDef>
+</Defs>
