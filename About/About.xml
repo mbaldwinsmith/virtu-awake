@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Virtu-Awake</name>
+  <author>Author TBD</author>
+  <packageId>MarkBaldwinSmith.VirtuAwake</packageId>
+  <supportedVersions>
+    <li>1.5</li>
+  </supportedVersions>
+  <description>
+    VR pods for quiet, dreamlike immersion. Pawns recline inside sleek pods, experience gentle simulations, and walk away with strange memories and a hint of psychological unease.
+  </description>
+</ModMetaData>

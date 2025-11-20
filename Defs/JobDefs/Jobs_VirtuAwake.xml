@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>VA_UseVRPod</defName>
+    <driverClass>VirtuAwake.JobDriver_UseVRPod</driverClass>
+    <reportString>immersing in VR simulation.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+</Defs>

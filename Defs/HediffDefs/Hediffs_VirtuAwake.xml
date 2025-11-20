@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HediffDefs>
+  <HediffDef>
+    <defName>VA_Lucidity</defName>
+    <label>heightened awareness</label>
+    <hediffClass>VirtuAwake.Hediff_Lucidity</hediffClass>
+    <tendable>false</tendable>
+    <isBad>false</isBad>
+    <initialSeverity>0</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+  </HediffDef>
+  <HediffDef>
+    <defName>VA_Instability</defName>
+    <label>perceptual instability</label>
+    <hediffClass>VirtuAwake.Hediff_Instability</hediffClass>
+    <tendable>false</tendable>
+    <isBad>true</isBad>
+    <initialSeverity>0</initialSeverity>
+    <maxSeverity>1</maxSeverity>
+  </HediffDef>
+</HediffDefs>

@@ -17,6 +17,14 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Output:** `About/`, `Assemblies/`, `Defs/`, `Languages/`, `Source/` (`Components/`, `Events/`, `Simulation/`, `Traits/`, `Util/`), `Textures/`  
 **Owner:** AI
 
+## TASK-OPS-002
+**Description:** Scaffold minimal Virtu-Awake baseline (csproj, mod entry, VR pod, job, hediffs, thought, workgiver)  
+**Category:** Setup  
+**Dependencies:** None  
+**Status:** DONE  
+**Output:** `About/About.xml`, `Source/VirtuAwake.csproj`, `Source/ModEntry.cs`, `Source/Components/*`, `Source/Simulation/*`, `Defs/*`, `Languages/English/Keyed/VirtuAwake_Strings.xml`  
+**Owner:** AI
+
 ---
 
 # ⚙ Core Systems

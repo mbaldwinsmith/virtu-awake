@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>VA_VRPod_Basic</defName>
+    <label>VR pod</label>
+    <description>A reclining pod for quiet, dreamlike immersion. Pawns slip inside to drift through soft simulations.</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>Things/Building/VA_VRPod_Basic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,1)</drawSize>
+    </graphicData>
+    <size>(2,1)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <designationCategory>Misc</designationCategory>
+    <inspectorTabs>
+      <li>ITab_Building_Contents</li>
+    </inspectorTabs>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <WorkToBuild>1500</WorkToBuild>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <comps>
+      <li Class="VirtuAwake.CompProperties_VRPod">
+        <tickInterval>250</tickInterval>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

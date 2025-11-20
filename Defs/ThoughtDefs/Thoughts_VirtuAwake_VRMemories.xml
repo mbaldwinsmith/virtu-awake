@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>VA_VRSession_SoftFlicker</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>soft flicker in simulation</label>
+        <description>A gentle, almost comforting flicker rippled through the simulation. Strange, but soothing.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

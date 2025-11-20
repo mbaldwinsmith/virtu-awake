@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>VA_WorkGiver_UseVRPod</defName>
+    <label>use VR pods</label>
+    <giverClass>VirtuAwake.WorkGiver_UseVRPod</giverClass>
+    <workType>BasicWorker</workType>
+    <priorityInType>40</priorityInType>
+    <verb>use VR pod</verb>
+    <gerund>using VR pod</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>
