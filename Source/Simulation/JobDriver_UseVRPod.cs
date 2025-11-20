@@ -52,10 +52,14 @@ namespace VirtuAwake
                 }
 
                 // Simple recreation gain while lying in the pod
-                if (pawn.needs?.joy != null)
+                var joy = pawn.needs?.joy;
+                if (joy != null)
                 {
-                    pawn.needs.joy.GainJoy(0.0005f, JoyKindDefOf.Meditative);
-                    JoyUtility.JoyTickCheckEnd(pawn, JoyTickFullJoyAction.EndJob, 1f);
+                    joy.GainJoy(0.0005f, JoyKindDefOf.Meditative);
+                    if (joy.CurLevel >= 0.999f)
+                    {
+                        pawn.jobs.curDriver?.EndJobWith(JobCondition.Succeeded);
+                    }
                 }
             };
 
