@@ -19,7 +19,7 @@ All contributions should respect these core themes.
 
 ## 🗂 Repository Structure
 
-Virtu-Awake is built around threVirtuAwake/
+Virtu-Awake is built around the following directories:
 ├── About/ # Mod metadata
 ├── Assemblies/ # Compiled DLLs
 ├── Defs/ # XML defs (ThoughtDefs, Hediffs, Buildings, etc.)
@@ -30,7 +30,7 @@ Virtu-Awake is built around threVirtuAwake/
 │ ├── Simulation/ # VR pod drivers and logic
 │ ├── Traits/ # Trait-based memory handlers
 │ └── Util/ # Shared helpers
-└── Textures/ # Art assetse pillars:
+└── Textures/ # Art assets
 
 If adding new systems, please follow existing naming conventions.
 
