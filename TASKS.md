@@ -7,6 +7,18 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 
 ---
 
+# Setup & Ops
+
+## TASK-OPS-001
+**Description:** Create base repository directory skeleton per CONTRIBUTING.md  
+**Category:** Setup  
+**Dependencies:** None  
+**Status:** DONE  
+**Output:** `About/`, `Assemblies/`, `Defs/`, `Languages/`, `Source/` (`Components/`, `Events/`, `Simulation/`, `Traits/`, `Util/`), `Textures/`  
+**Owner:** AI
+
+---
+
 # ⚙ Core Systems
 
 ## TASK-CORE-001
