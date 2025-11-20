@@ -72,7 +72,44 @@ namespace VirtuAwake
                 return;
             }
 
-            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(simType.thoughtOnSession);
+            ThoughtDef chosen = null;
+            float joyGain = simType.joyGainTier1;
+            if (simType.primarySkill != null)
+            {
+                var skill = pawn.skills?.GetSkill(simType.primarySkill);
+                if (skill != null)
+                {
+                    if (simType.thoughtTier1 != null && skill.Level < 6)
+                    {
+                        chosen = simType.thoughtTier1;
+                        joyGain = simType.joyGainTier1;
+                    }
+                    else if (simType.thoughtTier2 != null && skill.Level < 12)
+                    {
+                        chosen = simType.thoughtTier2;
+                        joyGain = simType.joyGainTier2;
+                    }
+                    else if (simType.thoughtTier3 != null)
+                    {
+                        chosen = simType.thoughtTier3;
+                        joyGain = simType.joyGainTier3;
+                    }
+                }
+            }
+
+            if (chosen == null)
+            {
+                chosen = simType.thoughtOnSession;
+            }
+
+            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
+
+            var joy = pawn.needs?.joy;
+            if (joy != null && joyGain > 0f)
+            {
+                JoyKindDef kind = simType.primarySkill == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative;
+                joy.GainJoy(joyGain, kind);
+            }
         }
     }
 }

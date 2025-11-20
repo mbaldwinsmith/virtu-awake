@@ -5,6 +5,9 @@
     <label>recreation sim</label>
     <description>Soft scenic simulations meant for rest, reflection, and gentle reverie.</description>
     <xpPerTick>0</xpPerTick>
+    <joyGainTier1>0.08</joyGainTier1>
+    <joyGainTier2>0.12</joyGainTier2>
+    <joyGainTier3>0.16</joyGainTier3>
     <thoughtOnSession>VA_VRSession_SoftFlicker</thoughtOnSession>
   </SimTypeDef>
 
@@ -13,6 +16,10 @@
     <label>combat training sim</label>
     <description>Looped sparring arenas and timed drills that hone reaction and movement.</description>
     <xpPerTick>0.10</xpPerTick>
+    <primarySkill>Shooting</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Shooting</key>
@@ -24,6 +31,9 @@
       </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_CombatDrill_Flicker</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Shooting_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Shooting_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Shooting_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -31,6 +41,10 @@
     <label>scholarly sim</label>
     <description>Quiet problem-spaces and layered thought puzzles that train analysis.</description>
     <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Intellectual</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Intellectual</key>
@@ -38,6 +52,9 @@
       </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_QuietProof</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Intellectual_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Intellectual_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Intellectual_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -45,6 +62,10 @@
     <label>clinical sim</label>
     <description>Clinical practice rooms that rehearse clean procedures and diagnostics.</description>
     <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Medicine</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Medicine</key>
@@ -52,6 +73,9 @@
       </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_ClinicalStillness</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Medical_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Medical_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Medical_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -59,12 +83,19 @@
     <label>artistic sim</label>
     <description>Creative sandboxes with slow visual glitches that spark new motifs.</description>
     <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Artistic</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Artistic</key>
         <value>1.0</value>
       </li>
     </skillWeights>
+    <thoughtTier1>VA_VRMemory_Artistic_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Artistic_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Artistic_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -72,6 +103,10 @@
     <label>social sim</label>
     <description>Soft salons and shared memory paths for refining empathy and presence.</description>
     <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Social</primarySkill>
+    <joyGainTier1>0.06</joyGainTier1>
+    <joyGainTier2>0.09</joyGainTier2>
+    <joyGainTier3>0.13</joyGainTier3>
     <skillWeights>
       <li>
         <key>Social</key>
@@ -79,6 +114,9 @@
       </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_SocialResonance</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Social_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Social_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Social_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -86,6 +124,10 @@
     <label>crafting sim</label>
     <description>Virtual benches and timed assembly drills that reward precision and pace.</description>
     <xpPerTick>0.09</xpPerTick>
+    <primarySkill>Crafting</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Crafting</key>
@@ -96,6 +138,9 @@
         <value>0.4</value>
       </li>
     </skillWeights>
+    <thoughtTier1>VA_VRMemory_Crafting_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Crafting_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Crafting_T3</thoughtTier3>
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
@@ -103,11 +148,18 @@
     <label>botany sim</label>
     <description>Pattern gardens with accelerated growth cycles for careful tending.</description>
     <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Plants</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
     <skillWeights>
       <li>
         <key>Plants</key>
         <value>1.0</value>
       </li>
     </skillWeights>
+    <thoughtTier1>VA_VRMemory_Plants_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Plants_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Plants_T3</thoughtTier3>
   </SimTypeDef>
 </Defs>

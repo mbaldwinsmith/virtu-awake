@@ -520,6 +520,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Thoughts_VirtuAwake_SkillTraits.xml with 36 base memories + trait variants  
 **Owner:** AI
 
+## TASK-BUG-009
+**Description:** Ensure sim-type tiered thoughts also give recreation on completion  
+**Category:** Bugfix  
+**Dependencies:** CORE-004, MEM-008  
+**Status:** DONE  
+**Output:** SimType defs include joy gains; TryGiveSimMemory applies joy per tier  
+**Owner:** AI
+
 ---
 
 # Agent Rules
