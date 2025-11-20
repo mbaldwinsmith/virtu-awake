@@ -3,6 +3,7 @@
   <HediffDef>
     <defName>VA_Lucidity</defName>
     <label>heightened awareness</label>
+    <description>Awareness of the simulation bleeding through. Higher values bring clarity — and the risk of realisation.</description>
     <hediffClass>VirtuAwake.Hediff_Lucidity</hediffClass>
     <tendable>false</tendable>
     <isBad>false</isBad>
@@ -12,6 +13,7 @@
   <HediffDef>
     <defName>VA_Instability</defName>
     <label>perceptual instability</label>
+    <description>Flickers, glitches, and sensory warping inside the simulation. Grows with long immersion and stress.</description>
     <hediffClass>VirtuAwake.Hediff_Instability</hediffClass>
     <tendable>false</tendable>
     <isBad>true</isBad>
