@@ -480,6 +480,22 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** skillWeights use <li><key/><value/> format; defs load without XML errors  
 **Owner:** AI
 
+## TASK-BUG-006
+**Description:** Prevent VR pod job null refs when pods despawn mid-session  
+**Category:** Bugfix  
+**Dependencies:** CORE-001  
+**Status:** DONE  
+**Output:** Job drivers guard null/destroyed pod/comp and end jobs safely  
+**Owner:** AI
+
+## TASK-BUG-007
+**Description:** Guard VR pod jobs against null targets even when pods persist  
+**Category:** Bugfix  
+**Dependencies:** CORE-001  
+**Status:** DONE  
+**Output:** Job drivers null-check job targets/comp each tick to avoid NREs  
+**Owner:** AI
+
 ---
 
 # Agent Rules

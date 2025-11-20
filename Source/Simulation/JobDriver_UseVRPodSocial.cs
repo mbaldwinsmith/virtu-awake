@@ -9,9 +9,9 @@ namespace VirtuAwake
     {
         private const int SessionDurationTicks = 3000;
 
-        private Building Pod => this.job.targetA.Thing as Building;
-        private Pawn Partner => this.job.targetB.Pawn;
-        private CompVRPod PodComp => Pod?.GetComp<CompVRPod>();
+        private Building Pod => this.job?.targetA.Thing as Building;
+        private Pawn Partner => this.job?.targetB.Pawn;
+        private CompVRPod PodComp => this.Pod?.GetComp<CompVRPod>();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -21,6 +21,7 @@ namespace VirtuAwake
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            this.FailOn(() => this.job?.targetA.Thing == null || this.Pod == null);
             this.FailOn(() => PodComp != null && PodComp.HasOtherUser(pawn) && (Partner == null || PodComp.HasOtherUser(Partner)));
             this.AddEndCondition(() =>
                 Pod != null && Pod.Spawned ? JobCondition.Ongoing : JobCondition.Incompletable);
@@ -43,6 +44,12 @@ namespace VirtuAwake
 
             immerse.tickAction = () =>
             {
+                if (Pod == null || PodComp == null || Pod.Destroyed)
+                {
+                    pawn.jobs.curDriver?.EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
+
                 if (Pod != null)
                 {
                     pawn.rotationTracker.FaceCell(Pod.Position);

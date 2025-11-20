@@ -9,8 +9,8 @@ namespace VirtuAwake
     {
         private const int SessionDurationTicks = 2500;
 
-        private Building Pod => this.job.targetA.Thing as Building;
-        private CompVRPod PodComp => Pod?.GetComp<CompVRPod>();
+        private Building Pod => this.job?.targetA.Thing as Building;
+        private CompVRPod PodComp => this.Pod?.GetComp<CompVRPod>();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -20,6 +20,7 @@ namespace VirtuAwake
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            this.FailOn(() => this.job?.targetA.Thing == null || this.Pod == null);
             this.FailOn(() => PodComp != null && PodComp.HasOtherUser(pawn));
             this.AddEndCondition(() =>
                 Pod != null && Pod.Spawned ? JobCondition.Ongoing : JobCondition.Incompletable);
@@ -45,6 +46,12 @@ namespace VirtuAwake
 
             lieDown.tickAction = () =>
             {
+                if (Pod == null || PodComp == null || Pod.Destroyed)
+                {
+                    pawn.jobs.curDriver?.EndJobWith(JobCondition.Incompletable);
+                    return;
+                }
+
                 // Keep facing the pod's rotation (optional)
                 if (Pod != null)
                 {
