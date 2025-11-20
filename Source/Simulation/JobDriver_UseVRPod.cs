@@ -72,6 +72,10 @@ namespace VirtuAwake
             {
                 // Stand up and clear user
                 pawn.jobs.posture = PawnPosture.Standing;
+                if (PodComp?.Props?.simType != null)
+                {
+                    VRSimUtility.TryGiveSimMemory(pawn, PodComp.Props.simType);
+                }
                 PodComp?.SetUser(null);
             });
 

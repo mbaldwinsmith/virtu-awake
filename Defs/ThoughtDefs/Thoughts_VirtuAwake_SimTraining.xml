@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Combat training memory -->
+  <ThoughtDef>
+    <defName>VA_VRMemory_CombatDrill_Flicker</defName>
+    <label>combat drill flicker</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>in-step shots</label>
+        <description>The range folded once, then opened again in the same breath. My aim rode the rhythm.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Psychopath</trait>
+            <text>The flicker landed where I wanted it. Clean, interesting.</text>
+          </li>
+          <li>
+            <trait>TooSmart</trait>
+            <text>The pattern in the recoil matched the light. Useful.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The stutter almost felt like the world cheering me on.</text>
+          </li>
+          <li>
+            <trait>Brawler</trait>
+            <text>The scene lagged; my muscles answered before thought.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <!-- Intellectual puzzle memory -->
+  <ThoughtDef>
+    <defName>VA_VRMemory_QuietProof</defName>
+    <label>quiet proof</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>softly solved</label>
+        <description>The problem hushed itself as I traced it. Lines rearranged like they wanted to be understood.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>TooSmart</trait>
+            <text>The sequence clicked twice; deliberate, not random.</text>
+          </li>
+          <li>
+            <trait>PsySensitive</trait>
+            <text>The solution felt like relief, as if the room exhaled.</text>
+          </li>
+          <li>
+            <trait>Depressive</trait>
+            <text>The answer arrived quietly, almost apologetic.</text>
+          </li>
+          <li>
+            <trait>Psychopath</trait>
+            <text>The shapes aligned with a precise, satisfying inevitability.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <!-- Clinical rehearsal memory -->
+  <ThoughtDef>
+    <defName>VA_VRMemory_ClinicalStillness</defName>
+    <label>clinical stillness</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>hands remembered the quiet</label>
+        <description>In the sterile hush, the tools waited without judgment. My hands moved before my mind did.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>BodyPurist</trait>
+            <text>Every motion felt exact; no stray shimmer touched my fingers.</text>
+          </li>
+          <li>
+            <trait>Neurotic</trait>
+            <text>The stillness was fragile. I kept certain the edges wouldn’t ripple.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The quiet steadied me. Even the pause felt kind.</text>
+          </li>
+          <li>
+            <trait>TooSmart</trait>
+            <text>The procedure aligned like a proof; each step locked in place.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <!-- Social resonance memory -->
+  <ThoughtDef>
+    <defName>VA_VRMemory_SocialResonance</defName>
+    <label>shared resonance</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>voices overlapping softly</label>
+        <description>We spoke in half-words and the room answered with a second echo. Warm, even in the slip.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Kind</trait>
+            <text>The other voice felt shy. I matched its pace.</text>
+          </li>
+          <li>
+            <trait>PsySensitive</trait>
+            <text>The echo carried a feeling I could almost name.</text>
+          </li>
+          <li>
+            <trait>Psychopath</trait>
+            <text>The double-voice was interesting—an anomaly worth remembering.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The overlap sounded like laughter under water.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+</Defs>

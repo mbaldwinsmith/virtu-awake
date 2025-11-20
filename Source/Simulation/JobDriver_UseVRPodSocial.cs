@@ -69,6 +69,10 @@ namespace VirtuAwake
             immerse.AddFinishAction(() =>
             {
                 pawn.jobs.posture = PawnPosture.Standing;
+                if (PodComp?.Props?.simType != null)
+                {
+                    VRSimUtility.TryGiveSimMemory(pawn, PodComp.Props.simType);
+                }
                 PodComp?.RemoveUser(pawn);
             });
 

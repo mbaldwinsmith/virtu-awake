@@ -25,6 +25,7 @@ namespace VirtuAwake
                 return;
             }
 
+            float totalWeight = 0f;
             foreach (var pair in simType.skillWeights)
             {
                 if (pair.Key == null || pair.Value <= 0f)
@@ -32,8 +33,46 @@ namespace VirtuAwake
                     continue;
                 }
 
-                pawn.skills.Learn(pair.Key, baseXp * pair.Value, direct: true);
+                totalWeight += pair.Value * PassionFactor(pawn, pair.Key);
             }
+
+            if (totalWeight <= 0f)
+            {
+                return;
+            }
+
+            foreach (var pair in simType.skillWeights)
+            {
+                if (pair.Key == null || pair.Value <= 0f)
+                {
+                    continue;
+                }
+
+                float weight = pair.Value * PassionFactor(pawn, pair.Key);
+                float scaledXp = baseXp * (weight / totalWeight);
+                pawn.skills.Learn(pair.Key, scaledXp, direct: true);
+            }
+        }
+
+        private static float PassionFactor(Pawn pawn, SkillDef skill)
+        {
+            var passion = pawn.skills?.GetSkill(skill)?.passion ?? Passion.None;
+            return passion switch
+            {
+                Passion.Major => 1.6f,
+                Passion.Minor => 1.3f,
+                _ => 1f
+            };
+        }
+
+        public static void TryGiveSimMemory(Pawn pawn, SimTypeDef simType)
+        {
+            if (pawn == null || simType?.thoughtOnSession == null)
+            {
+                return;
+            }
+
+            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(simType.thoughtOnSession);
         }
     }
 }

@@ -68,6 +68,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** VRSimUtility with skill XP application; configuration via comp/SimType defs  
 **Owner:** AI
 
+## TASK-MEM-006
+**Description:** Wire sim sessions to give sim-type memories with trait variants  
+**Category:** C# + XML  
+**Dependencies:** CORE-004, SIM-001  
+**Status:** DONE  
+**Output:** Thought_MemoryTraitVariant, SimType thought mapping, variant memories per sim type  
+**Owner:** AI
+
 ## TASK-CORE-005
 **Description:** Add nutrient/power maintenance hooks for Virtu-Dream Pod (optional VFE nutrient pipe support)  
 **Category:** C# / Integration  

@@ -8,5 +8,6 @@ namespace VirtuAwake
     {
         public float xpPerTick = 0.05f;
         public Dictionary<SkillDef, float> skillWeights = new Dictionary<SkillDef, float>();
+        public ThoughtDef thoughtOnSession;
     }
 }

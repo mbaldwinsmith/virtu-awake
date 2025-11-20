@@ -5,6 +5,7 @@
     <label>recreation sim</label>
     <description>Soft scenic simulations meant for rest, reflection, and gentle reverie.</description>
     <xpPerTick>0</xpPerTick>
+    <thoughtOnSession>VA_VRSession_SoftFlicker</thoughtOnSession>
   </SimTypeDef>
 
   <SimTypeDef>
@@ -16,6 +17,7 @@
       <Shooting>0.6</Shooting>
       <Melee>0.4</Melee>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_CombatDrill_Flicker</thoughtOnSession>
   </SimTypeDef>
 
   <SimTypeDef>
@@ -26,6 +28,7 @@
     <skillWeights>
       <Intellectual>1.0</Intellectual>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_QuietProof</thoughtOnSession>
   </SimTypeDef>
 
   <SimTypeDef>
@@ -36,6 +39,7 @@
     <skillWeights>
       <Medicine>1.0</Medicine>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_ClinicalStillness</thoughtOnSession>
   </SimTypeDef>
 
   <SimTypeDef>
@@ -56,6 +60,7 @@
     <skillWeights>
       <Social>1.0</Social>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_SocialResonance</thoughtOnSession>
   </SimTypeDef>
 
   <SimTypeDef>
