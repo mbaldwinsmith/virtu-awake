@@ -104,7 +104,7 @@ namespace VirtuAwake
 
         public static void TryGiveSimMemory(Pawn pawn, SimTypeDef simType)
         {
-            if (pawn == null || simType?.thoughtOnSession == null)
+            if (pawn == null || simType == null)
             {
                 return;
             }
@@ -136,10 +136,13 @@ namespace VirtuAwake
 
             if (chosen == null)
             {
-                chosen = simType.thoughtOnSession;
+                chosen = simType.thoughtOnSession ?? simType.thoughtTier1;
             }
 
-            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
+            if (chosen != null)
+            {
+                pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
+            }
 
             var joy = pawn.needs?.joy;
             if (joy != null && joyGain > 0f)

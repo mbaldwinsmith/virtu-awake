@@ -37,6 +37,27 @@
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_Melee</defName>
+    <label>melee sparring sim</label>
+    <description>Silent arenas tuned for close combat flow and responsive footwork.</description>
+    <xpPerTick>0.10</xpPerTick>
+    <primarySkill>Melee</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Melee</key>
+        <value>1.0</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Melee_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Melee_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Melee_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Melee_T3</thoughtTier3>
+  </SimTypeDef>
+
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
     <defName>VA_Sim_Intellectual</defName>
     <label>scholarly sim</label>
     <description>Quiet problem-spaces and layered thought puzzles that train analysis.</description>
@@ -93,6 +114,7 @@
         <value>1.0</value>
       </li>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Artistic_T1</thoughtOnSession>
     <thoughtTier1>VA_VRMemory_Artistic_T1</thoughtTier1>
     <thoughtTier2>VA_VRMemory_Artistic_T2</thoughtTier2>
     <thoughtTier3>VA_VRMemory_Artistic_T3</thoughtTier3>
@@ -138,11 +160,95 @@
         <value>0.4</value>
       </li>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Crafting_T1</thoughtOnSession>
     <thoughtTier1>VA_VRMemory_Crafting_T1</thoughtTier1>
     <thoughtTier2>VA_VRMemory_Crafting_T2</thoughtTier2>
     <thoughtTier3>VA_VRMemory_Crafting_T3</thoughtTier3>
   </SimTypeDef>
 
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_Construction</defName>
+    <label>construction sim</label>
+    <description>Ghost frames for laying structure with guided placement.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Construction</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Construction</key>
+        <value>1.0</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Construction_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Construction_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Construction_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Construction_T3</thoughtTier3>
+  </SimTypeDef>
+
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_Mining</defName>
+    <label>mining sim</label>
+    <description>Echoing strata with guided cuts and responsive stone.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Mining</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Mining</key>
+        <value>1.0</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Mining_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Mining_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Mining_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Mining_T3</thoughtTier3>
+  </SimTypeDef>
+
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_Cooking</defName>
+    <label>cooking sim</label>
+    <description>Gentle kitchens with flawless prep and timing.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Cooking</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Cooking</key>
+        <value>1.0</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Cooking_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Cooking_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Cooking_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Cooking_T3</thoughtTier3>
+  </SimTypeDef>
+
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_Animals</defName>
+    <label>animal handling sim</label>
+    <description>Soft encounters tuned to build trust and calm handling.</description>
+    <xpPerTick>0.08</xpPerTick>
+    <primarySkill>Animals</primarySkill>
+    <joyGainTier1>0.06</joyGainTier1>
+    <joyGainTier2>0.09</joyGainTier2>
+    <joyGainTier3>0.13</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Animals</key>
+        <value>1.0</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Animals_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Animals_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Animals_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Animals_T3</thoughtTier3>
+  </SimTypeDef>
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
     <defName>VA_Sim_Plants</defName>
     <label>botany sim</label>
@@ -158,6 +264,7 @@
         <value>1.0</value>
       </li>
     </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Plants_T1</thoughtOnSession>
     <thoughtTier1>VA_VRMemory_Plants_T1</thoughtTier1>
     <thoughtTier2>VA_VRMemory_Plants_T2</thoughtTier2>
     <thoughtTier3>VA_VRMemory_Plants_T3</thoughtTier3>

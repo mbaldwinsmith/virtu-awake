@@ -528,6 +528,22 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** SimType defs include joy gains; TryGiveSimMemory applies joy per tier  
 **Owner:** AI
 
+## TASK-BUG-010
+**Description:** Fix sim sessions so trait/skill-tier memories (not soft flicker) always apply and joy is granted  
+**Category:** Bugfix  
+**Dependencies:** MEM-008, CORE-004  
+**Status:** DONE  
+**Output:** Per-pawn sim type resolution, tiered thought selection even without default thought, and tiered joy award  
+**Owner:** AI
+
+## TASK-BUG-011
+**Description:** Add missing sim types so all skills (including melee, construction, mining, cooking, animals) grant tiered trait memories and joy  
+**Category:** Bugfix  
+**Dependencies:** CORE-004, MEM-008  
+**Status:** DONE  
+**Output:** Expanded SimTypes with tiered thoughts/joy and fallback thoughtOnSession  
+**Owner:** AI
+
 ---
 
 # Agent Rules
