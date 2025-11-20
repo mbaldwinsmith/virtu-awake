@@ -3,12 +3,6 @@
 
 This document explains how to design VR events for Virtu-Awake in a way that preserves the mod’s tone, narrative depth, and psychological subtlety.
 
-Use this guide alongside:
-- `INTENT.md` (creative philosophy)
-- `STYLE_GUIDE.md` (writing/coding style)
-- `LORE_GUIDE.md` (worldbuilding rules)
-- `TASKS.md` (task tracking)
-
 Events are the heart of Virtu-Awake.  
 They shape memories, narrative arcs, awakening sequences, instability progression, and breakouts.
 

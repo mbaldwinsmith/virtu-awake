@@ -13,12 +13,6 @@ It covers:
 
 Power anomalies create tension, unpredictability, and narrative flavour without resorting to catastrophic electrical failures or action-movie drama.
 
-Use alongside:
-- `LORE_GUIDE.md`
-- `EVENT_DESIGN_GUIDE.md`
-- `WORLDSPACE_NOTES.md`
-- `AWAKENING_TIERS_GUIDE.md`
-
 ---
 
 # ⚡ 1. Power Philosophy

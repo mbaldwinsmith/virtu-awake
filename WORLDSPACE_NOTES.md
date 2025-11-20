@@ -13,13 +13,6 @@ It supports writers and developers creating:
 
 Worldspace behaviour must remain surreal, psychological, and consistent with the Virtu-Awake tone.
 
-Refer to:
-- `INTENT.md`
-- `LORE_GUIDE.md`
-- `EVENT_DESIGN_GUIDE.md`
-- `SIMULATION_TYPES_GUIDE.md`
-- `AWAKENING_TIERS_GUIDE.md`
-
 ---
 
 # 🌐 1. The Nature of Virtu-Awake Worldspace
