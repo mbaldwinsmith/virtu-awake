@@ -472,6 +472,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** SimType defs load with proper Class, simType cross-refs resolve without errors  
 **Owner:** AI
 
+## TASK-BUG-005
+**Description:** Fix SimType skillWeights XML parsing errors (list items)  
+**Category:** Bugfix  
+**Dependencies:** CORE-004  
+**Status:** DONE  
+**Output:** skillWeights use <li><key/><value/> format; defs load without XML errors  
+**Owner:** AI
+
 ---
 
 # Agent Rules

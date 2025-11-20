@@ -14,8 +14,14 @@
     <description>Looped sparring arenas and timed drills that hone reaction and movement.</description>
     <xpPerTick>0.10</xpPerTick>
     <skillWeights>
-      <Shooting>0.6</Shooting>
-      <Melee>0.4</Melee>
+      <li>
+        <key>Shooting</key>
+        <value>0.6</value>
+      </li>
+      <li>
+        <key>Melee</key>
+        <value>0.4</value>
+      </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_CombatDrill_Flicker</thoughtOnSession>
   </SimTypeDef>
@@ -26,7 +32,10 @@
     <description>Quiet problem-spaces and layered thought puzzles that train analysis.</description>
     <xpPerTick>0.08</xpPerTick>
     <skillWeights>
-      <Intellectual>1.0</Intellectual>
+      <li>
+        <key>Intellectual</key>
+        <value>1.0</value>
+      </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_QuietProof</thoughtOnSession>
   </SimTypeDef>
@@ -37,7 +46,10 @@
     <description>Clinical practice rooms that rehearse clean procedures and diagnostics.</description>
     <xpPerTick>0.08</xpPerTick>
     <skillWeights>
-      <Medicine>1.0</Medicine>
+      <li>
+        <key>Medicine</key>
+        <value>1.0</value>
+      </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_ClinicalStillness</thoughtOnSession>
   </SimTypeDef>
@@ -48,7 +60,10 @@
     <description>Creative sandboxes with slow visual glitches that spark new motifs.</description>
     <xpPerTick>0.08</xpPerTick>
     <skillWeights>
-      <Artistic>1.0</Artistic>
+      <li>
+        <key>Artistic</key>
+        <value>1.0</value>
+      </li>
     </skillWeights>
   </SimTypeDef>
 
@@ -58,7 +73,10 @@
     <description>Soft salons and shared memory paths for refining empathy and presence.</description>
     <xpPerTick>0.08</xpPerTick>
     <skillWeights>
-      <Social>1.0</Social>
+      <li>
+        <key>Social</key>
+        <value>1.0</value>
+      </li>
     </skillWeights>
     <thoughtOnSession>VA_VRMemory_SocialResonance</thoughtOnSession>
   </SimTypeDef>
@@ -69,8 +87,14 @@
     <description>Virtual benches and timed assembly drills that reward precision and pace.</description>
     <xpPerTick>0.09</xpPerTick>
     <skillWeights>
-      <Crafting>0.6</Crafting>
-      <Construction>0.4</Construction>
+      <li>
+        <key>Crafting</key>
+        <value>0.6</value>
+      </li>
+      <li>
+        <key>Construction</key>
+        <value>0.4</value>
+      </li>
     </skillWeights>
   </SimTypeDef>
 
@@ -80,7 +104,10 @@
     <description>Pattern gardens with accelerated growth cycles for careful tending.</description>
     <xpPerTick>0.08</xpPerTick>
     <skillWeights>
-      <Plants>1.0</Plants>
+      <li>
+        <key>Plants</key>
+        <value>1.0</value>
+      </li>
     </skillWeights>
   </SimTypeDef>
 </Defs>
