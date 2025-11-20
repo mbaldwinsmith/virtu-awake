@@ -464,6 +464,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Float menu option queues VA_UseVRPod  
 **Owner:** AI
 
+## TASK-BUG-004
+**Description:** Fix SimTypeDef load errors and cross-references for sim memories  
+**Category:** Bugfix  
+**Dependencies:** CORE-004  
+**Status:** DONE  
+**Output:** SimType defs load with proper Class, simType cross-refs resolve without errors  
+**Owner:** AI
+
 ---
 
 # Agent Rules
