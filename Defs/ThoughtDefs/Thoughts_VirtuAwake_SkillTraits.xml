@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Base with trait overlays -->
+  <ThoughtDef Name="VA_VRMemory_SkillTraitBase" Abstract="True">
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li><trait>Abrasive</trait><text>I pointed out every hitch; the sim could take it.</text></li>
+          <li><trait>AnnoyingVoice</trait><text>My rough voice scratched the quiet; the sim didn’t flinch.</text></li>
+          <li><trait>Ascetic</trait><text>Plain focus suited me; nothing fancy to distract.</text></li>
+          <li><trait>Asexual</trait><text>Connection stayed on my terms, quiet and clean.</text></li>
+          <li><trait>Beautiful</trait><text>Even here, I felt noticed; the sim softened it.</text></li>
+          <li><trait>Bisexual</trait><text>The warmth stayed open without pressure.</text></li>
+          <li><trait>Bloodlust</trait><text>Even gentle drills stirred a private thrill.</text></li>
+          <li><trait>BodyModder</trait><text>Movements hinted at bodies that could be more.</text></li>
+          <li><trait>BodyPurist</trait><text>It felt right when nothing altered my body.</text></li>
+          <li><trait>Brawler</trait><text>Even calm practice woke the urge to clash.</text></li>
+          <li><trait>Cannibal</trait><text>Flavors stayed neutral; appetite remembered other things.</text></li>
+          <li><trait>CarefulShooter</trait><text>Slowing down felt natural; the sim waited with me.</text></li>
+          <li><trait>ChemicalFascination</trait><text>Clean focus was fine; part of me missed a sharper edge.</text></li>
+          <li><trait>ChemicalInterest</trait><text>Clarity held, but I noticed what was absent.</text></li>
+          <li><trait>CreepyBreathing</trait><text>My heavy breaths filled the quiet; the sim absorbed them.</text></li>
+          <li><trait>Depressive</trait><text>Even small wins slid past with a gray tint.</text></li>
+          <li><trait>FastLearner</trait><text>Basics clicked fast; steps settled almost before I asked.</text></li>
+          <li><trait>FastWalker</trait><text>The sim matched my quick stride.</text></li>
+          <li><trait>Gay</trait><text>Calm company stayed in bounds I chose.</text></li>
+          <li><trait>Gourmand</trait><text>I caught hints of flavor; it made the work feel fuller.</text></li>
+          <li><trait>GreatMemory</trait><text>Details stuck easily; the whole flow stayed vivid.</text></li>
+          <li><trait>Greedy</trait><text>Finishing made me wish the reward were real.</text></li>
+          <li><trait>Industriousness</trait><text>Work rhythm felt good; effort and result locked together.</text></li>
+          <li><trait>IronWilled</trait><text>Small glitches never shook me.</text></li>
+          <li><trait>Jealous</trait><text>I wondered who else might get more from this.</text></li>
+          <li><trait>Jogger</trait><text>I moved with urgency; the sim kept pace.</text></li>
+          <li><trait>Kind</trait><text>Shared effort felt better when no one was hurt.</text></li>
+          <li><trait>Lazy</trait><text>Moving slowly felt acceptable; no rush.</text></li>
+          <li><trait>Masochist</trait><text>Mild strain carried a strange spark of pleasure.</text></li>
+          <li><trait>Misandrist</trait><text>It flowed best when certain voices stayed distant.</text></li>
+          <li><trait>Misogynist</trait><text>I relaxed when some presences stayed quiet.</text></li>
+          <li><trait>Nervous</trait><text>I watched for cracks even as things went well.</text></li>
+          <li><trait>Neurotic</trait><text>Ease helped, but I kept bracing for a slip.</text></li>
+          <li><trait>NightOwl</trait><text>The sim felt like night—quiet and fitting.</text></li>
+          <li><trait>Nimble</trait><text>Movements slid around every hitch.</text></li>
+          <li><trait>Nudist</trait><text>The sim’s air felt easy on skin, unhidden.</text></li>
+          <li><trait>Optimist</trait><text>Small success felt like a good sign.</text></li>
+          <li><trait>Pessimist</trait><text>A small win felt fragile and brief.</text></li>
+          <li><trait>Pretty</trait><text>Faces reacted softly; I noticed.</text></li>
+          <li><trait>PsychicallyDeaf</trait><text>The undertone stayed quiet for me.</text></li>
+          <li><trait>PsychicallyDull</trait><text>The hum felt faint and distant.</text></li>
+          <li><trait>PsychicallySensitive</trait><text>I felt a clear hum beneath the work.</text></li>
+          <li><trait>PsychicallyHypersensitive</trait><text>The unseen layer pressed in, noticeable and loud.</text></li>
+          <li><trait>Psychopath</trait><text>Outcomes noted; feelings optional.</text></li>
+          <li><trait>Pyromaniac</trait><text>I missed the warmth of flame; the calm begged for a spark.</text></li>
+          <li><trait>QuickSleeper</trait><text>Short practice was enough; I felt ready.</text></li>
+          <li><trait>Sanguine</trait><text>Small wins felt gently bright.</text></li>
+          <li><trait>Sickly</trait><text>Effort felt taxing; I paced myself.</text></li>
+          <li><trait>Slothful</trait><text>Even in focus, I let the world do more of the work.</text></li>
+          <li><trait>SlowLearner</trait><text>Basics took their time to settle.</text></li>
+          <li><trait>Slowpoke</trait><text>I took the long way through; the sim didn’t rush me.</text></li>
+          <li><trait>StaggeringlyUgly</trait><text>I could feel eyes slide past, even here.</text></li>
+          <li><trait>Steadfast</trait><text>Staying the course felt natural.</text></li>
+          <li><trait>SuperImmune</trait><text>Effort barely touched my body.</text></li>
+          <li><trait>Teetotaler</trait><text>The clean clarity suited me.</text></li>
+          <li><trait>TooSmart</trait><text>Patterns stood out; I followed them.</text></li>
+          <li><trait>TorturedArtist</trait><text>Even beauty carried a lonely edge.</text></li>
+          <li><trait>Tough</trait><text>Light strain barely registered.</text></li>
+          <li><trait>TriggerHappy</trait><text>Quick acts scratched the itch to go faster.</text></li>
+          <li><trait>Ugly</trait><text>The sim was kind, but I sensed the distance.</text></li>
+          <li><trait>Undergrounder</trait><text>The enclosed calm felt natural.</text></li>
+          <li><trait>VeryNeurotic</trait><text>Even at my best, I braced for a slip.</text></li>
+          <li><trait>Volatile</trait><text>Even easy tasks flickered with sudden tension.</text></li>
+          <li><trait>Wimp</trait><text>Gentle tasks suited me; I stayed cautious.</text></li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <!-- Shooting -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Shooting_T1</defName>
+    <label>vr: steady shot practice</label>
+    <stages>
+      <li>
+        <label>steady shot practice</label>
+        <description>Targets drifted through a quiet field; every shot felt unhurried and distant.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Shooting_T2</defName>
+    <label>vr: flowing marksmanship</label>
+    <stages>
+      <li>
+        <label>flowing marksmanship</label>
+        <description>Breath and timing narrowed the world; shots landed where they belonged.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Shooting_T3</defName>
+    <label>vr: impossible focus</label>
+    <stages>
+      <li>
+        <label>impossible focus</label>
+        <description>Only the stillness before each trigger remained; the sim felt precise.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Melee -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Melee_T1</defName>
+    <label>vr: light sparring</label>
+    <stages>
+      <li>
+        <label>light sparring</label>
+        <description>Soft blows traded in a quiet arena; my body remembered the motions.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Melee_T2</defName>
+    <label>vr: fluent combat drills</label>
+    <stages>
+      <li>
+        <label>fluent combat drills</label>
+        <description>Steps and strikes flowed together; the arena seemed to know my pace.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Melee_T3</defName>
+    <label>vr: perfect counter</label>
+    <stages>
+      <li>
+        <label>perfect counter</label>
+        <description>A strike I’d never seen arrived; my body answered before thought.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Construction -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Construction_T1</defName>
+    <label>vr: simple framing</label>
+    <stages>
+      <li>
+        <label>simple framing</label>
+        <description>Walls rose and dissolved; laying down structure felt strangely easy.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Construction_T2</defName>
+    <label>vr: clean blueprint</label>
+    <stages>
+      <li>
+        <label>clean blueprint</label>
+        <description>The sim unfolded a building piece by piece, showing where parts belonged.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Construction_T3</defName>
+    <label>vr: moving architecture</label>
+    <stages>
+      <li>
+        <label>moving architecture</label>
+        <description>The design shifted as I worked, settling like a memory.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Mining -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Mining_T1</defName>
+    <label>vr: gentle tunneling</label>
+    <stages>
+      <li>
+        <label>gentle tunneling</label>
+        <description>Each strike echoed softly, as if the stone was patient.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Mining_T2</defName>
+    <label>vr: reading the veins</label>
+    <stages>
+      <li>
+        <label>reading the veins</label>
+        <description>The sim highlighted seams, guiding me to the best cuts.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Mining_T3</defName>
+    <label>vr: living stone</label>
+    <stages>
+      <li>
+        <label>living stone</label>
+        <description>The rock seemed to breathe between blows, opening where it mattered.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Cooking -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Cooking_T1</defName>
+    <label>vr: easy recipes</label>
+    <stages>
+      <li>
+        <label>easy recipes</label>
+        <description>Ingredients never spoiled and heat stayed gentle; cooking felt scripted and kind.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Cooking_T2</defName>
+    <label>vr: flowing prepwork</label>
+    <stages>
+      <li>
+        <label>flowing prepwork</label>
+        <description>Chopping, seasoning, and stirring lined up in one smooth motion.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Cooking_T3</defName>
+    <label>vr: perfect dish</label>
+    <stages>
+      <li>
+        <label>perfect dish</label>
+        <description>The sim plated a meal I could almost taste; for a second it felt flawless.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Plants -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Plants_T1</defName>
+    <label>vr: gentle sowing</label>
+    <stages>
+      <li>
+        <label>gentle sowing</label>
+        <description>Soil parted easily and rows lined themselves in calm, straight lines.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Plants_T2</defName>
+    <label>vr: reading growth</label>
+    <stages>
+      <li>
+        <label>reading growth</label>
+        <description>The sim showed every plant’s health in quiet colours at a glance.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Plants_T3</defName>
+    <label>vr: breathing field</label>
+    <stages>
+      <li>
+        <label>breathing field</label>
+        <description>Crops swayed in perfect unison, like the field exhaled.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Animals -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Animals_T1</defName>
+    <label>vr: calm animal handling</label>
+    <stages>
+      <li>
+        <label>calm animal handling</label>
+        <description>Creatures approached without fear, following simple gestures.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Animals_T2</defName>
+    <label>vr: shared trust</label>
+    <stages>
+      <li>
+        <label>shared trust</label>
+        <description>I watched a wary animal relax, one slow step at a time.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Animals_T3</defName>
+    <label>vr: unspoken understanding</label>
+    <stages>
+      <li>
+        <label>unspoken understanding</label>
+        <description>For a few breaths, it felt like the animal and I shared the same thought.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Crafting -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Crafting_T1</defName>
+    <label>vr: simple assembly</label>
+    <stages>
+      <li>
+        <label>simple assembly</label>
+        <description>Pieces slotted together without a fight; the bench felt almost grateful.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Crafting_T2</defName>
+    <label>vr: flawless routine</label>
+    <stages>
+      <li>
+        <label>flawless routine</label>
+        <description>Every tool laid itself out in the right order; my hands just followed.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Crafting_T3</defName>
+    <label>vr: invisible tolerances</label>
+    <stages>
+      <li>
+        <label>invisible tolerances</label>
+        <description>I could sense when a piece wasn’t right before I touched it.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Artistic -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Artistic_T1</defName>
+    <label>vr: easy sketches</label>
+    <stages>
+      <li>
+        <label>easy sketches</label>
+        <description>Lines appeared where I meant them to, for once.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Artistic_T2</defName>
+    <label>vr: flowing expression</label>
+    <stages>
+      <li>
+        <label>flowing expression</label>
+        <description>The sim gave me space to try shapes and colours I’d never risk.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Artistic_T3</defName>
+    <label>vr: image that lingers</label>
+    <stages>
+      <li>
+        <label>image that lingers</label>
+        <description>The piece I made keeps resurfacing when I close my eyes.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Medical -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Medical_T1</defName>
+    <label>vr: basic treatment drills</label>
+    <stages>
+      <li>
+        <label>basic treatment drills</label>
+        <description>Bandages wrapped true, wounds stayed clean, and no one cried out.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Medical_T2</defName>
+    <label>vr: steady surgery practice</label>
+    <stages>
+      <li>
+        <label>steady surgery practice</label>
+        <description>Each step walked through slowly and patiently; nothing rushed.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Medical_T3</defName>
+    <label>vr: almost losing no one</label>
+    <stages>
+      <li>
+        <label>almost losing no one</label>
+        <description>Every cut felt precise; when the patient stabilized, I exhaled.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Social -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Social_T1</defName>
+    <label>vr: light conversations</label>
+    <stages>
+      <li>
+        <label>light conversations</label>
+        <description>Talk flowed easily with gentle chatter and no awkward pauses.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Social_T2</defName>
+    <label>vr: shared story</label>
+    <stages>
+      <li>
+        <label>shared story</label>
+        <description>The sim replayed an evening talking with people who listened through.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Social_T3</defName>
+    <label>vr: being understood</label>
+    <stages>
+      <li>
+        <label>being understood</label>
+        <description>Every word landed where I meant it; I felt understood.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Intellectual -->
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Intellectual_T1</defName>
+    <label>vr: easy reading session</label>
+    <stages>
+      <li>
+        <label>easy reading session</label>
+        <description>Pages turned themselves, and the words stayed where I left them.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Intellectual_T2</defName>
+    <label>vr: clear insight</label>
+    <stages>
+      <li>
+        <label>clear insight</label>
+        <description>The sim laid out a problem like a diagram I could walk around.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
+    <defName>VA_VRMemory_Intellectual_T3</defName>
+    <label>vr: thought that stays</label>
+    <stages>
+      <li>
+        <label>thought that stays</label>
+        <description>I left with an idea that still feels sharper than most real ones.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

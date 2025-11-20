@@ -252,6 +252,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Thoughts_VR_Social.xml  
 **Owner:** Unassigned
 
+## TASK-MEM-007
+**Description:** Author full trait+skill memory lines for all tiers per guides  
+**Category:** Documentation / Narrative  
+**Dependencies:** MEM-001, MEM-002  
+**Status:** DONE  
+**Output:** TraitSkillMemories_All.md containing tiered trait/skill lines  
+**Owner:** AI
+
 ---
 
 # Breakout System
@@ -436,6 +444,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** .github/workflows/release.yml  
 **Owner:** Unassigned
 
+## TASK-DOC-001
+**Description:** Add base (non-trait) lines for all skill/tier memories alongside trait variants  
+**Category:** Documentation / Narrative  
+**Dependencies:** MEM-007  
+**Status:** DONE  
+**Output:** Base lines inserted into TraitSkillMemories_All.md  
+**Owner:** AI
+
 ---
 
 # Bug Fixes & Load Issues (backlog)
@@ -494,6 +510,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Dependencies:** CORE-001  
 **Status:** DONE  
 **Output:** Job drivers null-check job targets/comp each tick to avoid NREs  
+**Owner:** AI
+
+## TASK-MEM-008
+**Description:** Add XML ThoughtDefs for all skill/tier memories with full trait overlays  
+**Category:** XML / Narrative  
+**Dependencies:** MEM-007  
+**Status:** DONE  
+**Output:** Thoughts_VirtuAwake_SkillTraits.xml with 36 base memories + trait variants  
 **Owner:** AI
 
 ---
