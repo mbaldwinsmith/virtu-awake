@@ -7,11 +7,10 @@ namespace VirtuAwake
 {
     public class JobDriver_UseVRPod : JobDriver
     {
-        private const int ImmersionTicks = 2500;
+        private const int SessionDurationTicks = 2500;
 
         private Building Pod => this.job.targetA.Thing as Building;
-
-        private CompVRPod PodComp => this.Pod?.GetComp<CompVRPod>();
+        private CompVRPod PodComp => Pod?.GetComp<CompVRPod>();
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -20,42 +19,55 @@ namespace VirtuAwake
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
-            this.FailOn(() => this.Pod == null);
-            this.FailOn(() => this.PodComp == null);
+            this.FailOnDespawnedNullOrForbidden(TargetIndex.A);
+            this.AddEndCondition(() =>
+                Pod != null && Pod.Spawned ? JobCondition.Ongoing : JobCondition.Incompletable);
 
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
+            // 1. Go stand on the pod's cell
+            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
 
-            var enter = new Toil
-            {
-                initAction = () => this.PodComp?.SetUser(this.pawn),
-                defaultCompleteMode = ToilCompleteMode.Instant
-            };
-            enter.AddFinishAction(() => this.PodComp?.SetUser(null));
-            yield return enter;
-
-            var immerse = new Toil
+            // 2. Lie down on the pod and "immerse"
+            var lieDown = new Toil
             {
                 defaultCompleteMode = ToilCompleteMode.Delay,
-                defaultDuration = ImmersionTicks
+                defaultDuration = SessionDurationTicks,
+                handlingFacing = true
             };
-            immerse.WithProgressBarToilDelay(TargetIndex.A);
-            immerse.tickAction = () =>
+
+            lieDown.initAction = () =>
             {
-                if (this.pawn.needs?.joy != null)
+                // Stop moving, lie down on the pod
+                pawn.pather.StopDead();
+                pawn.jobs.posture = PawnPosture.LayingOnGroundFaceUp;
+                PodComp?.SetUser(pawn);
+            };
+
+            lieDown.tickAction = () =>
+            {
+                // Keep facing the pod's rotation (optional)
+                if (Pod != null)
                 {
-                    this.pawn.needs.joy.GainJoy(0.001f, JoyKindDefOf.Meditative);
+                    pawn.rotationTracker.FaceCell(Pod.Position);
+                }
+
+                // Simple recreation gain while lying in the pod
+                if (pawn.needs?.joy != null)
+                {
+                    pawn.needs.joy.GainJoy(0.0005f, JoyKindDefOf.Meditative);
                 }
             };
-            immerse.AddFinishAction(() => this.PodComp?.SetUser(null));
-            yield return immerse;
 
-            var exit = new Toil
+            lieDown.AddFinishAction(() =>
             {
-                initAction = () => this.PodComp?.SetUser(null),
-                defaultCompleteMode = ToilCompleteMode.Instant
-            };
-            yield return exit;
+                // Stand up and clear user
+                pawn.jobs.posture = PawnPosture.Standing;
+                PodComp?.SetUser(null);
+            });
+
+            lieDown.WithProgressBar(TargetIndex.A, () =>
+                1f - (lieDown.actor.jobs.curDriver.ticksLeftThisToil / (float)SessionDurationTicks));
+
+            yield return lieDown;
         }
     }
 }
