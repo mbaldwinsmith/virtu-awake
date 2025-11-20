@@ -10,6 +10,8 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,1)</drawSize>
     </graphicData>
+    <passability>Standable</passability>
+    <fillPercent>0</fillPercent>
     <size>(2,1)</size>
     <altitudeLayer>Building</altitudeLayer>
     <designationCategory>Misc</designationCategory>

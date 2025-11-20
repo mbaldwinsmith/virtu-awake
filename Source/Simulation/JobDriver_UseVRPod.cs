@@ -24,8 +24,8 @@ namespace VirtuAwake
             this.AddEndCondition(() =>
                 Pod != null && Pod.Spawned ? JobCondition.Ongoing : JobCondition.Incompletable);
 
-            // 1. Go stand on the pod's cell
-            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.InteractionCell);
+            // 1. Go stand on the pod's cell (root cell)
+            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.OnCell);
 
             // 2. Lie down on the pod and "immerse"
             var lieDown = new Toil
