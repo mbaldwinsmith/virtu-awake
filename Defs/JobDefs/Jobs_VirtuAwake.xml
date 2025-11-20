@@ -16,4 +16,13 @@
     <playerInterruptible>true</playerInterruptible>
     <joyKind>Meditative</joyKind>
   </JobDef>
+  <JobDef>
+    <defName>VA_UseVRPodSocial</defName>
+    <driverClass>VirtuAwake.JobDriver_UseVRPodSocial</driverClass>
+    <reportString>sharing a VR simulation together.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <joyKind>Social</joyKind>
+    <joyMaxParticipants>2</joyMaxParticipants>
+  </JobDef>
 </Defs>
