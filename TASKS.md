@@ -28,9 +28,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add build/packaging script to copy Release DLL + About/ + Defs/ + Textures/ into a Mods/Virtu-Awake output folder  
 **Category:** DevOps  
 **Dependencies:** OPS-002  
-**Status:** TODO  
+**Status:** DONE  
 **Output:** build script (PowerShell or bash) with paths in README  
-**Owner:** Unassigned
+**Owner:** AI
 
 ---
 
@@ -185,11 +185,11 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** Unassigned
 
 ## TASK-SIM-003
-**Description:** Create social VR session job (two pawns enter shared sim)  
+**Description:** Create social VR session job (two pawns enter linked pods)  
 **Category:** C#  
 **Dependencies:** CORE-001, SIM-001  
 **Status:** TODO  
-**Output:** JobDriver_EnterSocialVR, paired toil logic, social memories hook  
+**Output:** JobDriver_EnterSocialVR for linked pods, paired toil logic, social memories hook  
 **Owner:** Unassigned
 
 ## TASK-SIM-004
@@ -361,6 +361,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** Unassigned
 
 ## TASK-COMP-002
+**Description:** Add RJW/other mod metadata fixes (download/steam URLs) to avoid load warnings when bundled  
+**Category:** Packaging  
+**Dependencies:** OPS-002  
+**Status:** TODO  
+**Output:** About.xml dependency metadata corrected or documented  
+**Owner:** Unassigned
+
+## TASK-COMP-003
 **Description:** Add VFE nutrient pipe integration patch for Virtu-Dream Pod  
 **Category:** C# / Patch  
 **Dependencies:** CORE-005  
