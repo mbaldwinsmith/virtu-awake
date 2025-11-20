@@ -37,16 +37,14 @@ namespace VirtuAwake
             this.currentUser = pawn;
         }
 
-        public override IEnumerable<string> CompInspectStringExtra()
+        public override string CompInspectStringExtra()
         {
             if (this.currentUser != null)
             {
-                yield return $"Current user: {this.currentUser.LabelShortCap}";
+                return $"Current user: {this.currentUser.LabelShortCap}";
             }
-            else
-            {
-                yield return "Idle.";
-            }
+
+            return "Idle.";
         }
     }
 }
