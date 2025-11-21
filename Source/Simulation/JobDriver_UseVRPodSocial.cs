@@ -60,17 +60,7 @@ namespace VirtuAwake
                     pawn.rotationTracker.FaceCell(Partner.Position);
                 }
 
-                var joy = pawn.needs?.joy;
-                if (joy != null)
-                {
-                    float bonus = (Partner != null && Partner.Spawned && Partner.Position.InHorDistOf(pawn.Position, 2f)) ? 0.0008f : 0.0004f;
-                    joy.GainJoy(bonus, JoyKindDefOf.Social);
-                }
-
-                if (PodComp != null)
-                {
-                    VRSimUtility.ApplySimTraining(pawn, PodComp.ResolveSimTypeFor(pawn), 1);
-                }
+                // Joy handled by CompVRPod after benefit threshold.
             };
 
             immerse.AddFinishAction(() =>

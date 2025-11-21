@@ -48,27 +48,12 @@ namespace VirtuAwake
                     pawn.rotationTracker.FaceCell(Pod.Position);
                 }
 
-                var joy = pawn.needs?.joy;
-                if (joy != null && canBenefit)
-                {
-                    joy.GainJoy(0.00025f, JoyKindDefOf.Meditative);
-                }
-
-                var rest = pawn.needs?.rest;
-                if (rest != null && canBenefit)
-                {
-                    rest.CurLevel = Mathf.Min(rest.CurLevel + 0.0005f, rest.MaxLevel);
-                }
+                // Joy/rest handled by CompVRPod after benefit threshold.
             };
 
             immerse.AddFinishAction(() =>
             {
                 pawn.jobs.posture = PawnPosture.Standing;
-                if (PodComp != null)
-                {
-                    SimTypeDef simType = PodComp.ResolveSimTypeFor(pawn);
-                    VRSimUtility.TryGiveSimMemory(pawn, simType);
-                }
                 PodComp?.SetUser(null);
             });
 

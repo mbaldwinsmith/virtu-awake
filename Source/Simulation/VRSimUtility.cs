@@ -22,7 +22,7 @@ namespace VirtuAwake
                 return;
             }
 
-            float baseXp = simType.xpPerTick * ticks * 0.9f; // slower overall XP
+            float baseXp = simType.xpPerTick * ticks * 0.5f; // much slower XP to match slower recreation
             // Small random variance independent of skill level to keep sessions from feeling identical.
             baseXp *= Rand.Range(0.9f, 1.1f);
             if (baseXp <= 0f)

@@ -10,6 +10,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,1)</drawSize>
     </graphicData>
+    <tickerType>Normal</tickerType>
     <passability>Standable</passability>
     <fillPercent>0</fillPercent>
     <size>(2,1)</size>
@@ -43,6 +44,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2,1)</drawSize>
     </graphicData>
+    <tickerType>Normal</tickerType>
     <passability>Standable</passability>
     <fillPercent>0</fillPercent>
     <size>(2,1)</size>

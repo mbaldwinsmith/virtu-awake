@@ -4,6 +4,8 @@
   <author>Author TBD</author>
   <packageId>MarkBaldwinSmith.VirtuAwake</packageId>
   <supportedVersions>
+    <li>1.4</li>
+    <li>1.5</li>
     <li>1.6</li>
   </supportedVersions>
   <description>

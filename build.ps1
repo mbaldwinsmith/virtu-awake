@@ -10,9 +10,19 @@ if (-not $OutputPath) {
     $OutputPath = Join-Path "C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods" "Virtu-Awake"
 }
 
+if ([string]::IsNullOrWhiteSpace($OutputPath)) {
+    throw "OutputPath cannot be empty."
+}
+
 $project = Join-Path (Join-Path $root "Source") "VirtuAwake.csproj"
 Write-Host "Building $project ($Configuration)..."
 dotnet build $project -c $Configuration
+
+$cleanAnnouncement = "Removing existing output at $OutputPath"
+if (Test-Path $OutputPath) {
+    Write-Host $cleanAnnouncement
+    Remove-Item -Path $OutputPath -Recurse -Force
+}
 
 $buildDir = Join-Path (Join-Path (Join-Path (Join-Path $root "Source") "bin") $Configuration) "net472"
 $dll = Join-Path $buildDir "VirtuAwake.dll"

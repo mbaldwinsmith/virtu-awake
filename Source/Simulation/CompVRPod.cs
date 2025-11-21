@@ -10,9 +10,16 @@ namespace VirtuAwake
 {
     public class CompVRPod : ThingComp
     {
+        static CompVRPod()
+        {
+            Log.Message("[VA] CompVRPod static ctor loaded.");
+        }
+
         private readonly HashSet<Pawn> currentUsers = new HashSet<Pawn>();
         private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
         private readonly Dictionary<Pawn, int> memoryTimers = new Dictionary<Pawn, int>();
+        private readonly Dictionary<Pawn, int> benefitTimers = new Dictionary<Pawn, int>();
+        private const bool DebugVR = true;
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
 
@@ -20,12 +27,30 @@ namespace VirtuAwake
 
         public IReadOnlyCollection<Pawn> CurrentUsers => this.currentUsers;
 
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            if (Prefs.DevMode)
+            {
+                Log.Message($"[VA] VRPod comp spawned on {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
+            }
+        }
+
         public override void CompTick()
         {
             base.CompTick();
 
+            if ((Prefs.DevMode || DebugVR) && this.parent.IsHashIntervalTick(1000))
+            {
+                Log.Message($"[VA] CompTick heartbeat on {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame} (users: {this.currentUsers.Count}).");
+            }
+
             if (this.parent.IsHashIntervalTick(this.Props.tickInterval))
             {
+                if (Prefs.DevMode && this.parent.IsHashIntervalTick(this.Props.tickInterval * 4))
+                {
+                    Log.Message($"[VA] CompTick on {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame} (users: {this.currentUsers.Count}).");
+                }
                 this.TickVR();
             }
         }
@@ -47,22 +72,40 @@ namespace VirtuAwake
                     continue;
                 }
 
-                // Require a minimum time in the pod before benefits apply.
-                int timer = 0;
-                this.memoryTimers.TryGetValue(pawn, out timer);
-                timer += this.Props.tickInterval;
+                int memTimer = 0;
+                this.memoryTimers.TryGetValue(pawn, out memTimer);
+                memTimer += this.Props.tickInterval;
 
-                bool canBenefit = timer >= this.Props.minimumBenefitTicks;
+                int benefitTimer = 0;
+                this.benefitTimers.TryGetValue(pawn, out benefitTimer);
+                benefitTimer += this.Props.tickInterval;
+
+                bool prevBenefit = (benefitTimer - this.Props.tickInterval) >= this.Props.minimumBenefitTicks;
+                bool canBenefit = benefitTimer >= this.Props.minimumBenefitTicks;
+                bool justUnlocked = !prevBenefit && canBenefit;
+
+                if ((Prefs.DevMode || DebugVR) && justUnlocked)
+                {
+                    Log.Message($"[VA] {pawn.LabelShortCap}: benefits unlocked after {benefitTimer} ticks in pod {this.parent.Label ?? this.parent.def.defName}.");
+                }
+
+                if ((Prefs.DevMode || DebugVR) && this.parent.IsHashIntervalTick(500))
+                {
+                    Need joy = pawn.needs?.joy;
+                    Log.Message($"[VA] {pawn.LabelShortCap}: timers mem={memTimer} benefit={benefitTimer} canBenefit={canBenefit} joy={joy?.CurLevel:F3} lucidity={(pawn.needs?.TryGetNeed<Need_Lucidity>()?.CurLevel ?? 0f):F3} in pod {this.parent.Label ?? this.parent.def.defName}.");
+                }
 
                 SimTypeDef simType = this.ResolveSimTypeFor(pawn);
                 if (canBenefit)
                 {
                     VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
                     ApplyLucidityAndInstability(pawn);
-                    TickMemories(pawn, simType, ref timer);
+                    ApplyJoy(pawn, simType);
+                    TickMemories(pawn, simType, ref memTimer);
                 }
 
-                this.memoryTimers[pawn] = timer;
+                this.memoryTimers[pawn] = memTimer;
+                this.benefitTimers[pawn] = benefitTimer;
             }
         }
 
@@ -71,11 +114,17 @@ namespace VirtuAwake
             this.currentUsers.Clear();
             this.sessionSimTypes.Clear();
             this.memoryTimers.Clear();
+            this.benefitTimers.Clear();
             if (pawn != null)
             {
                 this.currentUsers.Add(pawn);
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
+                this.benefitTimers[pawn] = 0;
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA] SetUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
+                }
             }
         }
 
@@ -86,6 +135,11 @@ namespace VirtuAwake
                 this.currentUsers.Add(pawn);
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
+                this.benefitTimers[pawn] = 0;
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA] AddUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
+                }
             }
         }
 
@@ -96,6 +150,11 @@ namespace VirtuAwake
                 this.currentUsers.Remove(pawn);
                 this.sessionSimTypes.Remove(pawn);
                 this.memoryTimers.Remove(pawn);
+                this.benefitTimers.Remove(pawn);
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA] RemoveUser: {pawn.LabelShortCap} removed from {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
+                }
             }
         }
 
@@ -309,7 +368,7 @@ namespace VirtuAwake
         public bool CanProvideBenefits(Pawn pawn)
         {
             int timer = 0;
-            this.memoryTimers.TryGetValue(pawn, out timer);
+            this.benefitTimers.TryGetValue(pawn, out timer);
             return timer >= this.Props.minimumBenefitTicks;
         }
 
@@ -333,6 +392,39 @@ namespace VirtuAwake
             return set.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(defName));
         }
 
+        private void ApplyJoy(Pawn pawn, SimTypeDef simType)
+        {
+            var joy = pawn.needs?.joy;
+            if (joy == null)
+            {
+                return;
+            }
+
+            bool longTerm = pawn.CurJob?.def?.defName == "VA_UseVirtuDreamPod";
+            float gain = this.Props.joyGainPerTick * (longTerm ? this.Props.joyLongTermMultiplier : 1f);
+
+            float beforeJoy = joy.CurLevel;
+            joy.GainJoy(gain, simType?.primarySkill == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative);
+
+            if (Prefs.DevMode && this.parent.IsHashIntervalTick(600))
+            {
+                Log.Message($"[VA] {pawn.LabelShortCap}: joy {beforeJoy:F3}->{joy.CurLevel:F3} (gain {gain:F4}) in pod {this.parent.Label ?? this.parent.def.defName}.");
+            }
+
+            if (longTerm)
+            {
+                var rest = pawn.needs?.rest;
+                if (rest != null)
+                {
+                    rest.CurLevel = Mathf.Min(rest.MaxLevel, rest.CurLevel + this.Props.restGainPerTickLongTerm);
+                    if (Prefs.DevMode && this.parent.IsHashIntervalTick(1200))
+                    {
+                        Log.Message($"[VA] {pawn.LabelShortCap}: rest now {rest.CurLevel:F3} in long-term sim.");
+                    }
+                }
+            }
+        }
+
         private void TickMemories(Pawn pawn, SimTypeDef simType, ref int timer)
         {
             if (pawn?.needs?.mood?.thoughts?.memories == null)
@@ -340,10 +432,12 @@ namespace VirtuAwake
                 return;
             }
 
-            timer += this.Props.tickInterval;
-
             if (timer >= this.Props.memoryIntervalTicks)
             {
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA] {pawn.LabelShortCap}: memory tick (timer {timer}), simType {(simType != null ? simType.defName : "null")}.");
+                }
                 VRSimUtility.TryGiveSimMemory(pawn, simType);
                 timer = 0;
             }

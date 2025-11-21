@@ -60,23 +60,13 @@ namespace VirtuAwake
 
                 bool canBenefit = PodComp != null && PodComp.CanProvideBenefits(pawn);
 
-                // Simple recreation gain while lying in the pod (slower, gated)
-                var joy = pawn.needs?.joy;
-                if (joy != null && canBenefit)
-                {
-                    joy.GainJoy(0.00025f, JoyKindDefOf.Meditative);
-                }
+                // Joy handled by CompVRPod after benefit threshold.
             };
 
             lieDown.AddFinishAction(() =>
             {
                 // Stand up and clear user
                 pawn.jobs.posture = PawnPosture.Standing;
-                if (PodComp != null)
-                {
-                    SimTypeDef simType = PodComp.ResolveSimTypeFor(pawn);
-                    VRSimUtility.TryGiveSimMemory(pawn, simType);
-                }
                 PodComp?.SetUser(null);
             });
 

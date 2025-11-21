@@ -632,4 +632,5 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 - Remove memory trigger on exit VR pod; rely on in-pod timers instead.
 - Fix memory triggering: currently interrupted by job finishing on short sessions and never fires on deep sessions.
 - Recreation gain is effectively zero even after minutes; rebalance/gate so it rises slowly but reliably post-threshold.
+- Pods now use `tickerType: Normal` so CompVRPod ticks fire; retest in-pod timers/joy/memories with Dev logs.
 
