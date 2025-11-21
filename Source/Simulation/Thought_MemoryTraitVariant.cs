@@ -11,10 +11,11 @@ namespace VirtuAwake
         {
             get
             {
+                var baseDescription = base.Description;
                 var ext = this.def.GetModExtension<TraitMemoryExtension>();
                 if (ext == null || ext.variants == null || ext.variants.Count == 0 || this.pawn == null)
                 {
-                    return base.Description;
+                    return baseDescription;
                 }
 
                 // Prefer combo matches, then single trait.
@@ -22,7 +23,7 @@ namespace VirtuAwake
                 {
                     if (HasTrait(variant.trait) && HasTrait(variant.trait2))
                     {
-                        return variant.text;
+                        return AppendVariantText(baseDescription, variant.text);
                     }
                 }
 
@@ -30,11 +31,11 @@ namespace VirtuAwake
                 {
                     if (HasTrait(variant.trait))
                     {
-                        return variant.text;
+                        return AppendVariantText(baseDescription, variant.text);
                     }
                 }
 
-                return base.Description;
+                return baseDescription;
             }
         }
 
@@ -173,6 +174,21 @@ namespace VirtuAwake
 
             // Clamp to keep offsets reasonable (+/- 3 tiers worth of base mood spread).
             return Mathf.Clamp(delta, -3f, 3f);
+        }
+
+        private static string AppendVariantText(string baseDescription, string variantText)
+        {
+            if (string.IsNullOrEmpty(variantText))
+            {
+                return baseDescription;
+            }
+
+            if (string.IsNullOrEmpty(baseDescription))
+            {
+                return variantText;
+            }
+
+            return $"{baseDescription} {variantText}".Trim();
         }
     }
 }

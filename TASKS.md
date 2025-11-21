@@ -552,6 +552,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Updated VRSimUtility tier logic, SimType defs for melee training, trait-aware tier mood adjustment, slight RNG in XP/tier selection; trait mood offsets expanded (psy sensitivity, ascetic preference, skill-flavoured deltas)  
 **Owner:** AI
 
+## TASK-BUG-013
+**Description:** Make trait memory descriptions append to the base skill memory text instead of replacing it  
+**Category:** Bugfix / Narrative  
+**Dependencies:** MEM-008  
+**Status:** DONE (trait overlays now append after base skill descriptions)  
+**Output:** Trait overlays appended after default skill memory descriptions  
+**Owner:** AI
+
 ---
 
 # Agent Rules
