@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -18,24 +19,19 @@ namespace VirtuAwake
                     return baseDescription;
                 }
 
-                // Prefer combo matches, then single trait.
-                foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && !string.IsNullOrEmpty(v.trait2)))
+                var overlays = CollectOverlays(ext);
+                if (overlays.Count == 0)
                 {
-                    if (HasTrait(variant.trait) && HasTrait(variant.trait2))
-                    {
-                        return AppendVariantText(baseDescription, variant.text);
-                    }
+                    return baseDescription;
                 }
 
-                foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && string.IsNullOrEmpty(v.trait2)))
+                string description = baseDescription;
+                foreach (var overlay in overlays)
                 {
-                    if (HasTrait(variant.trait))
-                    {
-                        return AppendVariantText(baseDescription, variant.text);
-                    }
+                    description = AppendVariantText(description, overlay);
                 }
 
-                return baseDescription;
+                return description;
             }
         }
 
@@ -189,6 +185,55 @@ namespace VirtuAwake
             }
 
             return $"{baseDescription} {variantText}".Trim();
+        }
+
+        private List<string> CollectOverlays(TraitMemoryExtension ext)
+        {
+            const int MaxOverlays = 3;
+            var overlays = new List<string>(MaxOverlays);
+            var usedTraits = new HashSet<string>();
+
+            // Prefer combo matches first to capture bespoke pairs without losing singles later.
+            foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && !string.IsNullOrEmpty(v.trait2)))
+            {
+                if (overlays.Count >= MaxOverlays)
+                {
+                    break;
+                }
+
+                if (!HasTrait(variant.trait) || !HasTrait(variant.trait2) || string.IsNullOrWhiteSpace(variant.text))
+                {
+                    continue;
+                }
+
+                if (usedTraits.Contains(variant.trait) || usedTraits.Contains(variant.trait2))
+                {
+                    continue;
+                }
+
+                overlays.Add(variant.text);
+                usedTraits.Add(variant.trait);
+                usedTraits.Add(variant.trait2);
+            }
+
+            // Then add single-trait overlays until the cap is reached.
+            foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && string.IsNullOrEmpty(v.trait2)))
+            {
+                if (overlays.Count >= MaxOverlays)
+                {
+                    break;
+                }
+
+                if (!HasTrait(variant.trait) || string.IsNullOrWhiteSpace(variant.text) || usedTraits.Contains(variant.trait))
+                {
+                    continue;
+                }
+
+                overlays.Add(variant.text);
+                usedTraits.Add(variant.trait);
+            }
+
+            return overlays;
         }
     }
 }

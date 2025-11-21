@@ -568,6 +568,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Skill-tier memory labels include VR sim wording without altering descriptions  
 **Owner:** AI
 
+## TASK-BUG-015
+**Description:** Cap appended trait overlay descriptions to a maximum of three per memory so multi-trait pawns stay readable  
+**Category:** Bugfix / Narrative  
+**Dependencies:** MEM-008  
+**Status:** DONE (multi-trait overlays now capped at three)  
+**Output:** Trait overlay appending logic limits to three matching overlays while keeping combos compatible  
+**Owner:** AI
+
 ---
 
 # Agent Rules
