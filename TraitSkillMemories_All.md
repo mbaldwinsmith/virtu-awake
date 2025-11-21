@@ -1,75 +1,75 @@
-# TraitSkillMemories_All
+﻿# TraitSkillMemories_All
 Complete skill/tier base lines plus trait overlays for all listed traits. Combine a skill/tier base line with the matching trait overlay (same tier) and adjust mood per MEMORY_GUIDE. Tone follows STYLE_GUIDE and LORE_GUIDE: soft, sensory, psychological, non-technical.
 
 ---
 
 ## How to use
 - Pick the skill + tier base line.
-- Replace or append the trait overlay for the pawn’s trait at the same tier.
+- Replace or append the trait overlay for the pawnâ€™s trait at the same tier.
 - Mood buffs: Tier 1 = +3, Tier 2 = +6, Tier 3 = +10 (adjust further per trait modifiers in MEMORY_GUIDE).
 
 ---
 
 ## Skill Base Lines (by tier)
-### Shooting (Silent Range)
-- T1 (Mood +3): Targets drifted through a quiet field; every shot felt unhurried and distant.
-- T2 (Mood +6): Breath and timing narrowed the world; shots landed where they belonged.
-- T3 (Mood +10): Only the stillness before each trigger remained; the sim felt precise.
+### Shooting (VR sim)
+- T1 (Mood +3, Label: shooting sim (steady shots)): Targets drifted through a quiet field; every shot felt unhurried and distant.
+- T2 (Mood +6, Label: shooting sim (focused flow)): Breath and timing narrowed the world; shots landed where they belonged.
+- T3 (Mood +10, Label: shooting sim (impossible focus)): Only the stillness before each trigger remained; the sim felt precise.
 
-### Melee (Silent Arena)
-- T1 (Mood +3): Soft blows traded in a quiet arena; my body remembered the motions.
-- T2 (Mood +6): Steps and strikes flowed together; the arena seemed to know my pace.
-- T3 (Mood +10): A strike I’d never seen arrived; my body answered before thought.
+### Melee (VR sim)
+- T1 (Mood +3, Label: melee sim (light sparring)): Soft blows traded in a quiet arena; my body remembered the motions.
+- T2 (Mood +6, Label: melee sim (fluent drills)): Steps and strikes flowed together; the arena seemed to know my pace.
+- T3 (Mood +10, Label: melee sim (perfect counter)): A strike I'd never seen arrived; my body answered before thought.
 
-### Construction (Ghost Frames)
-- T1 (Mood +3): Walls rose and dissolved; laying down structure felt strangely easy.
-- T2 (Mood +6): The sim unfolded a building piece by piece, showing where parts belonged.
-- T3 (Mood +10): The design shifted as I worked, settling like a memory.
+### Construction (VR sim)
+- T1 (Mood +3, Label: construction sim (simple framing)): Walls rose and dissolved; laying down structure felt strangely easy.
+- T2 (Mood +6, Label: construction sim (clean blueprint)): The sim unfolded a building piece by piece, showing where parts belonged.
+- T3 (Mood +10, Label: construction sim (moving architecture)): The design shifted as I worked, settling like a memory.
 
-### Mining (Echoing Strata)
-- T1 (Mood +3): Each strike echoed softly, as if the stone was patient.
-- T2 (Mood +6): The sim highlighted seams, guiding me to the best cuts.
-- T3 (Mood +10): The rock seemed to breathe between blows, opening where it mattered.
+### Mining (VR sim)
+- T1 (Mood +3, Label: mining sim (gentle tunneling)): Each strike echoed softly, as if the stone was patient.
+- T2 (Mood +6, Label: mining sim (reading the veins)): The sim highlighted seams, guiding me to the best cuts.
+- T3 (Mood +10, Label: mining sim (living stone)): The rock seemed to breathe between blows, opening where it mattered.
 
-### Cooking (Sim Kitchen)
-- T1 (Mood +3): Ingredients never spoiled and heat stayed gentle; cooking felt scripted and kind.
-- T2 (Mood +6): Chopping, seasoning, and stirring lined up in one smooth motion.
-- T3 (Mood +10): The sim plated a meal I could almost taste; for a second it felt flawless.
+### Cooking (VR sim)
+- T1 (Mood +3, Label: cooking sim (easy recipes)): Ingredients never spoiled and heat stayed gentle; cooking felt scripted and kind.
+- T2 (Mood +6, Label: cooking sim (flowing prepwork)): Chopping, seasoning, and stirring lined up in one smooth motion.
+- T3 (Mood +10, Label: cooking sim (perfect dish)): The sim plated a meal I could almost taste; for a second it felt flawless.
 
-### Plants (Threaded Garden)
-- T1 (Mood +3): Soil parted easily and rows lined themselves in calm, straight lines.
-- T2 (Mood +6): The sim showed every plant’s health in quiet colours at a glance.
-- T3 (Mood +10): Crops swayed in perfect unison, like the field exhaled.
+### Plants (VR sim)
+- T1 (Mood +3, Label: plant sim (gentle sowing)): Soil parted easily and rows lined themselves in calm, straight lines.
+- T2 (Mood +6, Label: plant sim (reading growth)): The sim showed every plant's health in quiet colours at a glance.
+- T3 (Mood +10, Label: plant sim (breathing field)): Crops swayed in perfect unison, like the field exhaled.
 
-### Animals (Soft Encounters)
-- T1 (Mood +3): Creatures approached without fear, following simple gestures.
-- T2 (Mood +6): I watched a wary animal relax, one slow step at a time.
-- T3 (Mood +10): For a few breaths, it felt like the animal and I shared the same thought.
+### Animals (VR sim)
+- T1 (Mood +3, Label: animal-handling sim (calm handling)): Creatures approached without fear, following simple gestures.
+- T2 (Mood +6, Label: animal-handling sim (shared trust)): I watched a wary animal relax, one slow step at a time.
+- T3 (Mood +10, Label: animal-handling sim (unspoken understanding)): For a few breaths, it felt like the animal and I shared the same thought.
 
-### Crafting (Sleeping Workshop)
-- T1 (Mood +3): Pieces slotted together without a fight; the bench felt almost grateful.
-- T2 (Mood +6): Every tool laid itself out in the right order; my hands just followed.
-- T3 (Mood +10): I could sense when a piece wasn’t right before I touched it.
+### Crafting (VR sim)
+- T1 (Mood +3, Label: crafting sim (simple assembly)): Pieces slotted together without a fight; the bench felt almost grateful.
+- T2 (Mood +6, Label: crafting sim (flawless routine)): Every tool laid itself out in the right order; my hands just followed.
+- T3 (Mood +10, Label: crafting sim (invisible tolerances)): I could sense when a piece wasn't right before I touched it.
 
-### Artistic (Quiet Studio)
-- T1 (Mood +3): Lines appeared where I meant them to, for once.
-- T2 (Mood +6): The sim gave me space to try shapes and colours I’d never risk.
-- T3 (Mood +10): The piece I made keeps resurfacing when I close my eyes.
+### Artistic (VR sim)
+- T1 (Mood +3, Label: art sim (easy sketches)): Lines appeared where I meant them to, for once.
+- T2 (Mood +6, Label: art sim (flowing expression)): The sim gave me space to try shapes and colours I'd never risk.
+- T3 (Mood +10, Label: art sim (image that lingers)): The piece I made keeps resurfacing when I close my eyes.
 
-### Medical (Calm Clinic)
-- T1 (Mood +3): Bandages wrapped true, wounds stayed clean, and no one cried out.
-- T2 (Mood +6): Each step walked through slowly and patiently; nothing rushed.
-- T3 (Mood +10): Every cut felt precise; when the patient stabilized, I exhaled.
+### Medical (VR sim)
+- T1 (Mood +3, Label: medical sim (basic treatment drills)): Bandages wrapped true, wounds stayed clean, and no one cried out.
+- T2 (Mood +6, Label: medical sim (steady surgery practice)): Each step walked through slowly and patiently; nothing rushed.
+- T3 (Mood +10, Label: medical sim (almost losing no one)): Every cut felt precise; when the patient stabilized, I exhaled.
 
-### Social (Echo Lounge)
-- T1 (Mood +3): Talk flowed easily with gentle chatter and no awkward pauses.
-- T2 (Mood +6): The sim replayed an evening talking with people who listened through.
-- T3 (Mood +10): Every word landed where I meant it; I felt understood.
+### Social (VR sim)
+- T1 (Mood +3, Label: social sim (light conversations)): Talk flowed easily with gentle chatter and no awkward pauses.
+- T2 (Mood +6, Label: social sim (shared story)): The sim replayed an evening talking with people who listened through.
+- T3 (Mood +10, Label: social sim (being understood)): Every word landed where I meant it; I felt understood.
 
-### Intellectual (Quiet Library)
-- T1 (Mood +3): Pages turned themselves, and the words stayed where I left them.
-- T2 (Mood +6): The sim laid out a problem like a diagram I could walk around.
-- T3 (Mood +10): I left with an idea that still feels sharper than most real ones.
+### Intellectual (VR sim)
+- T1 (Mood +3, Label: research sim (easy reading session)): Pages turned themselves, and the words stayed where I left them.
+- T2 (Mood +6, Label: research sim (clear insight)): The sim laid out a problem like a diagram I could walk around.
+- T3 (Mood +10, Label: research sim (thought that stays)): I left with an idea that still feels sharper than most real ones.
 
 ---
 
@@ -80,18 +80,18 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Perfect or not, I called it as I felt it.
 
 - Annoying Voice  
-  - T1: My rough voice scratched the quiet; the sim didn’t flinch.  
+  - T1: My rough voice scratched the quiet; the sim didnâ€™t flinch.  
   - T2: The room soaked up my barked phrases without complaint.  
   - T3: Even at peak, I heard my own tone snag the silence.
 
 - Ascetic  
-  - T1: Simple practice, no ornament—just enough.  
+  - T1: Simple practice, no ornamentâ€”just enough.  
   - T2: Plain focus suited me; nothing fancy to distract.  
   - T3: Pure effort, stripped clean, felt right.
 
 - Asexual  
   - T1: Calm company stayed on my terms.  
-  - T2: Connection was honest without any pull I didn’t invite.  
+  - T2: Connection was honest without any pull I didnâ€™t invite.  
   - T3: Being understood without demand was enough.
 
 - Beautiful / Pretty  
@@ -100,7 +100,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: In the quiet, appearance mattered less, but I felt it.
 
 - Bisexual / Gay  
-  - T1: The sim’s warmth stayed in bounds I chose.  
+  - T1: The simâ€™s warmth stayed in bounds I chose.  
   - T2: Shared moments felt open without pressure.  
   - T3: Being heard without demand felt enough.
 
@@ -125,7 +125,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Peak focus felt like a fight I could savor.
 
 - Cannibal  
-  - T1: The sim’s flavors stayed neutral; appetite still remembered.  
+  - T1: The simâ€™s flavors stayed neutral; appetite still remembered.  
   - T2: Perfect meals felt hollow; a shadow hunger lingered.  
   - T3: Even at peak, taste carried a secret echo.
 
@@ -197,16 +197,16 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 - Kind  
   - T1: Easy practice felt like a small kindness to myself.  
   - T2: Shared effort felt better when no one was hurt.  
-  - T3: Being understood or helping—even here—mattered most.
+  - T3: Being understood or helpingâ€”even hereâ€”mattered most.
 
 - Lazy / Slothful  
   - T1: Moving slowly felt acceptable; no rush.  
-  - T2: Deeper effort dragged, but the sim didn’t push.  
+  - T2: Deeper effort dragged, but the sim didnâ€™t push.  
   - T3: Even in focus, I let the world do more of the work.
 
 - Masochist  
   - T1: Mild strain carried a strange spark of pleasure.  
-  - T2: The sim’s pressure felt good in a quiet, private way.  
+  - T2: The simâ€™s pressure felt good in a quiet, private way.  
   - T3: Pushing through the edge left a glow I liked.
 
 - Misandrist  
@@ -225,7 +225,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Peak moments felt fragile; I braced anyway.
 
 - Night Owl  
-  - T1: The sim felt like night—quiet and fitting.  
+  - T1: The sim felt like nightâ€”quiet and fitting.  
   - T2: Working in that hush felt natural.  
   - T3: In deep focus, it could have been midnight forever.
 
@@ -235,7 +235,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Every motion danced through the tightest spaces.
 
 - Nudist  
-  - T1: The sim’s air felt easy on skin, unhidden.  
+  - T1: The simâ€™s air felt easy on skin, unhidden.  
   - T2: Work flowed better without any sense of cover.  
   - T3: Complete focus felt freer with nothing between me and the room.
 
@@ -250,12 +250,12 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Even at my best, I looked for what might fade.
 
 - Psychically Deaf / Dull  
-  - T1: The sim’s undertone was muted / faint.  
+  - T1: The simâ€™s undertone was muted / faint.  
   - T2: Emotional hum stayed distant / soft.  
   - T3: At peak, the unseen layer was quiet / low.
 
 - Psychically Sensitive / Hypersensitive  
-  - T1: The sim’s undertone was present / loud.  
+  - T1: The simâ€™s undertone was present / loud.  
   - T2: Emotional hum was noticeable / insistent.  
   - T3: At peak, the unseen layer was clear / overwhelming.
 
@@ -266,7 +266,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 
 - Pyromaniac  
   - T1: I missed the warmth of flame, even here.  
-  - T2: The sim’s calm begged for a spark.  
+  - T2: The simâ€™s calm begged for a spark.  
   - T3: Perfect control felt like it needed fire.
 
 - Quick Sleeper  
@@ -290,7 +290,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Mastery came with effort; I felt every inch.
 
 - Slowpoke  
-  - T1: I moved at my own pace; the sim didn’t rush me.  
+  - T1: I moved at my own pace; the sim didnâ€™t rush me.  
   - T2: Tasks stretched out, and that felt normal.  
   - T3: Even in focus, I took the long way through.
 
@@ -317,7 +317,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 - Tough  
   - T1: Light strain barely registered.  
   - T2: Deeper push felt manageable, almost easy.  
-  - T3: Intense effort met a body that wouldn’t yield.
+  - T3: Intense effort met a body that wouldnâ€™t yield.
 
 - Trigger Happy  
   - T1: Quick shots scratched the itch to fire.  
@@ -338,3 +338,4 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T1: Gentle tasks suited me; nothing hurt.  
   - T2: I stayed cautious even when it was safe.  
   - T3: Even at my best, I moved carefully, relieved nothing struck back.
+

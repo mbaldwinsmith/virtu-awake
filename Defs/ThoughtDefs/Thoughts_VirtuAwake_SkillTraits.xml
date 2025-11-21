@@ -80,10 +80,10 @@
   <!-- Shooting -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Shooting_T1</defName>
-    <label>vr: steady shot practice</label>
+    <label>vr: shooting sim (steady shots)</label>
     <stages>
       <li>
-        <label>steady shot practice</label>
+        <label>shooting sim (steady shots)</label>
         <description>Targets drifted through a quiet field; every shot felt unhurried and distant.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -91,10 +91,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Shooting_T2</defName>
-    <label>vr: flowing marksmanship</label>
+    <label>vr: shooting sim (focused flow)</label>
     <stages>
       <li>
-        <label>flowing marksmanship</label>
+        <label>shooting sim (focused flow)</label>
         <description>Breath and timing narrowed the world; shots landed where they belonged.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -102,10 +102,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Shooting_T3</defName>
-    <label>vr: impossible focus</label>
+    <label>vr: shooting sim (impossible focus)</label>
     <stages>
       <li>
-        <label>impossible focus</label>
+        <label>shooting sim (impossible focus)</label>
         <description>Only the stillness before each trigger remained; the sim felt precise.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -115,10 +115,10 @@
   <!-- Melee -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Melee_T1</defName>
-    <label>vr: light sparring</label>
+    <label>vr: melee sim (light sparring)</label>
     <stages>
       <li>
-        <label>light sparring</label>
+        <label>melee sim (light sparring)</label>
         <description>Soft blows traded in a quiet arena; my body remembered the motions.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -126,10 +126,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Melee_T2</defName>
-    <label>vr: fluent combat drills</label>
+    <label>vr: melee sim (fluent drills)</label>
     <stages>
       <li>
-        <label>fluent combat drills</label>
+        <label>melee sim (fluent drills)</label>
         <description>Steps and strikes flowed together; the arena seemed to know my pace.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -137,10 +137,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Melee_T3</defName>
-    <label>vr: perfect counter</label>
+    <label>vr: melee sim (perfect counter)</label>
     <stages>
       <li>
-        <label>perfect counter</label>
+        <label>melee sim (perfect counter)</label>
         <description>A strike I’d never seen arrived; my body answered before thought.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -150,10 +150,10 @@
   <!-- Construction -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Construction_T1</defName>
-    <label>vr: simple framing</label>
+    <label>vr: construction sim (simple framing)</label>
     <stages>
       <li>
-        <label>simple framing</label>
+        <label>construction sim (simple framing)</label>
         <description>Walls rose and dissolved; laying down structure felt strangely easy.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -161,10 +161,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Construction_T2</defName>
-    <label>vr: clean blueprint</label>
+    <label>vr: construction sim (clean blueprint)</label>
     <stages>
       <li>
-        <label>clean blueprint</label>
+        <label>construction sim (clean blueprint)</label>
         <description>The sim unfolded a building piece by piece, showing where parts belonged.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -172,10 +172,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Construction_T3</defName>
-    <label>vr: moving architecture</label>
+    <label>vr: construction sim (moving architecture)</label>
     <stages>
       <li>
-        <label>moving architecture</label>
+        <label>construction sim (moving architecture)</label>
         <description>The design shifted as I worked, settling like a memory.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -185,10 +185,10 @@
   <!-- Mining -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Mining_T1</defName>
-    <label>vr: gentle tunneling</label>
+    <label>vr: mining sim (gentle tunneling)</label>
     <stages>
       <li>
-        <label>gentle tunneling</label>
+        <label>mining sim (gentle tunneling)</label>
         <description>Each strike echoed softly, as if the stone was patient.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -196,10 +196,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Mining_T2</defName>
-    <label>vr: reading the veins</label>
+    <label>vr: mining sim (reading the veins)</label>
     <stages>
       <li>
-        <label>reading the veins</label>
+        <label>mining sim (reading the veins)</label>
         <description>The sim highlighted seams, guiding me to the best cuts.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -207,10 +207,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Mining_T3</defName>
-    <label>vr: living stone</label>
+    <label>vr: mining sim (living stone)</label>
     <stages>
       <li>
-        <label>living stone</label>
+        <label>mining sim (living stone)</label>
         <description>The rock seemed to breathe between blows, opening where it mattered.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -220,10 +220,10 @@
   <!-- Cooking -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Cooking_T1</defName>
-    <label>vr: easy recipes</label>
+    <label>vr: cooking sim (easy recipes)</label>
     <stages>
       <li>
-        <label>easy recipes</label>
+        <label>cooking sim (easy recipes)</label>
         <description>Ingredients never spoiled and heat stayed gentle; cooking felt scripted and kind.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -231,10 +231,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Cooking_T2</defName>
-    <label>vr: flowing prepwork</label>
+    <label>vr: cooking sim (flowing prepwork)</label>
     <stages>
       <li>
-        <label>flowing prepwork</label>
+        <label>cooking sim (flowing prepwork)</label>
         <description>Chopping, seasoning, and stirring lined up in one smooth motion.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -242,10 +242,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Cooking_T3</defName>
-    <label>vr: perfect dish</label>
+    <label>vr: cooking sim (perfect dish)</label>
     <stages>
       <li>
-        <label>perfect dish</label>
+        <label>cooking sim (perfect dish)</label>
         <description>The sim plated a meal I could almost taste; for a second it felt flawless.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -255,10 +255,10 @@
   <!-- Plants -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Plants_T1</defName>
-    <label>vr: gentle sowing</label>
+    <label>vr: plant sim (gentle sowing)</label>
     <stages>
       <li>
-        <label>gentle sowing</label>
+        <label>plant sim (gentle sowing)</label>
         <description>Soil parted easily and rows lined themselves in calm, straight lines.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -266,10 +266,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Plants_T2</defName>
-    <label>vr: reading growth</label>
+    <label>vr: plant sim (reading growth)</label>
     <stages>
       <li>
-        <label>reading growth</label>
+        <label>plant sim (reading growth)</label>
         <description>The sim showed every plant’s health in quiet colours at a glance.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -277,10 +277,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Plants_T3</defName>
-    <label>vr: breathing field</label>
+    <label>vr: plant sim (breathing field)</label>
     <stages>
       <li>
-        <label>breathing field</label>
+        <label>plant sim (breathing field)</label>
         <description>Crops swayed in perfect unison, like the field exhaled.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -290,10 +290,10 @@
   <!-- Animals -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Animals_T1</defName>
-    <label>vr: calm animal handling</label>
+    <label>vr: animal-handling sim (calm handling)</label>
     <stages>
       <li>
-        <label>calm animal handling</label>
+        <label>animal-handling sim (calm handling)</label>
         <description>Creatures approached without fear, following simple gestures.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -301,10 +301,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Animals_T2</defName>
-    <label>vr: shared trust</label>
+    <label>vr: animal-handling sim (shared trust)</label>
     <stages>
       <li>
-        <label>shared trust</label>
+        <label>animal-handling sim (shared trust)</label>
         <description>I watched a wary animal relax, one slow step at a time.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -312,10 +312,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Animals_T3</defName>
-    <label>vr: unspoken understanding</label>
+    <label>vr: animal-handling sim (unspoken understanding)</label>
     <stages>
       <li>
-        <label>unspoken understanding</label>
+        <label>animal-handling sim (unspoken understanding)</label>
         <description>For a few breaths, it felt like the animal and I shared the same thought.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -325,10 +325,10 @@
   <!-- Crafting -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Crafting_T1</defName>
-    <label>vr: simple assembly</label>
+    <label>vr: crafting sim (simple assembly)</label>
     <stages>
       <li>
-        <label>simple assembly</label>
+        <label>crafting sim (simple assembly)</label>
         <description>Pieces slotted together without a fight; the bench felt almost grateful.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -336,10 +336,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Crafting_T2</defName>
-    <label>vr: flawless routine</label>
+    <label>vr: crafting sim (flawless routine)</label>
     <stages>
       <li>
-        <label>flawless routine</label>
+        <label>crafting sim (flawless routine)</label>
         <description>Every tool laid itself out in the right order; my hands just followed.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -347,10 +347,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Crafting_T3</defName>
-    <label>vr: invisible tolerances</label>
+    <label>vr: crafting sim (invisible tolerances)</label>
     <stages>
       <li>
-        <label>invisible tolerances</label>
+        <label>crafting sim (invisible tolerances)</label>
         <description>I could sense when a piece wasn’t right before I touched it.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -360,10 +360,10 @@
   <!-- Artistic -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Artistic_T1</defName>
-    <label>vr: easy sketches</label>
+    <label>vr: art sim (easy sketches)</label>
     <stages>
       <li>
-        <label>easy sketches</label>
+        <label>art sim (easy sketches)</label>
         <description>Lines appeared where I meant them to, for once.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -371,10 +371,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Artistic_T2</defName>
-    <label>vr: flowing expression</label>
+    <label>vr: art sim (flowing expression)</label>
     <stages>
       <li>
-        <label>flowing expression</label>
+        <label>art sim (flowing expression)</label>
         <description>The sim gave me space to try shapes and colours I’d never risk.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -382,10 +382,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Artistic_T3</defName>
-    <label>vr: image that lingers</label>
+    <label>vr: art sim (image that lingers)</label>
     <stages>
       <li>
-        <label>image that lingers</label>
+        <label>art sim (image that lingers)</label>
         <description>The piece I made keeps resurfacing when I close my eyes.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -395,10 +395,10 @@
   <!-- Medical -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Medical_T1</defName>
-    <label>vr: basic treatment drills</label>
+    <label>vr: medical sim (basic treatment drills)</label>
     <stages>
       <li>
-        <label>basic treatment drills</label>
+        <label>medical sim (basic treatment drills)</label>
         <description>Bandages wrapped true, wounds stayed clean, and no one cried out.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -406,10 +406,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Medical_T2</defName>
-    <label>vr: steady surgery practice</label>
+    <label>vr: medical sim (steady surgery practice)</label>
     <stages>
       <li>
-        <label>steady surgery practice</label>
+        <label>medical sim (steady surgery practice)</label>
         <description>Each step walked through slowly and patiently; nothing rushed.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -417,10 +417,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Medical_T3</defName>
-    <label>vr: almost losing no one</label>
+    <label>vr: medical sim (almost losing no one)</label>
     <stages>
       <li>
-        <label>almost losing no one</label>
+        <label>medical sim (almost losing no one)</label>
         <description>Every cut felt precise; when the patient stabilized, I exhaled.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -430,10 +430,10 @@
   <!-- Social -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Social_T1</defName>
-    <label>vr: light conversations</label>
+    <label>vr: social sim (light conversations)</label>
     <stages>
       <li>
-        <label>light conversations</label>
+        <label>social sim (light conversations)</label>
         <description>Talk flowed easily with gentle chatter and no awkward pauses.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -441,10 +441,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Social_T2</defName>
-    <label>vr: shared story</label>
+    <label>vr: social sim (shared story)</label>
     <stages>
       <li>
-        <label>shared story</label>
+        <label>social sim (shared story)</label>
         <description>The sim replayed an evening talking with people who listened through.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -452,10 +452,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Social_T3</defName>
-    <label>vr: being understood</label>
+    <label>vr: social sim (being understood)</label>
     <stages>
       <li>
-        <label>being understood</label>
+        <label>social sim (being understood)</label>
         <description>Every word landed where I meant it; I felt understood.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
@@ -465,10 +465,10 @@
   <!-- Intellectual -->
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Intellectual_T1</defName>
-    <label>vr: easy reading session</label>
+    <label>vr: research sim (easy reading session)</label>
     <stages>
       <li>
-        <label>easy reading session</label>
+        <label>research sim (easy reading session)</label>
         <description>Pages turned themselves, and the words stayed where I left them.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
@@ -476,10 +476,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Intellectual_T2</defName>
-    <label>vr: clear insight</label>
+    <label>vr: research sim (clear insight)</label>
     <stages>
       <li>
-        <label>clear insight</label>
+        <label>research sim (clear insight)</label>
         <description>The sim laid out a problem like a diagram I could walk around.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
@@ -487,10 +487,10 @@
   </ThoughtDef>
   <ThoughtDef ParentName="VA_VRMemory_SkillTraitBase">
     <defName>VA_VRMemory_Intellectual_T3</defName>
-    <label>vr: thought that stays</label>
+    <label>vr: research sim (thought that stays)</label>
     <stages>
       <li>
-        <label>thought that stays</label>
+        <label>research sim (thought that stays)</label>
         <description>I left with an idea that still feels sharper than most real ones.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>

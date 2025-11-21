@@ -560,6 +560,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Trait overlays appended after default skill memory descriptions  
 **Owner:** AI
 
+## TASK-BUG-014
+**Description:** Make tiered VR memory labels explicitly reference the VR sim so sources are obvious in-game  
+**Category:** Bugfix / Narrative  
+**Dependencies:** MEM-008  
+**Status:** DONE (skill-tier labels now call out VR sims)  
+**Output:** Skill-tier memory labels include VR sim wording without altering descriptions  
+**Owner:** AI
+
 ---
 
 # Agent Rules
