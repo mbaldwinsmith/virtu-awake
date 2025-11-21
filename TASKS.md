@@ -92,25 +92,25 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Implement Need_Lucidity (UI bar, gain/decay, save/load); add NeedDef, pawn init hook, and trait multipliers (TooSmart/Sanguine up, Depressive/Neurotic down)  
 **Category:** C# / Needs  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (need class + def + pawn activation)  
 **Output:** Need_Lucidity.cs, NeedDef in Defs/Needs, UI label/description, pawn init hook  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-PSY-002
 **Description:** Implement Hediff_Instability with 3-4 stages (Calm Flicker, Pattern Seen, Deep Fracture, Collapse Warning) and effects  
 **Category:** C# / Hediffs  
 **Dependencies:** PSY-001  
-**Status:** TODO  
+**Status:** DONE (staged hediff with severity effects)  
 **Output:** Hediff_Instability.cs with stage properties; HediffDef stages updated (labels, mood/stat effects)  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-PSY-003
 **Description:** Link pod usage ticks to Lucidity gain and Instability progression; add CompProps tuning (VR vs Dream pods), trait multipliers, session caps, and out-of-pod decay  
 **Category:** C# / Mechanics  
 **Dependencies:** PSY-001, PSY-002, CORE-001  
-**Status:** TODO  
+**Status:** DONE (VR pod ticks adjust lucidity/instability with trait + long-term tuning)  
 **Output:** CompVRPod tick logic applying Need/Hediff changes per session type/duration with caps and decay  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-PSY-004
 **Description:** Define awakening tier thoughts (Compliant, Flicker, Dissociation, Realisation, Breakthrough) tied to Lucidity thresholds  
@@ -296,9 +296,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add inspect-tab bars for Lucidity/Instability on pawns using pods  
 **Category:** C# / UI  
 **Dependencies:** PSY-001, PSY-002  
-**Status:** TODO  
-**Output:** Drawers in pawn inspect tab showing values/stages  
-**Owner:** Unassigned
+**Status:** DONE (in-pod gizmo + inspect string bars while in VR)  
+**Output:** Pod gizmo and pawn inspect string show lucidity/instability only while in VR  
+**Owner:** AI
 
 ## TASK-UI-002
 **Description:** Add pod gizmos for eject/cancel/session info (VR + Dream pods)  

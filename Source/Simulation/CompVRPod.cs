@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace VirtuAwake
 {
@@ -44,7 +46,7 @@ namespace VirtuAwake
 
                 SimTypeDef simType = this.ResolveSimTypeFor(pawn);
                 VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
-                // TODO: Hook Lucidity/Instability progression here.
+                ApplyLucidityAndInstability(pawn);
             }
         }
 
@@ -107,6 +109,166 @@ namespace VirtuAwake
             }
 
             return "Idle.";
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmosExtra()
+        {
+            foreach (var gizmo in base.CompGetGizmosExtra())
+            {
+                yield return gizmo;
+            }
+
+            Pawn occupant = this.CurrentUser;
+            if (occupant != null && IsVRJob(occupant.CurJobDef))
+            {
+                yield return new Gizmo_VRPawnStatus(occupant);
+            }
+        }
+
+        private void ApplyLucidityAndInstability(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return;
+            }
+
+            pawn.needs?.AddOrRemoveNeedsAsAppropriate();
+            Need_Lucidity lucidity = pawn.needs?.TryGetNeed<Need_Lucidity>();
+            if (lucidity == null)
+            {
+                return;
+            }
+
+            bool longTerm = pawn.CurJob?.def?.defName == "VA_UseVirtuDreamPod";
+            float lucidityGain = this.Props.lucidityGainPerTick * TraitLucidityFactor(pawn);
+            if (longTerm)
+            {
+                lucidityGain *= this.Props.lucidityGainLongTermMultiplier;
+            }
+
+            lucidity.CurLevel = Mathf.Clamp01(lucidity.CurLevel + lucidityGain);
+
+            Hediff instability = EnsureInstability(pawn);
+            if (instability == null)
+            {
+                return;
+            }
+
+            float instGain = this.Props.instabilityGainPerTick * TraitInstabilityFactor(pawn);
+            if (longTerm)
+            {
+                instGain *= this.Props.instabilityGainLongTermMultiplier;
+            }
+
+            if (lucidity.CurLevelPercentage >= this.Props.instabilityHighLucidityThreshold)
+            {
+                instGain += this.Props.instabilityGainHighLucidityPerTick;
+            }
+
+            if (instGain > 0f)
+            {
+                instability.Severity = Mathf.Clamp(instability.Severity + instGain, 0f, instability.def.maxSeverity);
+            }
+            else if (this.Props.instabilityDecayPerTick > 0f)
+            {
+                instability.Severity = Mathf.Max(0f, instability.Severity - this.Props.instabilityDecayPerTick);
+            }
+        }
+
+        private Hediff EnsureInstability(Pawn pawn)
+        {
+            if (pawn?.health?.hediffSet == null)
+            {
+                return null;
+            }
+
+            Hediff inst = pawn.health.hediffSet.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamed("VA_Instability"));
+            if (inst == null)
+            {
+                inst = HediffMaker.MakeHediff(DefDatabase<HediffDef>.GetNamed("VA_Instability"), pawn);
+                pawn.health.AddHediff(inst);
+            }
+
+            return inst;
+        }
+
+        private float TraitLucidityFactor(Pawn pawn)
+        {
+            float factor = 1f;
+            TraitSet traits = pawn.story?.traits;
+            if (traits == null)
+            {
+                return factor;
+            }
+
+            if (HasTrait(traits, "TooSmart"))
+            {
+                factor += 0.12f;
+            }
+
+            if (HasTrait(traits, "Sanguine"))
+            {
+                factor += 0.08f;
+            }
+
+            if (HasTrait(traits, "Depressive"))
+            {
+                factor -= 0.15f;
+            }
+
+            if (HasTrait(traits, "Neurotic") || HasTrait(traits, "VeryNeurotic"))
+            {
+                factor -= 0.1f;
+            }
+
+            return Mathf.Max(0.2f, factor);
+        }
+
+        private float TraitInstabilityFactor(Pawn pawn)
+        {
+            float factor = 1f;
+            TraitSet traits = pawn.story?.traits;
+            if (traits == null)
+            {
+                return factor;
+            }
+
+            if (HasTrait(traits, "TooSmart") || HasTrait(traits, "PsychicallySensitive") || HasTrait(traits, "PsychicallyHypersensitive"))
+            {
+                factor += 0.1f;
+            }
+
+            if (HasTrait(traits, "Sanguine") || HasTrait(traits, "Optimist"))
+            {
+                factor -= 0.05f;
+            }
+
+            if (HasTrait(traits, "Depressive") || HasTrait(traits, "Pessimist"))
+            {
+                factor += 0.08f;
+            }
+
+            return Mathf.Max(0.2f, factor);
+        }
+
+        private static bool IsVRJob(JobDef job)
+        {
+            if (job == null)
+            {
+                return false;
+            }
+
+            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVirtuDreamPod" || job.defName == "VA_UseVRPodSocial";
+        }
+
+        private static bool HasTrait(TraitSet set, string defName)
+        {
+            if (set == null || string.IsNullOrEmpty(defName))
+            {
+                return false;
+            }
+
+            return set.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(defName));
         }
     }
 }

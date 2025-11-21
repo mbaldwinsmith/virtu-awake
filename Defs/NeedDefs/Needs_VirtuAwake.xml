@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <NeedDef>
+    <defName>VA_Lucidity</defName>
+    <label>lucidity</label>
+    <description>A pawn's awareness of the simulation. Builds during VR sessions, fades slowly outside.</description>
+    <needClass>VirtuAwake.Need_Lucidity</needClass>
+    <neverOnAnimals>true</neverOnAnimals>
+    <minIntelligence>Humanlike</minIntelligence>
+    <showOnNeedList>true</showOnNeedList>
+    <showForCaravanMembers>true</showForCaravanMembers>
+    <colonistsOnly>false</colonistsOnly>
+    <listPriority>0.3</listPriority>
+  </NeedDef>
+</Defs>
