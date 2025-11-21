@@ -5,7 +5,6 @@
     <label>lucidity</label>
     <description>A pawn's awareness of the simulation. Builds during VR sessions, fades slowly outside.</description>
     <needClass>VirtuAwake.Need_Lucidity</needClass>
-    <neverOnAnimals>true</neverOnAnimals>
     <minIntelligence>Humanlike</minIntelligence>
     <showOnNeedList>true</showOnNeedList>
     <showForCaravanMembers>true</showForCaravanMembers>
