@@ -627,3 +627,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Status:** DONE (15s minimum for benefits; slower XP; frequent in-pod memory ticks)  
 **Output:** Pod ticks enforce minimum dwell time before joy/XP/memories; joy/XP throttled; memories fire during long sessions  
 **Owner:** AI
+
+## TODO-NOTE (Next session)
+- Remove memory trigger on exit VR pod; rely on in-pod timers instead.
+- Fix memory triggering: currently interrupted by job finishing on short sessions and never fires on deep sessions.
+- Recreation gain is effectively zero even after minutes; rebalance/gate so it rises slowly but reliably post-threshold.
+
