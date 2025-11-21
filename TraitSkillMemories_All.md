@@ -339,3 +339,109 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T2: I stayed cautious even when it was safe.  
   - T3: Even at my best, I moved carefully, relieved nothing struck back.
 
+---
+
+## Dual-Trait Combo Overlays (legendary)
+- Bloodlust + Psychopath  
+  - T1: Even gentle stutters read like targets; the thrill was clinical.  
+  - T2: Clean anomalies felt like puzzles I could take apart without feeling.  
+  - T3: When the world cracked, I catalogued it and wanted more.
+
+- Pyromaniac + Tortured Artist  
+  - T1: Little glitch-sparks looked like color trying to escape.  
+  - T2: Burning seams framed the scene; beauty in ruin felt deliberate.  
+  - T3: Flame and fractures painted something aching and alive.
+
+- Too Smart + Psychically Sensitive  
+  - T1: I felt the hum and saw the pattern; both lined up.  
+  - T2: Each ripple had a logic and a mood; I traced both at once.  
+  - T3: The code and the feeling synced; the seam told me its proof.
+
+- Ascetic + Body Purist  
+  - T1: Plain motion, untouched body; nothing extra felt right.  
+  - T2: Even the glitch edges stayed clean; no ornament clung to me.  
+  - T3: Pure signal, unaltered skin; the sim finally felt honest.
+
+- Sanguine + Optimist  
+  - T1: Little flickers read as good omens.  
+  - T2: Every stutter felt like encouragement mid-flow.  
+  - T3: Even big seams looked like openings instead of threats.
+
+- Depressive + Pessimist  
+  - T1: Small glitches felt like proof the calm wouldn't last.  
+  - T2: Cracks in the scene matched the sinking feeling.  
+  - T3: Even at peak focus, I waited for the world to fall through.
+
+- Brawler + Tough  
+  - T1: Soft hits and stutters still scratched the clash itch.  
+  - T2: Pressure and lag felt like honest resistance I could push through.  
+  - T3: When the sim hit hard, I leaned in and kept swinging.
+
+- Masochist + Volatile  
+  - T1: The sim's jitter carried a pinch I liked.  
+  - T2: Every spike of tension landed as fuel.  
+  - T3: Wild swings and hurt lined up; I rode the edge gladly.
+
+- Cannibal + Gourmand  
+  - T1: Sim flavors were thin; appetite kept its own memory.  
+  - T2: Perfect dishes tasted hollow; hunger asked for something real.  
+  - T3: Even in a flawless meal, I craved the forbidden flavor underneath.
+
+- Great Memory + Neurotic  
+  - T1: I logged every hitch; replayed them even while working.  
+  - T2: Cracks stayed sharp in my mind; I checked them twice.  
+  - T3: I kept a mental archive of every shimmer and watched for repeats.
+
+- Kind + Psychically Sensitive  
+  - T1: I felt the echo's mood and matched it gently.  
+  - T2: Every overlap carried feeling; I kept the pace tender.  
+  - T3: Even in deep focus, I listened for the quiet minds under the glitch.
+
+- Trigger Happy + Careful Shooter  
+  - T1: Quick shots, then a pause; rhythm mattered more than polish.  
+  - T2: I toggled between bursts and stillness; both felt right.  
+  - T3: Fast volleys and perfect aims alternated like a pattern I owned.
+
+- Night Owl + Undergrounder  
+  - T1: Dim sim, enclosed air; everything felt like night.  
+  - T2: Depth and hush steadied me; flickers looked like far-off lights.  
+  - T3: Even big stutters felt like stars in a tunnel sky.
+
+- Body Modder + Psychically Hypersensitive  
+  - T1: I sensed shapes my body could grow into; the sim whispered upgrades.  
+  - T2: Every ripple suggested a new form; the hum made it vivid.  
+  - T3: Glitches felt like invitations to rewrite myself.
+
+- Jealous + Greedy  
+  - T1: I kept thinking someone else got more from this than I did.  
+  - T2: Even good flow felt owed; I wanted the biggest cut of the sim.  
+  - T3: I watched the seams like a vault, sure there was more hidden.
+
+---
+
+## Triple-Trait Combo Overlays (rare legendary)
+- Too Smart + Psychopath + Sanguine  
+  - T1: I happily mapped the cracks; feelings optional, results bright.  
+  - T2: Solving the seam felt joyful; empathy never entered.  
+  - T3: I cheerfully dissected the glitch until it sang.
+
+- Tortured Artist + Psychically Sensitive + Depressive  
+  - T1: Every shimmer sounded sad; I tried to shape it anyway.  
+  - T2: Glitches carried a music of grief; I followed the tune.  
+  - T3: I made beauty out of the ache the sim kept whispering.
+
+- Ascetic + Body Purist + Great Memory  
+  - T1: I noted each plain, clean motion; stored them untouched.  
+  - T2: Unadorned steps imprinted clearly; nothing impure stayed.  
+  - T3: I archived the pure parts and discarded every stray shimmer.
+
+- Pyromaniac + Volatile + Masochist  
+  - T1: Little burns and jitters pleased me; risk felt warm.  
+  - T2: Wild heat and stutter hurt just right; I leaned closer.  
+  - T3: When the sim flared and bit, it felt perfect.
+
+- Kind + Optimist + Psychically Sensitive  
+  - T1: I felt a gentle hum under everything; I chose to trust it.  
+  - T2: Even the cracks seemed kind; I met them with warmth.  
+  - T3: In the deepest flicker, I believed the sim meant well.
+

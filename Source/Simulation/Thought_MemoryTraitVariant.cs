@@ -192,48 +192,146 @@ namespace VirtuAwake
             const int MaxOverlays = 3;
             var overlays = new List<string>(MaxOverlays);
             var usedTraits = new HashSet<string>();
+            int currentTier = GetTierFromDefName(this.def?.defName);
 
             // Prefer combo matches first to capture bespoke pairs without losing singles later.
-            foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && !string.IsNullOrEmpty(v.trait2)))
+            foreach (var variant in ext.variants)
             {
                 if (overlays.Count >= MaxOverlays)
                 {
                     break;
                 }
 
-                if (!HasTrait(variant.trait) || !HasTrait(variant.trait2) || string.IsNullOrWhiteSpace(variant.text))
+                if (variant == null || string.IsNullOrWhiteSpace(variant.text))
                 {
                     continue;
                 }
 
-                if (usedTraits.Contains(variant.trait) || usedTraits.Contains(variant.trait2))
+                if (variant.tier > 0 && variant.tier != currentTier)
                 {
                     continue;
                 }
 
-                overlays.Add(variant.text);
-                usedTraits.Add(variant.trait);
-                usedTraits.Add(variant.trait2);
+                var traits = GetTraitsForVariant(variant);
+                if (traits.Count < 2)
+                {
+                    continue;
+                }
+
+                if (overlays.Count >= MaxOverlays)
+                {
+                    break;
+                }
+
+                if (traits.Any(t => usedTraits.Contains(t)))
+                {
+                    continue;
+                }
+
+                if (traits.Any(t => !HasTrait(t)))
+                {
+                    continue;
+                }
+
+                overlays.Add(variant.text.Trim());
+                foreach (var t in traits)
+                {
+                    usedTraits.Add(t);
+                }
             }
 
             // Then add single-trait overlays until the cap is reached.
-            foreach (var variant in ext.variants.Where(v => !string.IsNullOrEmpty(v.trait) && string.IsNullOrEmpty(v.trait2)))
+            foreach (var variant in ext.variants)
             {
                 if (overlays.Count >= MaxOverlays)
                 {
                     break;
                 }
 
-                if (!HasTrait(variant.trait) || string.IsNullOrWhiteSpace(variant.text) || usedTraits.Contains(variant.trait))
+                if (variant == null || string.IsNullOrWhiteSpace(variant.text))
                 {
                     continue;
                 }
 
-                overlays.Add(variant.text);
-                usedTraits.Add(variant.trait);
+                if (variant.tier > 0 && variant.tier != currentTier)
+                {
+                    continue;
+                }
+
+                var traits = GetTraitsForVariant(variant);
+                if (traits.Count != 1)
+                {
+                    continue;
+                }
+
+                string trait = traits[0];
+                if (!HasTrait(trait) || usedTraits.Contains(trait))
+                {
+                    continue;
+                }
+
+                overlays.Add(variant.text.Trim());
+                usedTraits.Add(trait);
             }
 
             return overlays;
+        }
+
+        private static List<string> GetTraitsForVariant(TraitMemoryVariant variant)
+        {
+            var traits = new List<string>();
+            if (variant == null)
+            {
+                return traits;
+            }
+
+            if (variant.traits != null)
+            {
+                foreach (var t in variant.traits)
+                {
+                    if (!string.IsNullOrEmpty(t) && !traits.Contains(t))
+                    {
+                        traits.Add(t);
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(variant.trait) && !traits.Contains(variant.trait))
+            {
+                traits.Add(variant.trait);
+            }
+
+            if (!string.IsNullOrEmpty(variant.trait2) && !traits.Contains(variant.trait2))
+            {
+                traits.Add(variant.trait2);
+            }
+
+            return traits;
+        }
+
+        private static int GetTierFromDefName(string defName)
+        {
+            if (string.IsNullOrEmpty(defName))
+            {
+                return 0;
+            }
+
+            if (defName.EndsWith("_T1"))
+            {
+                return 1;
+            }
+
+            if (defName.EndsWith("_T2"))
+            {
+                return 2;
+            }
+
+            if (defName.EndsWith("_T3"))
+            {
+                return 3;
+            }
+
+            return 0;
         }
     }
 }

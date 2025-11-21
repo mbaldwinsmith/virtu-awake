@@ -520,6 +520,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Thoughts_VirtuAwake_SkillTraits.xml with 36 base memories + trait variants  
 **Owner:** AI
 
+## TASK-MEM-009
+**Description:** Add dual- and triple-trait combo overlays (legendary) for VR memories in docs + XML  
+**Category:** XML / Narrative  
+**Dependencies:** MEM-008  
+**Status:** DONE (combo overlays authored and wired)  
+**Output:** TraitSkillMemories_All.md updated with combo lines; combo overlays wired into ThoughtDefs  
+**Owner:** AI
+
 ## TASK-BUG-009
 **Description:** Ensure sim-type tiered thoughts also give recreation on completion  
 **Category:** Bugfix  

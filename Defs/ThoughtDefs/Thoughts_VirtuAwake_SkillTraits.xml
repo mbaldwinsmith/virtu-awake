@@ -72,6 +72,522 @@
           <li><trait>VeryNeurotic</trait><text>Even at my best, I braced for a slip.</text></li>
           <li><trait>Volatile</trait><text>Even easy tasks flickered with sudden tension.</text></li>
           <li><trait>Wimp</trait><text>Gentle tasks suited me; I stayed cautious.</text></li>
+          <!-- Dual combo overlays -->
+          <li>
+            <traits>
+              <li>Bloodlust</li>
+              <li>Psychopath</li>
+            </traits>
+            <tier>1</tier>
+            <text>Even gentle stutters read like targets; the thrill was clinical.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Bloodlust</li>
+              <li>Psychopath</li>
+            </traits>
+            <tier>2</tier>
+            <text>Clean anomalies felt like puzzles I could take apart without feeling.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Bloodlust</li>
+              <li>Psychopath</li>
+            </traits>
+            <tier>3</tier>
+            <text>When the world cracked, I catalogued it and wanted more.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>TorturedArtist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Little glitch-sparks looked like color trying to escape.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>TorturedArtist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Burning seams framed the scene; beauty in ruin felt deliberate.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>TorturedArtist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Flame and fractures painted something aching and alive.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I felt the hum and saw the pattern; both lined up.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Each ripple had a logic and a mood; I traced both at once.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>The code and the feeling synced; the seam told me its proof.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Plain motion, untouched body; nothing extra felt right.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Even the glitch edges stayed clean; no ornament clung to me.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Pure signal, unaltered skin; the sim finally felt honest.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Sanguine</li>
+              <li>Optimist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Little flickers read as good omens.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Sanguine</li>
+              <li>Optimist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every stutter felt like encouragement mid-flow.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Sanguine</li>
+              <li>Optimist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even big seams looked like openings instead of threats.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Depressive</li>
+              <li>Pessimist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Small glitches felt like proof the calm wouldn't last.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Depressive</li>
+              <li>Pessimist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Cracks in the scene matched the sinking feeling.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Depressive</li>
+              <li>Pessimist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even at peak focus, I waited for the world to fall through.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Brawler</li>
+              <li>Tough</li>
+            </traits>
+            <tier>1</tier>
+            <text>Soft hits and stutters still scratched the clash itch.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Brawler</li>
+              <li>Tough</li>
+            </traits>
+            <tier>2</tier>
+            <text>Pressure and lag felt like honest resistance I could push through.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Brawler</li>
+              <li>Tough</li>
+            </traits>
+            <tier>3</tier>
+            <text>When the sim hit hard, I leaned in and kept swinging.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Masochist</li>
+              <li>Volatile</li>
+            </traits>
+            <tier>1</tier>
+            <text>The sim's jitter carried a pinch I liked.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Masochist</li>
+              <li>Volatile</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every spike of tension landed as fuel.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Masochist</li>
+              <li>Volatile</li>
+            </traits>
+            <tier>3</tier>
+            <text>Wild swings and hurt lined up; I rode the edge gladly.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Cannibal</li>
+              <li>Gourmand</li>
+            </traits>
+            <tier>1</tier>
+            <text>Sim flavors were thin; appetite kept its own memory.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Cannibal</li>
+              <li>Gourmand</li>
+            </traits>
+            <tier>2</tier>
+            <text>Perfect dishes tasted hollow; hunger asked for something real.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Cannibal</li>
+              <li>Gourmand</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even in a flawless meal, I craved the forbidden flavor underneath.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>GreatMemory</li>
+              <li>Neurotic</li>
+            </traits>
+            <tier>1</tier>
+            <text>I logged every hitch; replayed them even while working.</text>
+          </li>
+          <li>
+            <traits>
+              <li>GreatMemory</li>
+              <li>Neurotic</li>
+            </traits>
+            <tier>2</tier>
+            <text>Cracks stayed sharp in my mind; I checked them twice.</text>
+          </li>
+          <li>
+            <traits>
+              <li>GreatMemory</li>
+              <li>Neurotic</li>
+            </traits>
+            <tier>3</tier>
+            <text>I kept a mental archive of every shimmer and watched for repeats.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I felt the echo's mood and matched it gently.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every overlap carried feeling; I kept the pace tender.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even in deep focus, I listened for the quiet minds under the glitch.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>TriggerHappy</li>
+              <li>CarefulShooter</li>
+            </traits>
+            <tier>1</tier>
+            <text>Quick shots, then a pause; rhythm mattered more than polish.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TriggerHappy</li>
+              <li>CarefulShooter</li>
+            </traits>
+            <tier>2</tier>
+            <text>I toggled between bursts and stillness; both felt right.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TriggerHappy</li>
+              <li>CarefulShooter</li>
+            </traits>
+            <tier>3</tier>
+            <text>Fast volleys and perfect aims alternated like a pattern I owned.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>NightOwl</li>
+              <li>Undergrounder</li>
+            </traits>
+            <tier>1</tier>
+            <text>Dim sim, enclosed air; everything felt like night.</text>
+          </li>
+          <li>
+            <traits>
+              <li>NightOwl</li>
+              <li>Undergrounder</li>
+            </traits>
+            <tier>2</tier>
+            <text>Depth and hush steadied me; flickers looked like far-off lights.</text>
+          </li>
+          <li>
+            <traits>
+              <li>NightOwl</li>
+              <li>Undergrounder</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even big stutters felt like stars in a tunnel sky.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>BodyModder</li>
+              <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I sensed shapes my body could grow into; the sim whispered upgrades.</text>
+          </li>
+          <li>
+            <traits>
+              <li>BodyModder</li>
+              <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every ripple suggested a new form; the hum made it vivid.</text>
+          </li>
+          <li>
+            <traits>
+              <li>BodyModder</li>
+              <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>Glitches felt like invitations to rewrite myself.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Jealous</li>
+              <li>Greedy</li>
+            </traits>
+            <tier>1</tier>
+            <text>I kept thinking someone else got more from this than I did.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Jealous</li>
+              <li>Greedy</li>
+            </traits>
+            <tier>2</tier>
+            <text>Even good flow felt owed; I wanted the biggest cut of the sim.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Jealous</li>
+              <li>Greedy</li>
+            </traits>
+            <tier>3</tier>
+            <text>I watched the seams like a vault, sure there was more hidden.</text>
+          </li>
+
+          <!-- Triple combo overlays -->
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>Psychopath</li>
+              <li>Sanguine</li>
+            </traits>
+            <tier>1</tier>
+            <text>I happily mapped the cracks; feelings optional, results bright.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>Psychopath</li>
+              <li>Sanguine</li>
+            </traits>
+            <tier>2</tier>
+            <text>Solving the seam felt joyful; empathy never entered.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TooSmart</li>
+              <li>Psychopath</li>
+              <li>Sanguine</li>
+            </traits>
+            <tier>3</tier>
+            <text>I cheerfully dissected the glitch until it sang.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>TorturedArtist</li>
+              <li>PsychicallySensitive</li>
+              <li>Depressive</li>
+            </traits>
+            <tier>1</tier>
+            <text>Every shimmer sounded sad; I tried to shape it anyway.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TorturedArtist</li>
+              <li>PsychicallySensitive</li>
+              <li>Depressive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Glitches carried a music of grief; I followed the tune.</text>
+          </li>
+          <li>
+            <traits>
+              <li>TorturedArtist</li>
+              <li>PsychicallySensitive</li>
+              <li>Depressive</li>
+            </traits>
+            <tier>3</tier>
+            <text>I made beauty out of the ache the sim kept whispering.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+              <li>GreatMemory</li>
+            </traits>
+            <tier>1</tier>
+            <text>I noted each plain, clean motion; stored them untouched.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+              <li>GreatMemory</li>
+            </traits>
+            <tier>2</tier>
+            <text>Unadorned steps imprinted clearly; nothing impure stayed.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Ascetic</li>
+              <li>BodyPurist</li>
+              <li>GreatMemory</li>
+            </traits>
+            <tier>3</tier>
+            <text>I archived the pure parts and discarded every stray shimmer.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>Volatile</li>
+              <li>Masochist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Little burns and jitters pleased me; risk felt warm.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>Volatile</li>
+              <li>Masochist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Wild heat and stutter hurt just right; I leaned closer.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Pyromaniac</li>
+              <li>Volatile</li>
+              <li>Masochist</li>
+            </traits>
+            <tier>3</tier>
+            <text>When the sim flared and bit, it felt perfect.</text>
+          </li>
+
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>Optimist</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I felt a gentle hum under everything; I chose to trust it.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>Optimist</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Even the cracks seemed kind; I met them with warmth.</text>
+          </li>
+          <li>
+            <traits>
+              <li>Kind</li>
+              <li>Optimist</li>
+              <li>PsychicallySensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>In the deepest flicker, I believed the sim meant well.</text>
+          </li>
         </variants>
       </li>
     </modExtensions>

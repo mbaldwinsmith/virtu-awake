@@ -7,6 +7,8 @@ namespace VirtuAwake
     {
         public string trait;
         public string trait2;
+        public List<string> traits;
+        public int tier;
         public string text;
     }
 
