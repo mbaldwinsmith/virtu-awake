@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -54,6 +55,14 @@ namespace VirtuAwake
             });
 
             yield return FloatMenuUtility.DecoratePrioritizedTask(useOption, pawn, this);
+
+            FloatMenuOption longTerm = new FloatMenuOption("Enter long-term simulation (until canceled)", () =>
+            {
+                Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVirtuDreamPod"), this);
+                job.playerForced = true;
+                pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+            });
+            yield return FloatMenuUtility.DecoratePrioritizedTask(longTerm, pawn, this);
 
             foreach (Pawn partner in pawn.Map.mapPawns.FreeColonistsSpawned)
             {
@@ -115,6 +124,79 @@ namespace VirtuAwake
 
             return GenClosest.ClosestThingReachable(user.Position, user.Map, request, PathEndMode.OnCell,
                 TraverseParms.For(user), 9999f, validator) as Building;
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach (var g in base.GetGizmos())
+            {
+                yield return g;
+            }
+
+            yield return MakeTargetCommand();
+        }
+
+        private Gizmo MakeTargetCommand()
+        {
+            var cmd = new Command_Target
+            {
+                defaultLabel = "Assign long-term simulation",
+                defaultDesc = "Select a colonist, prisoner, or slave to immerse in this pod until canceled.",
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/Forbid"), // placeholder; replace if dedicated icon exists
+                targetingParams = new TargetingParameters
+                {
+                    canTargetPawns = true,
+                    canTargetAnimals = false,
+                    validator = t =>
+                    {
+                        Pawn p = t.Thing as Pawn;
+                        if (p == null || p.Dead || !p.Spawned)
+                        {
+                            return false;
+                        }
+
+                        if (!p.IsColonistPlayerControlled && !p.IsPrisonerOfColony && !p.IsSlaveOfColony)
+                        {
+                            return false;
+                        }
+
+                        if (p.InMentalState)
+                        {
+                            return false;
+                        }
+
+                        return true;
+                    }
+                }
+            };
+
+            cmd.action = t =>
+            {
+                Pawn targetPawn = t.Thing as Pawn;
+                if (targetPawn == null)
+                {
+                    return;
+                }
+
+                CompVRPod podComp = this.GetComp<CompVRPod>();
+                if (podComp != null && podComp.CurrentUser != null && podComp.CurrentUser != targetPawn)
+                {
+                    Messages.Message("VR pod is in use.", MessageTypeDefOf.RejectInput, false);
+                    return;
+                }
+
+                if (!targetPawn.CanReserveAndReach(this, PathEndMode.InteractionCell, Danger.Some))
+                {
+                    Messages.Message($"{targetPawn.LabelShortCap} cannot reach the pod.", MessageTypeDefOf.RejectInput, false);
+                    return;
+                }
+
+                Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVirtuDreamPod"), this);
+                job.playerForced = true;
+                targetPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+            };
+
+            return cmd;
         }
     }
 }
