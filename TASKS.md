@@ -544,6 +544,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Expanded SimTypes with tiered thoughts/joy and fallback thoughtOnSession  
 **Owner:** AI
 
+## TASK-BUG-012
+**Description:** Fix sim selection/tiering so passions pick the skill, tiers apply per skill level with trait modifiers, add melee combat training path, and introduce light randomness to XP/tier rolls  
+**Category:** Bugfix / Mechanics  
+**Dependencies:** CORE-004, MEM-008  
+**Status:** DONE (passion-weighted sim choice, trait-biased tiers, melee training sim, XP/tier RNG)  
+**Output:** Updated VRSimUtility tier logic, SimType defs for melee training, trait-aware tier mood adjustment, slight RNG in XP/tier selection  
+**Owner:** AI
+
 ---
 
 # Agent Rules

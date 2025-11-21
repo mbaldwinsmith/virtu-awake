@@ -1,4 +1,5 @@
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace VirtuAwake
@@ -20,6 +21,8 @@ namespace VirtuAwake
             }
 
             float baseXp = simType.xpPerTick * ticks;
+            // Small random variance independent of skill level to keep sessions from feeling identical.
+            baseXp *= Rand.Range(0.9f, 1.1f);
             if (baseXp <= 0f)
             {
                 return;
@@ -67,11 +70,6 @@ namespace VirtuAwake
 
         public static SimTypeDef ResolveBestSimTypeForPawn(Pawn pawn, SimTypeDef fallback)
         {
-            if (fallback != null && fallback.primarySkill != null)
-            {
-                return fallback;
-            }
-
             SimTypeDef best = null;
             float bestScore = 0f;
             foreach (SimTypeDef sim in DefDatabase<SimTypeDef>.AllDefsListForReading)
@@ -81,15 +79,11 @@ namespace VirtuAwake
                     continue;
                 }
 
-                float score = 0f;
-                foreach (var pair in sim.skillWeights)
+                float score = ScoreSimForPawn(pawn, sim);
+                // Slight preference to the explicitly configured sim type on the building, but still choose by passion.
+                if (fallback != null && sim == fallback)
                 {
-                    if (pair.Key == null || pair.Value <= 0f)
-                    {
-                        continue;
-                    }
-
-                    score += pair.Value * PassionFactor(pawn, pair.Key);
+                    score *= 1.05f;
                 }
 
                 if (score > bestScore)
@@ -109,30 +103,22 @@ namespace VirtuAwake
                 return;
             }
 
-            ThoughtDef chosen = null;
+            SkillDef dominantSkill = GetDominantSkill(pawn, simType);
+            int tier = PickTier(pawn, dominantSkill);
+
             float joyGain = simType.joyGainTier1;
-            if (simType.primarySkill != null)
+            ThoughtDef chosen = tier switch
             {
-                var skill = pawn.skills?.GetSkill(simType.primarySkill);
-                if (skill != null)
-                {
-                    if (simType.thoughtTier1 != null && skill.Level < 6)
-                    {
-                        chosen = simType.thoughtTier1;
-                        joyGain = simType.joyGainTier1;
-                    }
-                    else if (simType.thoughtTier2 != null && skill.Level < 12)
-                    {
-                        chosen = simType.thoughtTier2;
-                        joyGain = simType.joyGainTier2;
-                    }
-                    else if (simType.thoughtTier3 != null)
-                    {
-                        chosen = simType.thoughtTier3;
-                        joyGain = simType.joyGainTier3;
-                    }
-                }
-            }
+                1 => simType.thoughtTier1,
+                2 => simType.thoughtTier2,
+                _ => simType.thoughtTier3
+            };
+            joyGain = tier switch
+            {
+                1 => simType.joyGainTier1,
+                2 => simType.joyGainTier2,
+                _ => simType.joyGainTier3
+            };
 
             if (chosen == null)
             {
@@ -147,9 +133,159 @@ namespace VirtuAwake
             var joy = pawn.needs?.joy;
             if (joy != null && joyGain > 0f)
             {
-                JoyKindDef kind = simType.primarySkill == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative;
+                JoyKindDef kind = (dominantSkill ?? simType.primarySkill) == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative;
                 joy.GainJoy(joyGain, kind);
             }
+        }
+
+        private static float ScoreSimForPawn(Pawn pawn, SimTypeDef sim)
+        {
+            if (pawn?.skills == null || sim?.skillWeights == null)
+            {
+                return 0f;
+            }
+
+            float score = 0f;
+            foreach (var pair in sim.skillWeights)
+            {
+                if (pair.Key == null || pair.Value <= 0f)
+                {
+                    continue;
+                }
+
+                float passion = PassionFactor(pawn, pair.Key);
+                float levelFactor = 0.7f + ((pawn.skills.GetSkill(pair.Key)?.Level ?? 0) / 40f);
+                score += pair.Value * passion * levelFactor;
+            }
+
+            return score;
+        }
+
+        private static SkillDef GetDominantSkill(Pawn pawn, SimTypeDef simType)
+        {
+            if (pawn?.skills == null || simType?.skillWeights == null || simType.skillWeights.Count == 0)
+            {
+                return simType?.primarySkill;
+            }
+
+            SkillDef chosen = simType.primarySkill;
+            float best = 0f;
+            foreach (var pair in simType.skillWeights)
+            {
+                if (pair.Key == null || pair.Value <= 0f)
+                {
+                    continue;
+                }
+
+                float score = pair.Value * PassionFactor(pawn, pair.Key);
+                score *= 0.7f + ((pawn.skills.GetSkill(pair.Key)?.Level ?? 0) / 40f);
+
+                if (score > best)
+                {
+                    best = score;
+                    chosen = pair.Key;
+                }
+            }
+
+            return chosen ?? simType.primarySkill;
+        }
+
+        private static int PickTier(Pawn pawn, SkillDef skill)
+        {
+            int level = pawn?.skills?.GetSkill(skill)?.Level ?? 0;
+            int tier = level < 6 ? 1 : level < 12 ? 2 : 3;
+
+            float bias = TierBiasFromTraits(pawn, skill);
+            float upChance = 0.12f + Mathf.Max(0f, bias) * 0.06f;
+            float downChance = 0.08f + Mathf.Max(0f, -bias) * 0.05f;
+
+            // Add a little extra chance to bump up when near thresholds.
+            if (tier == 1 && level >= 5) upChance += 0.05f;
+            if (tier == 2 && level >= 11) upChance += 0.05f;
+            if (tier == 3 && level <= 13) downChance += 0.04f;
+
+            if (Rand.Chance(upChance))
+            {
+                tier = Mathf.Min(3, tier + 1);
+            }
+            else if (Rand.Chance(downChance))
+            {
+                tier = Mathf.Max(1, tier - 1);
+            }
+
+            return tier;
+        }
+
+        private static float TierBiasFromTraits(Pawn pawn, SkillDef skill)
+        {
+            if (pawn?.story?.traits == null)
+            {
+                return 0f;
+            }
+
+            float bias = 0f;
+
+            // Global positives
+            if (HasTrait(pawn, "Sanguine"))
+            {
+                bias += 0.6f;
+            }
+            if (HasTrait(pawn, "Optimist"))
+            {
+                bias += 0.25f;
+            }
+
+            // Global negatives
+            if (HasTrait(pawn, "Depressive") || HasTrait(pawn, "Pessimist"))
+            {
+                bias -= 0.6f;
+            }
+            if (HasTrait(pawn, "Neurotic") || HasTrait(pawn, "VeryNeurotic") || HasTrait(pawn, "Nervous"))
+            {
+                bias -= 0.35f;
+            }
+            if (HasTrait(pawn, "SlowLearner"))
+            {
+                bias -= 0.35f;
+            }
+
+            // Skill-flavoured adjustments
+            if (skill == SkillDefOf.Melee && HasTrait(pawn, "Brawler"))
+            {
+                bias += 0.5f;
+            }
+            if (skill == SkillDefOf.Cooking && HasTrait(pawn, "Gourmand"))
+            {
+                bias += 0.4f;
+            }
+            if ((skill == SkillDefOf.Social || skill == SkillDefOf.Animals || skill == SkillDefOf.Medicine || skill == SkillDefOf.Artistic) && HasTrait(pawn, "Kind"))
+            {
+                bias += 0.4f;
+            }
+            if (HasTrait(pawn, "BodyPurist") && (skill == SkillDefOf.Medicine || skill == SkillDefOf.Shooting))
+            {
+                bias -= 0.35f;
+            }
+            if (HasTrait(pawn, "PsychicallySensitive") || HasTrait(pawn, "PsychicallyHypersensitive"))
+            {
+                bias += 0.15f;
+            }
+            if (HasTrait(pawn, "PsychicallyDull") || HasTrait(pawn, "PsychicallyDeaf"))
+            {
+                bias -= 0.15f;
+            }
+
+            return bias;
+        }
+
+        private static bool HasTrait(Pawn pawn, string traitDefName)
+        {
+            if (pawn?.story?.traits == null || string.IsNullOrEmpty(traitDefName))
+            {
+                return false;
+            }
+
+            return pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(traitDefName));
         }
     }
 }

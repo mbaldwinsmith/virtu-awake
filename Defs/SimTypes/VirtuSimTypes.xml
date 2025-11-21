@@ -37,6 +37,31 @@
   </SimTypeDef>
 
   <SimTypeDef Class="VirtuAwake.SimTypeDef">
+    <defName>VA_Sim_CombatTraining_Melee</defName>
+    <label>melee combat training sim</label>
+    <description>Close-quarters sparring loops focused on footwork, timing, and controlled strikes.</description>
+    <xpPerTick>0.10</xpPerTick>
+    <primarySkill>Melee</primarySkill>
+    <joyGainTier1>0.05</joyGainTier1>
+    <joyGainTier2>0.08</joyGainTier2>
+    <joyGainTier3>0.12</joyGainTier3>
+    <skillWeights>
+      <li>
+        <key>Melee</key>
+        <value>1.0</value>
+      </li>
+      <li>
+        <key>Shooting</key>
+        <value>0.2</value>
+      </li>
+    </skillWeights>
+    <thoughtOnSession>VA_VRMemory_Melee_T1</thoughtOnSession>
+    <thoughtTier1>VA_VRMemory_Melee_T1</thoughtTier1>
+    <thoughtTier2>VA_VRMemory_Melee_T2</thoughtTier2>
+    <thoughtTier3>VA_VRMemory_Melee_T3</thoughtTier3>
+  </SimTypeDef>
+
+  <SimTypeDef Class="VirtuAwake.SimTypeDef">
     <defName>VA_Sim_Melee</defName>
     <label>melee sparring sim</label>
     <description>Silent arenas tuned for close combat flow and responsive footwork.</description>

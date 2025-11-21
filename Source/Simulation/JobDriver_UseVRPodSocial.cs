@@ -67,9 +67,9 @@ namespace VirtuAwake
                     joy.GainJoy(bonus, JoyKindDefOf.Social);
                 }
 
-                if (PodComp?.Props?.simType != null)
+                if (PodComp != null)
                 {
-                    VRSimUtility.ApplySimTraining(pawn, PodComp.Props.simType, 1);
+                    VRSimUtility.ApplySimTraining(pawn, PodComp.ResolveSimTypeFor(pawn), 1);
                 }
             };
 
