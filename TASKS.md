@@ -528,6 +528,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** TraitSkillMemories_All.md updated with combo lines; combo overlays wired into ThoughtDefs  
 **Owner:** AI
 
+## TASK-MEM-010
+**Description:** Award dual/triple combo VR memories automatically when matching traits are present  
+**Category:** C# / Narrative  
+**Dependencies:** MEM-003, MEM-004  
+**Status:** DONE (combo award hook added)  
+**Output:** VRSimUtility selects VA_VRCombo thoughts by tier and trait count before defaults  
+**Owner:** AI
+
 ## TASK-BUG-009
 **Description:** Ensure sim-type tiered thoughts also give recreation on completion  
 **Category:** Bugfix  

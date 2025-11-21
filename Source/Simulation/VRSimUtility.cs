@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -106,6 +108,8 @@ namespace VirtuAwake
             SkillDef dominantSkill = GetDominantSkill(pawn, simType);
             int tier = PickTier(pawn, dominantSkill);
 
+            ThoughtDef comboThought = PickComboThought(pawn, tier);
+
             float joyGain = simType.joyGainTier1;
             ThoughtDef chosen = tier switch
             {
@@ -120,7 +124,11 @@ namespace VirtuAwake
                 _ => simType.joyGainTier3
             };
 
-            if (chosen == null)
+            if (comboThought != null)
+            {
+                chosen = comboThought;
+            }
+            else if (chosen == null)
             {
                 chosen = simType.thoughtOnSession ?? simType.thoughtTier1;
             }
@@ -325,6 +333,96 @@ namespace VirtuAwake
             }
 
             return pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(traitDefName));
+        }
+
+        private static ThoughtDef PickComboThought(Pawn pawn, int tier)
+        {
+            if (pawn?.story?.traits == null)
+            {
+                return null;
+            }
+
+            ThoughtDef best = null;
+            int bestTraitCount = 1;
+
+            foreach (var def in DefDatabase<ThoughtDef>.AllDefsListForReading)
+            {
+                if (string.IsNullOrEmpty(def?.defName) || !def.defName.StartsWith("VA_VRCombo_"))
+                {
+                    continue;
+                }
+
+                var ext = def.GetModExtension<TraitMemoryExtension>();
+                if (ext?.variants == null)
+                {
+                    continue;
+                }
+
+                foreach (var variant in ext.variants)
+                {
+                    if (variant == null)
+                    {
+                        continue;
+                    }
+
+                    if (variant.tier > 0 && variant.tier != tier)
+                    {
+                        continue;
+                    }
+
+                    List<string> traits = GetTraitsForVariant(variant);
+                    int traitCount = traits.Count;
+                    if (traitCount <= 1)
+                    {
+                        continue;
+                    }
+
+                    if (!traits.All(t => HasTrait(pawn, t)))
+                    {
+                        continue;
+                    }
+
+                    if (traitCount > bestTraitCount)
+                    {
+                        bestTraitCount = traitCount;
+                        best = def;
+                    }
+                }
+            }
+
+            return best;
+        }
+
+        private static List<string> GetTraitsForVariant(TraitMemoryVariant variant)
+        {
+            var traits = new List<string>();
+            if (variant == null)
+            {
+                return traits;
+            }
+
+            if (variant.traits != null)
+            {
+                foreach (var t in variant.traits)
+                {
+                    if (!string.IsNullOrEmpty(t) && !traits.Contains(t))
+                    {
+                        traits.Add(t);
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(variant.trait) && !traits.Contains(variant.trait))
+            {
+                traits.Add(variant.trait);
+            }
+
+            if (!string.IsNullOrEmpty(variant.trait2) && !traits.Contains(variant.trait2))
+            {
+                traits.Add(variant.trait2);
+            }
+
+            return traits;
         }
     }
 }
