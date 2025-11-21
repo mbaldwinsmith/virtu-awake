@@ -13,6 +13,7 @@ namespace VirtuAwake
         public float instabilityGainHighLucidityPerTick = 0.00012f;
         public float instabilityHighLucidityThreshold = 0.6f;
         public float instabilityDecayPerTick = 0.00008f;
+        public int memoryIntervalTicks = 6000;
 
         public CompProperties_VRPod()
         {

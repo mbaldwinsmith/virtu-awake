@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
-using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -142,7 +141,7 @@ namespace VirtuAwake
             {
                 defaultLabel = "Assign long-term simulation",
                 defaultDesc = "Select a colonist, prisoner, or slave to immerse in this pod until canceled.",
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/Forbid"), // placeholder; replace if dedicated icon exists
+                icon = TexCommand.ForbidOff,
                 targetingParams = new TargetingParameters
                 {
                     canTargetPawns = true,

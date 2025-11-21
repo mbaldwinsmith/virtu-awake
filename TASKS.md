@@ -536,6 +536,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** VRSimUtility selects VA_VRCombo thoughts by tier and trait count before defaults  
 **Owner:** AI
 
+## TASK-MEM-011
+**Description:** Allow VR memories to trigger periodically during long in-pod sessions (no wait for exit)  
+**Category:** C# / Mechanics / Narrative  
+**Dependencies:** MEM-008  
+**Status:** DONE (in-pod memory loop added)  
+**Output:** CompVRPod per-pawn timers grant VR combo/skill memories during extended sessions without requiring pod exit  
+**Owner:** AI
+
 ## TASK-BUG-009
 **Description:** Ensure sim-type tiered thoughts also give recreation on completion  
 **Category:** Bugfix  

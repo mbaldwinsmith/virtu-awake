@@ -11,6 +11,7 @@ namespace VirtuAwake
     {
         private readonly HashSet<Pawn> currentUsers = new HashSet<Pawn>();
         private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
+        private readonly Dictionary<Pawn, int> memoryTimers = new Dictionary<Pawn, int>();
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
 
@@ -41,12 +42,14 @@ namespace VirtuAwake
                 {
                     this.currentUsers.Remove(pawn);
                     this.sessionSimTypes.Remove(pawn);
+                    this.memoryTimers.Remove(pawn);
                     continue;
                 }
 
                 SimTypeDef simType = this.ResolveSimTypeFor(pawn);
                 VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
                 ApplyLucidityAndInstability(pawn);
+                TickMemories(pawn, simType);
             }
         }
 
@@ -54,6 +57,7 @@ namespace VirtuAwake
         {
             this.currentUsers.Clear();
             this.sessionSimTypes.Clear();
+            this.memoryTimers.Clear();
             if (pawn != null)
             {
                 this.currentUsers.Add(pawn);
@@ -67,6 +71,7 @@ namespace VirtuAwake
             {
                 this.currentUsers.Add(pawn);
                 this.ResolveSimTypeFor(pawn);
+                this.memoryTimers[pawn] = 0;
             }
         }
 
@@ -76,6 +81,7 @@ namespace VirtuAwake
             {
                 this.currentUsers.Remove(pawn);
                 this.sessionSimTypes.Remove(pawn);
+                this.memoryTimers.Remove(pawn);
             }
         }
 
@@ -269,6 +275,52 @@ namespace VirtuAwake
             }
 
             return set.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(defName));
+        }
+
+        private void TickMemories(Pawn pawn, SimTypeDef simType)
+        {
+            if (pawn?.needs?.mood?.thoughts?.memories == null)
+            {
+                return;
+            }
+
+            int timer;
+            this.memoryTimers.TryGetValue(pawn, out timer);
+            timer += this.Props.tickInterval;
+
+            bool hasVRMemory = HasActiveVRMemory(pawn);
+            if (!hasVRMemory || timer >= this.Props.memoryIntervalTicks)
+            {
+                VRSimUtility.TryGiveSimMemory(pawn, simType);
+                timer = 0;
+            }
+
+            this.memoryTimers[pawn] = timer;
+        }
+
+        private static bool HasActiveVRMemory(Pawn pawn)
+        {
+            var memories = pawn.needs?.mood?.thoughts?.memories?.Memories;
+            if (memories == null)
+            {
+                return false;
+            }
+
+            foreach (var mem in memories)
+            {
+                string defName = mem?.def?.defName;
+                if (string.IsNullOrEmpty(defName))
+                {
+                    continue;
+                }
+
+                if (defName.StartsWith("VA_VRMemory") || defName.StartsWith("VA_VRCombo"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
