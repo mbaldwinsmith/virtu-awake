@@ -89,31 +89,31 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 # Psychological Systems (Needs, Hediffs, Awakening)
 
 ## TASK-PSY-001
-**Description:** Implement Need_Lucidity (UI bar, save/load, decay)  
+**Description:** Implement Need_Lucidity (UI bar, gain/decay, save/load); add NeedDef, pawn init hook, and trait multipliers (TooSmart/Sanguine up, Depressive/Neurotic down)  
 **Category:** C# / Needs  
 **Dependencies:** CORE-001  
 **Status:** TODO  
-**Output:** Need_Lucidity.cs, NeedDef in Defs/Needs, UI label/description  
+**Output:** Need_Lucidity.cs, NeedDef in Defs/Needs, UI label/description, pawn init hook  
 **Owner:** Unassigned
 
 ## TASK-PSY-002
-**Description:** Implement Hediff_Instability with 3–4 stages and effects  
+**Description:** Implement Hediff_Instability with 3-4 stages (Calm Flicker, Pattern Seen, Deep Fracture, Collapse Warning) and effects  
 **Category:** C# / Hediffs  
 **Dependencies:** PSY-001  
 **Status:** TODO  
-**Output:** Hediff_Instability.cs with stage properties; HediffDef stages updated  
+**Output:** Hediff_Instability.cs with stage properties; HediffDef stages updated (labels, mood/stat effects)  
 **Owner:** Unassigned
 
 ## TASK-PSY-003
-**Description:** Link pod usage ticks to Lucidity gain and Instability progression  
+**Description:** Link pod usage ticks to Lucidity gain and Instability progression; add CompProps tuning (VR vs Dream pods), trait multipliers, session caps, and out-of-pod decay  
 **Category:** C# / Mechanics  
 **Dependencies:** PSY-001, PSY-002, CORE-001  
 **Status:** TODO  
-**Output:** CompVRPod tick logic applying Need/Hediff changes based on session type/duration  
+**Output:** CompVRPod tick logic applying Need/Hediff changes per session type/duration with caps and decay  
 **Owner:** Unassigned
 
 ## TASK-PSY-004
-**Description:** Define awakening tier thoughts (Compliant, Flicker, Dissociation, Realisation, Breakthrough)  
+**Description:** Define awakening tier thoughts (Compliant, Flicker, Dissociation, Realisation, Breakthrough) tied to Lucidity thresholds  
 **Category:** XML  
 **Dependencies:** PSY-001, PSY-002  
 **Status:** TODO  
@@ -600,3 +600,6 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 - Respect dependencies before starting work.  
 - Keep changes within task scope unless required for compilation.  
 - Update this file when finishing tasks (`Status: DONE` + note/PR link).
+
+
+
