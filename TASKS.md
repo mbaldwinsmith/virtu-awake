@@ -549,7 +549,7 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Category:** Bugfix / Mechanics  
 **Dependencies:** CORE-004, MEM-008  
 **Status:** DONE (passion-weighted sim choice, trait-biased tiers, melee training sim, XP/tier RNG)  
-**Output:** Updated VRSimUtility tier logic, SimType defs for melee training, trait-aware tier mood adjustment, slight RNG in XP/tier selection  
+**Output:** Updated VRSimUtility tier logic, SimType defs for melee training, trait-aware tier mood adjustment, slight RNG in XP/tier selection; trait mood offsets expanded (psy sensitivity, ascetic preference, skill-flavoured deltas)  
 **Owner:** AI
 
 ---

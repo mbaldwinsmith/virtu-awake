@@ -274,6 +274,45 @@ namespace VirtuAwake
             {
                 bias -= 0.15f;
             }
+            // Emotional sims feel better for psy-sensitive, worse for psy-dull.
+            if (skill == SkillDefOf.Social || skill == SkillDefOf.Animals || skill == SkillDefOf.Artistic || skill == SkillDefOf.Medicine)
+            {
+                if (HasTrait(pawn, "PsychicallySensitive") || HasTrait(pawn, "PsychicallyHypersensitive"))
+                {
+                    bias += 0.1f;
+                }
+                if (HasTrait(pawn, "PsychicallyDull") || HasTrait(pawn, "PsychicallyDeaf"))
+                {
+                    bias -= 0.1f;
+                }
+            }
+            else if (skill == SkillDefOf.Construction || skill == SkillDefOf.Mining || skill == SkillDefOf.Intellectual || skill == SkillDefOf.Crafting || skill == SkillDefOf.Shooting)
+            {
+                if (HasTrait(pawn, "PsychicallySensitive") || HasTrait(pawn, "PsychicallyHypersensitive"))
+                {
+                    bias -= 0.1f;
+                }
+                if (HasTrait(pawn, "PsychicallyDull") || HasTrait(pawn, "PsychicallyDeaf"))
+                {
+                    bias += 0.05f;
+                }
+            }
+
+            // Ascetic bonus on plain/quiet sims, penalty on expressive ones.
+            if (skill == SkillDefOf.Artistic || skill == SkillDefOf.Social)
+            {
+                if (HasTrait(pawn, "Ascetic"))
+                {
+                    bias -= 0.25f;
+                }
+            }
+            else if (skill == SkillDefOf.Mining || skill == SkillDefOf.Construction || skill == SkillDefOf.Plants || skill == SkillDefOf.Intellectual || skill == SkillDefOf.Crafting)
+            {
+                if (HasTrait(pawn, "Ascetic"))
+                {
+                    bias += 0.25f;
+                }
+            }
 
             return bias;
         }

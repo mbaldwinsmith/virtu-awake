@@ -142,12 +142,34 @@ namespace VirtuAwake
                 delta -= 0.5f;
             }
 
+            // Psy-sensitive tilt down slightly on hollow/mechanical sims
+            if ((skill == SkillDefOf.Construction || skill == SkillDefOf.Mining || skill == SkillDefOf.Intellectual || skill == SkillDefOf.Crafting || skill == SkillDefOf.Shooting) &&
+                (HasTrait("PsychicallySensitive") || HasTrait("PsychicallyHypersensitive")))
+            {
+                delta -= 0.25f;
+            }
+            if ((skill == SkillDefOf.Construction || skill == SkillDefOf.Mining || skill == SkillDefOf.Intellectual || skill == SkillDefOf.Crafting || skill == SkillDefOf.Shooting) &&
+                (HasTrait("PsychicallyDull") || HasTrait("PsychicallyDeaf")))
+            {
+                delta += 0.1f;
+            }
+
             if ((skill == SkillDefOf.Medicine || skill == SkillDefOf.Shooting) && HasTrait("BodyPurist"))
             {
                 delta -= 1f;
             }
 
-            // Ascetic: typically neutral; treat negative only if sim likely flashy (none here), so leave 0.
+            // Ascetic: prefers simple/quiet sims; applies a small penalty on expressive/flashy ones.
+            if ((skill == SkillDefOf.Artistic || skill == SkillDefOf.Social) && HasTrait("Ascetic"))
+            {
+                delta -= 0.75f;
+            }
+
+            // Ascetic bonus on plain/quiet sims.
+            if ((skill == SkillDefOf.Mining || skill == SkillDefOf.Construction || skill == SkillDefOf.Plants || skill == SkillDefOf.Intellectual || skill == SkillDefOf.Crafting) && HasTrait("Ascetic"))
+            {
+                delta += 0.5f;
+            }
 
             // Clamp to keep offsets reasonable (+/- 3 tiers worth of base mood spread).
             return Mathf.Clamp(delta, -3f, 3f);
