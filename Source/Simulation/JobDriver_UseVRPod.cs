@@ -58,20 +58,13 @@ namespace VirtuAwake
                     pawn.rotationTracker.FaceCell(Pod.Position);
                 }
 
-                // Simple recreation gain while lying in the pod
-                var joy = pawn.needs?.joy;
-                if (joy != null)
-                {
-                    joy.GainJoy(0.0005f, JoyKindDefOf.Meditative);
-                    if (joy.CurLevel >= 0.999f)
-                    {
-                        pawn.jobs.curDriver?.EndJobWith(JobCondition.Succeeded);
-                    }
-                }
+                bool canBenefit = PodComp != null && PodComp.CanProvideBenefits(pawn);
 
-                if (PodComp != null)
+                // Simple recreation gain while lying in the pod (slower, gated)
+                var joy = pawn.needs?.joy;
+                if (joy != null && canBenefit)
                 {
-                    VRSimUtility.ApplySimTraining(pawn, PodComp.ResolveSimTypeFor(pawn), 1);
+                    joy.GainJoy(0.00025f, JoyKindDefOf.Meditative);
                 }
             };
 

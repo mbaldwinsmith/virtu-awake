@@ -26,9 +26,7 @@ namespace VirtuAwake
             }
 
             Need_Lucidity lucidity = __instance.needs?.TryGetNeed<Need_Lucidity>();
-            Hediff inst = __instance.health?.hediffSet?.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamedSilentFail("VA_Instability"));
-
-            if (lucidity == null && inst == null)
+            if (lucidity == null)
             {
                 return;
             }
@@ -37,11 +35,6 @@ namespace VirtuAwake
             if (lucidity != null)
             {
                 sb.AppendLine("Lucidity: " + lucidity.CurLevelPercentage.ToStringPercent());
-            }
-            if (inst != null)
-            {
-                float pct = Mathf.Clamp01(inst.Severity / inst.def.maxSeverity);
-                sb.AppendLine("Instability: " + pct.ToStringPercent());
             }
 
             __result = sb.ToString().TrimEndNewlines();

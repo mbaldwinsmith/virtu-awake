@@ -19,13 +19,7 @@ namespace VirtuAwake
         {
             if (this.IsFrozen)
             {
-                // Outside VR the need is inactive; remove/clear to keep the needs list clean.
                 this.CurLevel = 0f;
-                var allNeeds = this.pawn.needs?.AllNeeds;
-                if (allNeeds != null && allNeeds.Contains(this))
-                {
-                    allNeeds.Remove(this);
-                }
                 return;
             }
 

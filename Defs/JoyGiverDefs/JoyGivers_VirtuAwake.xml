@@ -2,7 +2,7 @@
 <Defs>
   <JoyGiverDef>
     <defName>VA_Joy_UseVRPod</defName>
-    <giverClass>JoyGiver_InteractBuilding</giverClass>
+    <giverClass>VirtuAwake.JoyGiver_UseVRPod</giverClass>
     <jobDef>VA_UseVRPod</jobDef>
     <joyKind>Meditative</joyKind>
     <baseChance>1.0</baseChance>
@@ -13,7 +13,7 @@
   </JoyGiverDef>
   <JoyGiverDef>
     <defName>VA_Joy_UseVirtuDreamPod</defName>
-    <giverClass>JoyGiver_InteractBuilding</giverClass>
+    <giverClass>VirtuAwake.JoyGiver_UseVRPod</giverClass>
     <jobDef>VA_UseVirtuDreamPod</jobDef>
     <joyKind>Meditative</joyKind>
     <baseChance>0.6</baseChance>

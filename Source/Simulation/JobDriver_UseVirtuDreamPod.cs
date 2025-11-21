@@ -41,19 +41,21 @@ namespace VirtuAwake
 
             immerse.tickAction = () =>
             {
+                bool canBenefit = PodComp != null && PodComp.CanProvideBenefits(pawn);
+
                 if (Pod != null)
                 {
                     pawn.rotationTracker.FaceCell(Pod.Position);
                 }
 
                 var joy = pawn.needs?.joy;
-                if (joy != null)
+                if (joy != null && canBenefit)
                 {
-                    joy.GainJoy(0.00035f, JoyKindDefOf.Meditative);
+                    joy.GainJoy(0.00025f, JoyKindDefOf.Meditative);
                 }
 
                 var rest = pawn.needs?.rest;
-                if (rest != null)
+                if (rest != null && canBenefit)
                 {
                     rest.CurLevel = Mathf.Min(rest.CurLevel + 0.0005f, rest.MaxLevel);
                 }
@@ -62,6 +64,11 @@ namespace VirtuAwake
             immerse.AddFinishAction(() =>
             {
                 pawn.jobs.posture = PawnPosture.Standing;
+                if (PodComp != null)
+                {
+                    SimTypeDef simType = PodComp.ResolveSimTypeFor(pawn);
+                    VRSimUtility.TryGiveSimMemory(pawn, simType);
+                }
                 PodComp?.SetUser(null);
             });
 

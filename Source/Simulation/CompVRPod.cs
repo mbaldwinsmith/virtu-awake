@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
@@ -46,10 +47,22 @@ namespace VirtuAwake
                     continue;
                 }
 
+                // Require a minimum time in the pod before benefits apply.
+                int timer = 0;
+                this.memoryTimers.TryGetValue(pawn, out timer);
+                timer += this.Props.tickInterval;
+
+                bool canBenefit = timer >= this.Props.minimumBenefitTicks;
+
                 SimTypeDef simType = this.ResolveSimTypeFor(pawn);
-                VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
-                ApplyLucidityAndInstability(pawn);
-                TickMemories(pawn, simType);
+                if (canBenefit)
+                {
+                    VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
+                    ApplyLucidityAndInstability(pawn);
+                    TickMemories(pawn, simType, ref timer);
+                }
+
+                this.memoryTimers[pawn] = timer;
             }
         }
 
@@ -62,6 +75,7 @@ namespace VirtuAwake
             {
                 this.currentUsers.Add(pawn);
                 this.ResolveSimTypeFor(pawn);
+                this.memoryTimers[pawn] = 0;
             }
         }
 
@@ -127,6 +141,8 @@ namespace VirtuAwake
             Pawn occupant = this.CurrentUser;
             if (occupant != null && IsVRJob(occupant.CurJobDef))
             {
+                EnsureLucidityNeed(occupant);
+                EnsureInstability(occupant);
                 yield return new Gizmo_VRPawnStatus(occupant);
             }
         }
@@ -138,8 +154,7 @@ namespace VirtuAwake
                 return;
             }
 
-            pawn.needs?.AddOrRemoveNeedsAsAppropriate();
-            Need_Lucidity lucidity = pawn.needs?.TryGetNeed<Need_Lucidity>();
+            Need_Lucidity lucidity = EnsureLucidityNeed(pawn);
             if (lucidity == null)
             {
                 return;
@@ -192,10 +207,44 @@ namespace VirtuAwake
             if (inst == null)
             {
                 inst = HediffMaker.MakeHediff(DefDatabase<HediffDef>.GetNamed("VA_Instability"), pawn);
+                inst.Severity = 0.01f;
                 pawn.health.AddHediff(inst);
             }
 
             return inst;
+        }
+
+        private Need_Lucidity EnsureLucidityNeed(Pawn pawn)
+        {
+            if (pawn?.needs == null)
+            {
+                return null;
+            }
+
+            Need_Lucidity need = pawn.needs.TryGetNeed<Need_Lucidity>();
+            if (need != null)
+            {
+                return need;
+            }
+
+            NeedDef def = DefDatabase<NeedDef>.GetNamedSilentFail("VA_Lucidity");
+            if (def == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                Need newNeed = (Need)System.Activator.CreateInstance(def.needClass, pawn);
+                newNeed.def = def;
+                newNeed.CurLevel = 0f;
+                pawn.needs.AllNeeds.Add(newNeed);
+                return newNeed as Need_Lucidity;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private float TraitLucidityFactor(Pawn pawn)
@@ -257,6 +306,13 @@ namespace VirtuAwake
             return Mathf.Max(0.2f, factor);
         }
 
+        public bool CanProvideBenefits(Pawn pawn)
+        {
+            int timer = 0;
+            this.memoryTimers.TryGetValue(pawn, out timer);
+            return timer >= this.Props.minimumBenefitTicks;
+        }
+
         private static bool IsVRJob(JobDef job)
         {
             if (job == null)
@@ -277,25 +333,20 @@ namespace VirtuAwake
             return set.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(defName));
         }
 
-        private void TickMemories(Pawn pawn, SimTypeDef simType)
+        private void TickMemories(Pawn pawn, SimTypeDef simType, ref int timer)
         {
             if (pawn?.needs?.mood?.thoughts?.memories == null)
             {
                 return;
             }
 
-            int timer;
-            this.memoryTimers.TryGetValue(pawn, out timer);
             timer += this.Props.tickInterval;
 
-            bool hasVRMemory = HasActiveVRMemory(pawn);
-            if (!hasVRMemory || timer >= this.Props.memoryIntervalTicks)
+            if (timer >= this.Props.memoryIntervalTicks)
             {
                 VRSimUtility.TryGiveSimMemory(pawn, simType);
                 timer = 0;
             }
-
-            this.memoryTimers[pawn] = timer;
         }
 
         private static bool HasActiveVRMemory(Pawn pawn)

@@ -613,9 +613,17 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 
 
 ## TASK-CORE-006
-**Description:** Allow VR Pod to run long-term simulation sessions (repurposing VirtuDream job via right-click and pod target gizmo)
-**Category:** C# / Core Gameplay
-**Dependencies:** CORE-001, CORE-002
-**Status:** DONE (long-term job + target gizmo wired)
-**Output:** VR Pod float menu long-term option; pod gizmo assigns colonist/prisoner/slave to VA_UseVirtuDreamPod
+**Description:** Allow VR Pod to run long-term simulation sessions (repurposing VirtuDream job via right-click and pod target gizmo)  
+**Category:** C# / Core Gameplay  
+**Dependencies:** CORE-001, CORE-002  
+**Status:** DONE (long-term job + target gizmo wired)  
+**Output:** VR Pod float menu long-term option; pod gizmo assigns colonist/prisoner/slave to VA_UseVirtuDreamPod  
+**Owner:** AI
+
+## TASK-MEM-012
+**Description:** Add anti-spam safeguards for VR sessions (min time in pod, slower recreation/XP, periodic in-pod memories)  
+**Category:** C# / Mechanics  
+**Dependencies:** CORE-001, MEM-008  
+**Status:** DONE (15s minimum for benefits; slower XP; frequent in-pod memory ticks)  
+**Output:** Pod ticks enforce minimum dwell time before joy/XP/memories; joy/XP throttled; memories fire during long sessions  
 **Owner:** AI

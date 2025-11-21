@@ -41,6 +41,7 @@
     <Compile Include="Simulation\JobDriver_UseVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPodSocial.cs" />
     <Compile Include="Simulation\JobDriver_UseVirtuDreamPod.cs" />
+    <Compile Include="Simulation\JoyGiver_UseVRPod.cs" />
     <Compile Include="Simulation\TraitMemoryExtension.cs" />
     <Compile Include="Simulation\Thought_MemoryTraitVariant.cs" />
     <Compile Include="Simulation\SimTypeDef.cs" />
