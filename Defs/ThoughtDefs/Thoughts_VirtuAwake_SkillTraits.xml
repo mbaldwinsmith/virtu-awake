@@ -9,7 +9,7 @@
       <li Class="VirtuAwake.TraitMemoryExtension">
         <variants>
           <li><trait>Abrasive</trait><text>I pointed out every hitch; the sim could take it.</text></li>
-          <li><trait>AnnoyingVoice</trait><text>My rough voice scratched the quiet; the sim didn’t flinch.</text></li>
+          <li><trait>AnnoyingVoice</trait><text>My rough voice scratched the quiet; the sim didn't flinch.</text></li>
           <li><trait>Ascetic</trait><text>Plain focus suited me; nothing fancy to distract.</text></li>
           <li><trait>Asexual</trait><text>Connection stayed on my terms, quiet and clean.</text></li>
           <li><trait>Beautiful</trait><text>Even here, I felt noticed; the sim softened it.</text></li>
@@ -41,9 +41,9 @@
           <li><trait>Misogynist</trait><text>I relaxed when some presences stayed quiet.</text></li>
           <li><trait>Nervous</trait><text>I watched for cracks even as things went well.</text></li>
           <li><trait>Neurotic</trait><text>Ease helped, but I kept bracing for a slip.</text></li>
-          <li><trait>NightOwl</trait><text>The sim felt like night—quiet and fitting.</text></li>
+          <li><trait>NightOwl</trait><text>The sim felt like night - quiet and fitting.</text></li>
           <li><trait>Nimble</trait><text>Movements slid around every hitch.</text></li>
-          <li><trait>Nudist</trait><text>The sim’s air felt easy on skin, unhidden.</text></li>
+          <li><trait>Nudist</trait><text>The sim's air felt easy on skin, unhidden.</text></li>
           <li><trait>Optimist</trait><text>Small success felt like a good sign.</text></li>
           <li><trait>Pessimist</trait><text>A small win felt fragile and brief.</text></li>
           <li><trait>Pretty</trait><text>Faces reacted softly; I noticed.</text></li>
@@ -58,7 +58,7 @@
           <li><trait>Sickly</trait><text>Effort felt taxing; I paced myself.</text></li>
           <li><trait>Slothful</trait><text>Even in focus, I let the world do more of the work.</text></li>
           <li><trait>SlowLearner</trait><text>Basics took their time to settle.</text></li>
-          <li><trait>Slowpoke</trait><text>I took the long way through; the sim didn’t rush me.</text></li>
+          <li><trait>Slowpoke</trait><text>I took the long way through; the sim didn't rush me.</text></li>
           <li><trait>StaggeringlyUgly</trait><text>I could feel eyes slide past, even here.</text></li>
           <li><trait>Steadfast</trait><text>Staying the course felt natural.</text></li>
           <li><trait>SuperImmune</trait><text>Effort barely touched my body.</text></li>
@@ -657,7 +657,7 @@
     <stages>
       <li>
         <label>melee sim (perfect counter)</label>
-        <description>A strike I’d never seen arrived; my body answered before thought.</description>
+        <description>A strike Id never seen arrived; my body answered before thought.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
     </stages>
@@ -786,7 +786,7 @@
     <stages>
       <li>
         <label>plant sim (reading growth)</label>
-        <description>The sim showed every plant’s health in quiet colours at a glance.</description>
+        <description>The sim showed every plants health in quiet colours at a glance.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
     </stages>
@@ -867,7 +867,7 @@
     <stages>
       <li>
         <label>crafting sim (invisible tolerances)</label>
-        <description>I could sense when a piece wasn’t right before I touched it.</description>
+        <description>I could sense when a piece wasnt right before I touched it.</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
     </stages>
@@ -891,7 +891,7 @@
     <stages>
       <li>
         <label>art sim (flowing expression)</label>
-        <description>The sim gave me space to try shapes and colours I’d never risk.</description>
+        <description>The sim gave me space to try shapes and colours Id never risk.</description>
         <baseMoodEffect>6</baseMoodEffect>
       </li>
     </stages>
@@ -1013,3 +1013,5 @@
     </stages>
   </ThoughtDef>
 </Defs>
+
+

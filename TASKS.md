@@ -232,17 +232,17 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add dual-trait legendary memories  
 **Category:** XML  
 **Dependencies:** MEM-002  
-**Status:** TODO  
-**Output:** Thoughts_VR_Traits_Dual.xml  
-**Owner:** Unassigned
+**Status:** DONE (dual combo ThoughtDefs added)  
+**Output:** Defs/ThoughtDefs/Thoughts_VR_Traits_Dual.xml  
+**Owner:** AI
 
 ## TASK-MEM-004
 **Description:** Add triple-trait legendary memories  
 **Category:** XML  
 **Dependencies:** MEM-003  
-**Status:** TODO  
-**Output:** Thoughts_VR_Traits_Triple.xml  
-**Owner:** Unassigned
+**Status:** DONE (triple combo ThoughtDefs added)  
+**Output:** Defs/ThoughtDefs/Thoughts_VR_Traits_Triple.xml  
+**Owner:** AI
 
 ## TASK-MEM-005
 **Description:** Add social VR memory variants (friendship, rivalry, romance)  
@@ -400,9 +400,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add basic automated compile check script (CI-ready)  
 **Category:** QA / DevOps  
 **Dependencies:** OPS-003  
-**Status:** TODO  
-**Output:** Script or workflow stub running dotnet build  
-**Owner:** Unassigned
+**Status:** DONE (build-check script added)  
+**Output:** tools/build-check.ps1 running dotnet build  
+**Owner:** AI
 
 ## TASK-QA-002
 **Description:** Playtest checklist for MVP (VR Pod, Dream Pod, lucidity/instability loop)  

@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BloodlustPsychopath_T1</defName>
+    <label>vr: glitch thrill (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>glitch thrill</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Bloodlust</li>
+          <li>Psychopath</li>
+            </traits>
+            <tier>1</tier>
+            <text>Even gentle stutters read like targets; the thrill was clinical.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BloodlustPsychopath_T2</defName>
+    <label>vr: glitch thrill (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>glitch thrill</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Bloodlust</li>
+          <li>Psychopath</li>
+            </traits>
+            <tier>2</tier>
+            <text>Clean anomalies felt like puzzles I could take apart without feeling.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BloodlustPsychopath_T3</defName>
+    <label>vr: glitch thrill (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>glitch thrill</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Bloodlust</li>
+          <li>Psychopath</li>
+            </traits>
+            <tier>3</tier>
+            <text>When the world cracked, I catalogued it and wanted more.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_PyromaniacTorturedArtist_T1</defName>
+    <label>vr: burned palette (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>burned palette</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Pyromaniac</li>
+          <li>TorturedArtist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Little glitch-sparks looked like color trying to escape.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_PyromaniacTorturedArtist_T2</defName>
+    <label>vr: burned palette (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>burned palette</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Pyromaniac</li>
+          <li>TorturedArtist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Burning seams framed the scene; beauty in ruin felt deliberate.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_PyromaniacTorturedArtist_T3</defName>
+    <label>vr: burned palette (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>burned palette</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Pyromaniac</li>
+          <li>TorturedArtist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Flame and fractures painted something aching and alive.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TooSmartPsychicallySensitive_T1</defName>
+    <label>vr: coded undertone (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>coded undertone</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TooSmart</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I felt the hum and saw the pattern; both lined up.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TooSmartPsychicallySensitive_T2</defName>
+    <label>vr: coded undertone (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>coded undertone</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TooSmart</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Each ripple had a logic and a mood; I traced both at once.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TooSmartPsychicallySensitive_T3</defName>
+    <label>vr: coded undertone (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>coded undertone</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TooSmart</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>The code and the feeling synced; the seam told me its proof.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_AsceticBodyPurist_T1</defName>
+    <label>vr: pure signal (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>pure signal</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Ascetic</li>
+          <li>BodyPurist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Plain motion, untouched body; nothing extra felt right.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_AsceticBodyPurist_T2</defName>
+    <label>vr: pure signal (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>pure signal</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Ascetic</li>
+          <li>BodyPurist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Even the glitch edges stayed clean; no ornament clung to me.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_AsceticBodyPurist_T3</defName>
+    <label>vr: pure signal (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>pure signal</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Ascetic</li>
+          <li>BodyPurist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Pure signal, unaltered skin; the sim finally felt honest.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_SanguineOptimist_T1</defName>
+    <label>vr: hopeful flicker (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hopeful flicker</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Sanguine</li>
+          <li>Optimist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Little flickers read as good omens.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_SanguineOptimist_T2</defName>
+    <label>vr: hopeful flicker (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hopeful flicker</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Sanguine</li>
+          <li>Optimist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every stutter felt like encouragement mid-flow.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_SanguineOptimist_T3</defName>
+    <label>vr: hopeful flicker (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hopeful flicker</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Sanguine</li>
+          <li>Optimist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even big seams looked like openings instead of threats.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_DepressivePessimist_T1</defName>
+    <label>vr: inevitable crack (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>inevitable crack</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Depressive</li>
+          <li>Pessimist</li>
+            </traits>
+            <tier>1</tier>
+            <text>Small glitches felt like proof the calm would not last.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_DepressivePessimist_T2</defName>
+    <label>vr: inevitable crack (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>inevitable crack</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Depressive</li>
+          <li>Pessimist</li>
+            </traits>
+            <tier>2</tier>
+            <text>Cracks in the scene matched the sinking feeling.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_DepressivePessimist_T3</defName>
+    <label>vr: inevitable crack (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>inevitable crack</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Depressive</li>
+          <li>Pessimist</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even at peak focus, I waited for the world to fall through.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BrawlerTough_T1</defName>
+    <label>vr: honest impact (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>honest impact</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Brawler</li>
+          <li>Tough</li>
+            </traits>
+            <tier>1</tier>
+            <text>Soft hits and stutters still scratched the clash itch.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BrawlerTough_T2</defName>
+    <label>vr: honest impact (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>honest impact</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Brawler</li>
+          <li>Tough</li>
+            </traits>
+            <tier>2</tier>
+            <text>Pressure and lag felt like honest resistance I could push through.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BrawlerTough_T3</defName>
+    <label>vr: honest impact (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>honest impact</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Brawler</li>
+          <li>Tough</li>
+            </traits>
+            <tier>3</tier>
+            <text>When the sim hit hard, I leaned in and kept swinging.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_MasochistVolatile_T1</defName>
+    <label>vr: welcome hazard (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>welcome hazard</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Masochist</li>
+          <li>Volatile</li>
+            </traits>
+            <tier>1</tier>
+            <text>The sim's jitter carried a pinch I liked.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_MasochistVolatile_T2</defName>
+    <label>vr: welcome hazard (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>welcome hazard</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Masochist</li>
+          <li>Volatile</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every spike of tension landed as fuel.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_MasochistVolatile_T3</defName>
+    <label>vr: welcome hazard (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>welcome hazard</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Masochist</li>
+          <li>Volatile</li>
+            </traits>
+            <tier>3</tier>
+            <text>Wild swings and hurt lined up; I rode the edge gladly.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_CannibalGourmand_T1</defName>
+    <label>vr: hollow feast (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hollow feast</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Cannibal</li>
+          <li>Gourmand</li>
+            </traits>
+            <tier>1</tier>
+            <text>Sim flavors were thin; appetite kept its own memory.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_CannibalGourmand_T2</defName>
+    <label>vr: hollow feast (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hollow feast</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Cannibal</li>
+          <li>Gourmand</li>
+            </traits>
+            <tier>2</tier>
+            <text>Perfect dishes tasted hollow; hunger asked for something real.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_CannibalGourmand_T3</defName>
+    <label>vr: hollow feast (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hollow feast</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Cannibal</li>
+          <li>Gourmand</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even in a flawless meal, I craved the forbidden flavor underneath.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_GreatMemoryNeurotic_T1</defName>
+    <label>vr: catalogued seams (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>catalogued seams</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>GreatMemory</li>
+          <li>Neurotic</li>
+            </traits>
+            <tier>1</tier>
+            <text>I logged every hitch; replayed them even while working.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_GreatMemoryNeurotic_T2</defName>
+    <label>vr: catalogued seams (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>catalogued seams</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>GreatMemory</li>
+          <li>Neurotic</li>
+            </traits>
+            <tier>2</tier>
+            <text>Cracks stayed sharp in my mind; I checked them twice.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_GreatMemoryNeurotic_T3</defName>
+    <label>vr: catalogued seams (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>catalogued seams</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>GreatMemory</li>
+          <li>Neurotic</li>
+            </traits>
+            <tier>3</tier>
+            <text>I kept a mental archive of every shimmer and watched for repeats.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_KindPsychicallySensitive_T1</defName>
+    <label>vr: soft echo (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>soft echo</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Kind</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I felt the echo's mood and matched it gently.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_KindPsychicallySensitive_T2</defName>
+    <label>vr: soft echo (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>soft echo</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Kind</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every overlap carried feeling; I kept the pace tender.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_KindPsychicallySensitive_T3</defName>
+    <label>vr: soft echo (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>soft echo</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Kind</li>
+          <li>PsychicallySensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even in deep focus, I listened for the quiet minds under the glitch.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TriggerHappyCarefulShooter_T1</defName>
+    <label>vr: rhythm control (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>rhythm control</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TriggerHappy</li>
+          <li>CarefulShooter</li>
+            </traits>
+            <tier>1</tier>
+            <text>Quick shots, then a pause; rhythm mattered more than polish.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TriggerHappyCarefulShooter_T2</defName>
+    <label>vr: rhythm control (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>rhythm control</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TriggerHappy</li>
+          <li>CarefulShooter</li>
+            </traits>
+            <tier>2</tier>
+            <text>I toggled between bursts and stillness; both felt right.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_TriggerHappyCarefulShooter_T3</defName>
+    <label>vr: rhythm control (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>rhythm control</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>TriggerHappy</li>
+          <li>CarefulShooter</li>
+            </traits>
+            <tier>3</tier>
+            <text>Fast volleys and perfect aims alternated like a pattern I owned.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_NightOwlUndergrounder_T1</defName>
+    <label>vr: tunnel starlight (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>tunnel starlight</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>NightOwl</li>
+          <li>Undergrounder</li>
+            </traits>
+            <tier>1</tier>
+            <text>Dim sim, enclosed air; everything felt like night.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_NightOwlUndergrounder_T2</defName>
+    <label>vr: tunnel starlight (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>tunnel starlight</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>NightOwl</li>
+          <li>Undergrounder</li>
+            </traits>
+            <tier>2</tier>
+            <text>Depth and hush steadied me; flickers looked like far-off lights.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_NightOwlUndergrounder_T3</defName>
+    <label>vr: tunnel starlight (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>tunnel starlight</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>NightOwl</li>
+          <li>Undergrounder</li>
+            </traits>
+            <tier>3</tier>
+            <text>Even big stutters felt like stars in a tunnel sky.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BodyModderPsychicallyHypersensitive_T1</defName>
+    <label>vr: invited rewrites (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>invited rewrites</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>BodyModder</li>
+          <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>1</tier>
+            <text>I sensed shapes my body could grow into; the sim whispered upgrades.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BodyModderPsychicallyHypersensitive_T2</defName>
+    <label>vr: invited rewrites (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>invited rewrites</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>BodyModder</li>
+          <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>2</tier>
+            <text>Every ripple suggested a new form; the hum made it vivid.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_BodyModderPsychicallyHypersensitive_T3</defName>
+    <label>vr: invited rewrites (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>invited rewrites</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>BodyModder</li>
+          <li>PsychicallyHypersensitive</li>
+            </traits>
+            <tier>3</tier>
+            <text>Glitches felt like invitations to rewrite myself.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_JealousGreedy_T1</defName>
+    <label>vr: hoarded glitch (t1)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hoarded glitch</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Jealous</li>
+          <li>Greedy</li>
+            </traits>
+            <tier>1</tier>
+            <text>I kept thinking someone else got more from this than I did.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_JealousGreedy_T2</defName>
+    <label>vr: hoarded glitch (t2)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hoarded glitch</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Jealous</li>
+          <li>Greedy</li>
+            </traits>
+            <tier>2</tier>
+            <text>Even good flow felt owed; I wanted the biggest cut of the sim.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRCombo_JealousGreedy_T3</defName>
+    <label>vr: hoarded glitch (t3)</label>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <stages>
+      <li>
+        <label>hoarded glitch</label>
+        <description>A rare dual-trait VR memory.</description>
+        <baseMoodEffect>16</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <traits>
+          <li>Jealous</li>
+          <li>Greedy</li>
+            </traits>
+            <tier>3</tier>
+            <text>I watched the seams like a vault, sure there was more hidden.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+</Defs>

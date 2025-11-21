@@ -1,11 +1,11 @@
-﻿# TraitSkillMemories_All
+# TraitSkillMemories_All
 Complete skill/tier base lines plus trait overlays for all listed traits. Combine a skill/tier base line with the matching trait overlay (same tier) and adjust mood per MEMORY_GUIDE. Tone follows STYLE_GUIDE and LORE_GUIDE: soft, sensory, psychological, non-technical.
 
 ---
 
 ## How to use
 - Pick the skill + tier base line.
-- Replace or append the trait overlay for the pawnâ€™s trait at the same tier.
+- Replace or append the trait overlay for the pawn's trait at the same tier.
 - Mood buffs: Tier 1 = +3, Tier 2 = +6, Tier 3 = +10 (adjust further per trait modifiers in MEMORY_GUIDE).
 
 ---
@@ -80,18 +80,18 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Perfect or not, I called it as I felt it.
 
 - Annoying Voice  
-  - T1: My rough voice scratched the quiet; the sim didnâ€™t flinch.  
+  - T1: My rough voice scratched the quiet; the sim didn't flinch.  
   - T2: The room soaked up my barked phrases without complaint.  
   - T3: Even at peak, I heard my own tone snag the silence.
 
 - Ascetic  
-  - T1: Simple practice, no ornamentâ€”just enough.  
+  - T1: Simple practice, no ornament - just enough.  
   - T2: Plain focus suited me; nothing fancy to distract.  
   - T3: Pure effort, stripped clean, felt right.
 
 - Asexual  
   - T1: Calm company stayed on my terms.  
-  - T2: Connection was honest without any pull I didnâ€™t invite.  
+  - T2: Connection was honest without any pull I didn't invite.  
   - T3: Being understood without demand was enough.
 
 - Beautiful / Pretty  
@@ -100,7 +100,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: In the quiet, appearance mattered less, but I felt it.
 
 - Bisexual / Gay  
-  - T1: The simâ€™s warmth stayed in bounds I chose.  
+  - T1: The sim's warmth stayed in bounds I chose.  
   - T2: Shared moments felt open without pressure.  
   - T3: Being heard without demand felt enough.
 
@@ -125,7 +125,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Peak focus felt like a fight I could savor.
 
 - Cannibal  
-  - T1: The simâ€™s flavors stayed neutral; appetite still remembered.  
+  - T1: The sim's flavors stayed neutral; appetite still remembered.  
   - T2: Perfect meals felt hollow; a shadow hunger lingered.  
   - T3: Even at peak, taste carried a secret echo.
 
@@ -197,16 +197,16 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 - Kind  
   - T1: Easy practice felt like a small kindness to myself.  
   - T2: Shared effort felt better when no one was hurt.  
-  - T3: Being understood or helpingâ€”even hereâ€”mattered most.
+  - T3: Being understood or helpingeven heremattered most.
 
 - Lazy / Slothful  
   - T1: Moving slowly felt acceptable; no rush.  
-  - T2: Deeper effort dragged, but the sim didnâ€™t push.  
+  - T2: Deeper effort dragged, but the sim didn't push.  
   - T3: Even in focus, I let the world do more of the work.
 
 - Masochist  
   - T1: Mild strain carried a strange spark of pleasure.  
-  - T2: The simâ€™s pressure felt good in a quiet, private way.  
+  - T2: The sim's pressure felt good in a quiet, private way.  
   - T3: Pushing through the edge left a glow I liked.
 
 - Misandrist  
@@ -225,7 +225,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Peak moments felt fragile; I braced anyway.
 
 - Night Owl  
-  - T1: The sim felt like nightâ€”quiet and fitting.  
+  - T1: The sim felt like nightquiet and fitting.  
   - T2: Working in that hush felt natural.  
   - T3: In deep focus, it could have been midnight forever.
 
@@ -235,7 +235,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Every motion danced through the tightest spaces.
 
 - Nudist  
-  - T1: The simâ€™s air felt easy on skin, unhidden.  
+  - T1: The sim's air felt easy on skin, unhidden.  
   - T2: Work flowed better without any sense of cover.  
   - T3: Complete focus felt freer with nothing between me and the room.
 
@@ -250,12 +250,12 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Even at my best, I looked for what might fade.
 
 - Psychically Deaf / Dull  
-  - T1: The simâ€™s undertone was muted / faint.  
+  - T1: The sim's undertone was muted / faint.  
   - T2: Emotional hum stayed distant / soft.  
   - T3: At peak, the unseen layer was quiet / low.
 
 - Psychically Sensitive / Hypersensitive  
-  - T1: The simâ€™s undertone was present / loud.  
+  - T1: The sim's undertone was present / loud.  
   - T2: Emotional hum was noticeable / insistent.  
   - T3: At peak, the unseen layer was clear / overwhelming.
 
@@ -266,7 +266,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 
 - Pyromaniac  
   - T1: I missed the warmth of flame, even here.  
-  - T2: The simâ€™s calm begged for a spark.  
+  - T2: The sim's calm begged for a spark.  
   - T3: Perfect control felt like it needed fire.
 
 - Quick Sleeper  
@@ -290,7 +290,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T3: Mastery came with effort; I felt every inch.
 
 - Slowpoke  
-  - T1: I moved at my own pace; the sim didnâ€™t rush me.  
+  - T1: I moved at my own pace; the sim didn't rush me.  
   - T2: Tasks stretched out, and that felt normal.  
   - T3: Even in focus, I took the long way through.
 
@@ -317,7 +317,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
 - Tough  
   - T1: Light strain barely registered.  
   - T2: Deeper push felt manageable, almost easy.  
-  - T3: Intense effort met a body that wouldnâ€™t yield.
+  - T3: Intense effort met a body that wouldn't yield.
 
 - Trigger Happy  
   - T1: Quick shots scratched the itch to fire.  
@@ -444,4 +444,7 @@ Complete skill/tier base lines plus trait overlays for all listed traits. Combin
   - T1: I felt a gentle hum under everything; I chose to trust it.  
   - T2: Even the cracks seemed kind; I met them with warmth.  
   - T3: In the deepest flicker, I believed the sim meant well.
+
+
+
 
