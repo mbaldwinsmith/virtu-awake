@@ -9,6 +9,6 @@
     <showOnNeedList>true</showOnNeedList>
     <showForCaravanMembers>true</showForCaravanMembers>
     <colonistsOnly>false</colonistsOnly>
-    <listPriority>0.3</listPriority>
+    <listPriority>95</listPriority>
   </NeedDef>
 </Defs>

@@ -424,7 +424,7 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Finalize About metadata (author, description, preview image hook)  
 **Category:** Packaging  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (author + supported versions updated)  
 **Output:** Updated About/About.xml + preview image placeholder path  
 **Owner:** AI
 
@@ -598,6 +598,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Dependencies:** MEM-008  
 **Status:** DONE (multi-trait overlays now capped at three)  
 **Output:** Trait overlay appending logic limits to three matching overlays while keeping combos compatible  
+**Owner:** AI
+
+## TASK-BUG-016
+**Description:** Fix XML parse warning from fractional integer values (e.g., lucidity listPriority 0.3)  
+**Category:** Bugfix  
+**Dependencies:** None  
+**Status:** DONE (lucidity need uses integer listPriority)  
+**Output:** Needs_VirtuAwake.xml uses integer listPriority; load warnings resolved  
 **Owner:** AI
 
 ---
