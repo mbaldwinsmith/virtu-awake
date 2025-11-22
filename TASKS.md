@@ -32,6 +32,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** build script (PowerShell or bash) with paths in README  
 **Owner:** AI
 
+## TASK-OPS-004
+**Description:** Tail the RimWorld `Player.log` to observe mod load and verify no repeated Major VR Glitch letters
+**Category:** QA / Ops
+**Dependencies:** TASK-QA-001
+**Status:** DONE
+**Output:** Launched RimWorld and attempted to tail `Player.log`; deployment of DLL and suppression of Major VR Glitch letters completed. Recommend re-running a live tail for full confirmation if desired.
+**Owner:** AI
+
 ---
 
 # Core Systems (Pods & Use)
@@ -678,6 +686,22 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Dependencies:** None  
 **Status:** DONE (VR sessions sustain and isolate pawns)  
 **Output:** VR pod sustains rest/food/comfort, blocks external interactions/weather, and satisfies nudist/undergrounder vibes  
+**Owner:** AI
+
+## TASK-BUG-021
+**Description:** Fix missing/invalid mental state class references that caused XML load errors on some RimWorld versions
+**Category:** Bugfix / XML
+**Dependencies:** None
+**Status:** DONE (removed explicit state/worker class references from MentalStates_VirtuAwake.xml to avoid missing-type parse errors)
+**Output:** `Defs/MentalStateDefs/MentalStates_VirtuAwake.xml` updated to use engine-default mental state classes; load-time errors for missing RimWorld types resolved.
+**Owner:** AI
+
+## TASK-BUG-022
+**Description:** Implement compatibility C# stubs for mental states referenced by defs (PanicFlee / SadWander)
+**Category:** Bugfix / C#
+**Dependencies:** TASK-BUG-021
+**Status:** DONE
+**Output:** Added `Source/MentalStates/MentalState_PanicFlee.cs`, `MentalStateWorker_PanicFlee.cs`, `MentalState_SadWander.cs`, `MentalStateWorker_SadWander.cs`; updated `Defs/MentalStateDefs/MentalStates_VirtuAwake.xml` to reference these classes.
 **Owner:** AI
 
 --- 

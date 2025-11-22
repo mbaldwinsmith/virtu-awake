@@ -4,6 +4,9 @@
     <defName>VA_PanicAwakening</defName>
     <label>simulation panic</label>
     <description>The seams split open and nothing felt real. Fight-or-flight triggered inside the headset.</description>
+    <!-- Compatibility: explicit state/worker classes are provided so these mental states can be referenced
+         directly by name in code and other defs. These classes are implemented in Source/MentalStates/*.cs
+         to avoid missing-type load errors on vanilla and modded RimWorld builds. -->
     <stateClass>MentalState_PanicFlee</stateClass>
     <workerClass>MentalStateWorker_PanicFlee</workerClass>
     <category>Aggro</category>
@@ -23,6 +26,7 @@
     <defName>VA_Derealisation</defName>
     <label>derealisation walk</label>
     <description>The world repeats like a cheap loop. The pawn wanders, trying to find a corner that isn't duplicated.</description>
+    <!-- Compatibility: explicit SadWander classes added in Source/MentalStates so the def can reference them. -->
     <stateClass>MentalState_SadWander</stateClass>
     <workerClass>MentalStateWorker_SadWander</workerClass>
     <category>Misc</category>

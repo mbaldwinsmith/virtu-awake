@@ -60,5 +60,9 @@
     <Compile Include="Util\ReservationPatches.cs" />
     <Compile Include="Util\VRSessionTracker.cs" />
     <Compile Include="Util\RomancePatches.cs" />
+    <Compile Include="MentalStates\MentalState_PanicFlee.cs" />
+    <Compile Include="MentalStates\MentalStateWorker_PanicFlee.cs" />
+    <Compile Include="MentalStates\MentalState_SadWander.cs" />
+    <Compile Include="MentalStates\MentalStateWorker_SadWander.cs" />
   </ItemGroup>
 </Project>

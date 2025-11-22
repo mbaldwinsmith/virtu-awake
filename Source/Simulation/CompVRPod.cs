@@ -822,10 +822,8 @@ namespace VirtuAwake
                 Log.Message($"[VA] Glitch memory {glitch.defName} applied to {pawn.LabelShortCap} (lucidity {luc:F2}, instability {inst:F2}, mood {mood:F2}).");
             }
 
-            if (severity == GlitchSeverity.Major)
-            {
-                SendGlitchLetter(pawn, glitch);
-            }
+            // Major VR glitch letters are disabled to prevent player spam.
+            // Previously sent here, but intentionally suppressed entirely.
         }
 
         private ThoughtDef PickGlitchThought(Pawn pawn, float luc, float inst, GlitchSeverity severity)
@@ -1168,7 +1166,8 @@ namespace VirtuAwake
 
             if (HasTrait(traits, "Nervous") || HasTrait(traits, "Wimp"))
             {
-                def = GetMentalState("VA_PanicAwakening") ?? GetMentalState("PanicFlee");
+                // Prefer the vanilla PanicFlee mental state if available, otherwise fall back to the VA_PanicAwakening definition.
+                def = GetMentalState("PanicFlee") ?? GetMentalState("VA_PanicAwakening");
             }
             else if (HasTrait(traits, "Gourmand"))
             {
@@ -1188,7 +1187,8 @@ namespace VirtuAwake
             }
             else if (HasTrait(traits, "Depressive"))
             {
-                def = GetMentalState("VA_Derealisation") ?? GetMentalState("SadWander");
+                // Prefer the vanilla SadWander mental state if available, otherwise fall back to the VA_Derealisation definition.
+                def = GetMentalState("SadWander") ?? GetMentalState("VA_Derealisation");
             }
             else if (HasTrait(traits, "Abrasive"))
             {
