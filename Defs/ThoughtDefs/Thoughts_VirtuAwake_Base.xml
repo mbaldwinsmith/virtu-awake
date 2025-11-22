@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Base non-trait VR memories for generic experiences and severities -->
+  <ThoughtDef>
+    <defName>VA_VRMemory_Base_SoftGlint</defName>
+    <label>soft glint in the sim</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>soft glint in the sim</label>
+        <description>A gentle shimmer ran through the scene. It felt like the simulation breathed with me.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRMemory_Base_ParallaxEcho</defName>
+    <label>parallax echo</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>parallax echo</label>
+        <description>Background and foreground slid out of sync for a heartbeat, like the world was two layers taped together.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRMemory_Base_HeavyExit</defName>
+    <label>heavy VR exit</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>heavy VR exit</label>
+        <description>Leaving the sim felt like stepping out of wet clothes; gravity came back in chunks.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRMemory_Base_CrisisStutter</defName>
+    <label>crisis stutter</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>2.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>crisis stutter</label>
+        <description>Everything froze mid-scream, then resumed without sound. The silence stuck to me afterward.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

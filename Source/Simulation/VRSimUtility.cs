@@ -149,6 +149,12 @@ namespace VirtuAwake
                 chosen = simType.thoughtOnSession ?? simType.thoughtTier1;
             }
 
+            // Trait-specific and base fallbacks to ensure a memory always fires.
+            if (chosen == null)
+            {
+                chosen = PickTraitMemory(pawn) ?? PickBaseMemory(tier);
+            }
+
             if (chosen != null)
             {
                 pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
@@ -411,6 +417,73 @@ namespace VirtuAwake
             }
 
             return best;
+        }
+
+        private static ThoughtDef PickTraitMemory(Pawn pawn)
+        {
+            if (pawn?.story?.traits == null)
+            {
+                return null;
+            }
+
+            var candidates = new List<ThoughtDef>();
+
+            TryAddTraitMemory(pawn, candidates, "Pessimist", "VA_VRTrait_Pessimist");
+            TryAddTraitMemory(pawn, candidates, "Optimist", "VA_VRTrait_Optimist");
+            TryAddTraitMemory(pawn, candidates, "TooSmart", "VA_VRTrait_TooSmart");
+            TryAddTraitMemory(pawn, candidates, "Paranoid", "VA_VRTrait_Paranoid");
+            TryAddTraitMemory(pawn, candidates, "Sanguine", "VA_VRTrait_Sanguine");
+            TryAddTraitMemory(pawn, candidates, "Masochist", "VA_VRTrait_Masochist");
+            TryAddTraitMemory(pawn, candidates, "Pyromaniac", "VA_VRTrait_Pyromaniac");
+            TryAddTraitMemory(pawn, candidates, "Ascetic", "VA_VRTrait_Ascetic");
+            TryAddTraitMemory(pawn, candidates, "Greedy", "VA_VRTrait_Greedy");
+            TryAddTraitMemory(pawn, candidates, "Kind", "VA_VRTrait_Kind");
+            TryAddTraitMemory(pawn, candidates, "BodyPurist", "VA_VRTrait_BodyPurist");
+            TryAddTraitMemory(pawn, candidates, "Psychopath", "VA_VRTrait_Psychopath");
+
+            if (candidates.Count == 0)
+            {
+                return null;
+            }
+
+            return candidates.RandomElement();
+        }
+
+        private static ThoughtDef PickBaseMemory(int tier)
+        {
+            // Map tiers to simple base experiences; higher tiers lean darker.
+            switch (tier)
+            {
+                case 1:
+                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_SoftGlint");
+                case 2:
+                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_ParallaxEcho");
+                default:
+                    // Random between the heavier exits/crisis memories.
+                    if (Rand.Chance(0.5f))
+                    {
+                        var crisis = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_CrisisStutter");
+                        if (crisis != null)
+                        {
+                            return crisis;
+                        }
+                    }
+                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_HeavyExit");
+            }
+        }
+
+        private static void TryAddTraitMemory(Pawn pawn, List<ThoughtDef> list, string traitDefName, string thoughtDefName)
+        {
+            if (!HasTrait(pawn, traitDefName))
+            {
+                return;
+            }
+
+            ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail(thoughtDefName);
+            if (thought != null)
+            {
+                list.Add(thought);
+            }
         }
 
         private static List<string> GetTraitsForVariant(TraitMemoryVariant variant)

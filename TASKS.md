@@ -232,17 +232,17 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add base VR memory thoughts (non-trait) per severity/experience  
 **Category:** XML  
 **Dependencies:** EVT-003  
-**Status:** TODO  
+**Status:** DONE (base VR memories added and wired as fallbacks in VRSimUtility)  
 **Output:** Thoughts_VirtuAwake_Base.xml  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-MEM-002
 **Description:** Add trait-specific VR memories (single-trait)  
 **Category:** XML  
 **Dependencies:** SIM-004  
-**Status:** TODO  
+**Status:** DONE (single-trait VR memories added and wired as fallbacks in VRSimUtility)  
 **Output:** Thoughts_VR_Traits.xml  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-MEM-003
 **Description:** Add dual-trait legendary memories  

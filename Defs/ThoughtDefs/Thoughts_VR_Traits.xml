@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Single-trait VR memories -->
+  <ThoughtDef>
+    <defName>VA_VRTrait_Pessimist</defName>
+    <label>VR cynic moment</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>VR cynic moment</label>
+        <description>The sim tried to impress me with lens flare. I spotted the seams instead.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Optimist</defName>
+    <label>VR silver lining</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>VR silver lining</label>
+        <description>The sim glitched into a brighter palette. Maybe the machine is rooting for me.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_TooSmart</defName>
+    <label>pattern spotted in VR</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>pattern spotted in VR</label>
+        <description>The loading hitches lined up with the music beat. The system thinks I won't notice.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Paranoid</defName>
+    <label>observed by the sim</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>observed by the sim</label>
+        <description>Avatar eyes tracked me just a bit too long. Someone is definitely on the other side.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Sanguine</defName>
+    <label>chill VR drift</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>chill VR drift</label>
+        <description>The sim hiccuped, but it was still a cozy place to float.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Masochist</defName>
+    <label>sharp VR twinge</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>sharp VR twinge</label>
+        <description>The pain filter spiked once. It felt oddly grounding.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Pyromaniac</defName>
+    <label>virtual spark joy</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>virtual spark joy</label>
+        <description>The flames were fake, but they danced just for me.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Ascetic</defName>
+    <label>quiet VR space</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>quiet VR space</label>
+        <description>The scenery faded to simple shapes. Finally, some clean lines.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Greedy</defName>
+    <label>VR treasure glitch</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>VR treasure glitch</label>
+        <description>A shower of fake currency rained for a second. I deserve the real payout.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Kind</defName>
+    <label>comforting sim presence</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>comforting sim presence</label>
+        <description>A calm voice in the sim said my name and meant it. Even if it was code, it felt warm.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_BodyPurist</defName>
+    <label>uncanny avatar</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>uncanny avatar</label>
+        <description>The sim offered a new body as a reward. I kept my own, thanks.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRTrait_Psychopath</defName>
+    <label>clinical VR note</label>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>clinical VR note</label>
+        <description>I logged how NPCs broke when pushed. Useful data.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>
