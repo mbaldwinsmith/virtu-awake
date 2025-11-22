@@ -72,8 +72,8 @@ namespace VirtuAwake
 
         public static SimTypeDef ResolveBestSimTypeForPawn(Pawn pawn, SimTypeDef fallback)
         {
-            SimTypeDef best = null;
-            float bestScore = 0f;
+            var scored = new List<(SimTypeDef sim, float weight)>();
+
             foreach (SimTypeDef sim in DefDatabase<SimTypeDef>.AllDefsListForReading)
             {
                 if (sim.primarySkill == null || sim.skillWeights == null || sim.skillWeights.Count == 0)
@@ -82,20 +82,36 @@ namespace VirtuAwake
                 }
 
                 float score = ScoreSimForPawn(pawn, sim);
-                // Slight preference to the explicitly configured sim type on the building, but still choose by passion.
                 if (fallback != null && sim == fallback)
                 {
                     score *= 1.05f;
                 }
 
-                if (score > bestScore)
+                if (score <= 0f)
                 {
-                    bestScore = score;
-                    best = sim;
+                    continue;
                 }
+
+                // Add a deterministic random variance so picks vary over time.
+                int seed = pawn?.thingIDNumber.GetHashCode() ?? 0;
+                int mix = seed ^ sim.defName.GetHashCode();
+                Rand.PushState(mix);
+                float variance = Rand.Range(0.65f, 1.35f);
+                Rand.PopState();
+
+                float finalWeight = score * variance;
+                scored.Add((sim, finalWeight));
             }
 
-            return best ?? fallback ?? DefaultSimType;
+            if (scored.Count == 0)
+            {
+                return fallback ?? DefaultSimType;
+            }
+
+            var top = scored.OrderByDescending(s => s.weight).Take(3).ToList();
+            return top.TryRandomElementByWeight(s => s.weight, out var chosen)
+                ? chosen.sim
+                : fallback ?? DefaultSimType;
         }
 
         public static void TryGiveSimMemory(Pawn pawn, SimTypeDef simType)
@@ -109,7 +125,6 @@ namespace VirtuAwake
             int tier = PickTier(pawn, dominantSkill);
 
             ThoughtDef comboThought = PickComboThought(pawn, tier);
-            bool skillBlocked = HasActiveSkillMemory(pawn, dominantSkill);
 
             float joyGain = simType.joyGainTier1;
             ThoughtDef chosen = tier switch
@@ -134,16 +149,13 @@ namespace VirtuAwake
                 chosen = simType.thoughtOnSession ?? simType.thoughtTier1;
             }
 
-            bool memoryGranted = false;
-            if (chosen != null && !HasActiveThought(pawn, chosen) && !skillBlocked)
+            if (chosen != null)
             {
                 pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
-                memoryGranted = true;
             }
-            else if (chosen != null && simType.thoughtOnSession != null && !HasActiveThought(pawn, simType.thoughtOnSession) && !HasActiveSkillMemory(pawn, dominantSkill))
+            else if (simType.thoughtOnSession != null)
             {
                 pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(simType.thoughtOnSession);
-                memoryGranted = true;
             }
 
             var joy = pawn.needs?.joy;
@@ -151,11 +163,6 @@ namespace VirtuAwake
             {
                 JoyKindDef kind = (dominantSkill ?? simType.primarySkill) == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative;
                 joy.GainJoy(joyGain, kind);
-            }
-
-            if (!memoryGranted && Prefs.DevMode)
-            {
-                Log.Message($"[VA] Skipped awarding duplicate memory {chosen?.defName ?? "null"} for {pawn.LabelShortCap} (same thought or skill still active). Joy still granted.");
             }
         }
 
@@ -180,73 +187,6 @@ namespace VirtuAwake
             }
 
             return score;
-        }
-
-        private static bool HasActiveThought(Pawn pawn, ThoughtDef def)
-        {
-            var memories = pawn?.needs?.mood?.thoughts?.memories?.Memories;
-            if (memories == null || def == null)
-            {
-                return false;
-            }
-
-            foreach (var mem in memories)
-            {
-                if (mem?.def == def && mem.CurStageIndex >= 0)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private static bool HasActiveSkillMemory(Pawn pawn, SkillDef skill)
-        {
-            if (pawn == null || skill == null)
-            {
-                return false;
-            }
-
-            var memories = pawn.needs?.mood?.thoughts?.memories?.Memories;
-            if (memories == null)
-            {
-                return false;
-            }
-
-            foreach (var mem in memories)
-            {
-                ThoughtDef memDef = mem?.def;
-                if (memDef == null || string.IsNullOrEmpty(memDef.defName))
-                {
-                    continue;
-                }
-
-                if (ThoughtMatchesSkill(memDef, skill) && mem.CurStageIndex >= 0)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private static bool ThoughtMatchesSkill(ThoughtDef def, SkillDef skill)
-        {
-            if (def == null || skill == null || string.IsNullOrEmpty(def.defName))
-            {
-                return false;
-            }
-
-            string name = def.defName.ToLowerInvariant();
-            if (!(name.StartsWith("va_vrmemory") || name.StartsWith("va_vrcombo")))
-            {
-                return false;
-            }
-
-            int tierIndex = name.LastIndexOf("_t", System.StringComparison.Ordinal);
-            string core = tierIndex > 0 ? name.Substring(0, tierIndex) : name;
-            return core.Contains(skill.defName.ToLowerInvariant());
         }
 
         private static SkillDef GetDominantSkill(Pawn pawn, SimTypeDef simType)

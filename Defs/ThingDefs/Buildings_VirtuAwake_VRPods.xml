@@ -31,6 +31,12 @@
         <tickInterval>250</tickInterval>
         <simType>VA_Sim_Recreation</simType>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>0</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
     </comps>
   </ThingDef>
 

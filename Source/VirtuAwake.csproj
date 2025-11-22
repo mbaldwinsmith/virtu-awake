@@ -48,5 +48,6 @@
     <Compile Include="Util\Gizmo_VRPawnStatus.cs" />
     <Compile Include="Util\InteractionPatches.cs" />
     <Compile Include="Util\VRSessionTracker.cs" />
+    <Compile Include="Util\RomancePatches.cs" />
   </ItemGroup>
 </Project>

@@ -211,6 +211,51 @@
     </stages>
   </ThoughtDef>
   <ThoughtDef>
+    <defName>VA_VRGlitch_Negative_Warp</defName>
+    <label>warping glitch</label>
+    <description>The room stretched and folded; my stomach followed.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>warped sense</label>
+        <description>I felt space bend and twist around me.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Positive_Lull</defName>
+    <label>lulling glitch</label>
+    <description>A rhythmic hum slipped through the sim and lulled me.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.7</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>glitch lullaby</label>
+        <description>I sank into the pulse like a lullaby.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Neutral_Pause</defName>
+    <label>paused glitch</label>
+    <description>Everything stopped for a beat; I counted the silence.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.6</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>held breath</label>
+        <description>I held still with the frozen sim.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
     <defName>VA_VRGlitch_Positive_Calm</defName>
     <label>soothing glitch</label>
     <description>A calm pulse rolled through the break and eased me.</description>

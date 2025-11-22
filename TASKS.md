@@ -296,6 +296,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Breakout orchestration runs when lucidity >= 90%, invoking prisoner/slave breaks or mental state starts  
 **Owner:** AI
 
+## TASK-BUG-020
+**Description:** Make VR pods act as power sources (no idle draw) and expand sim variety/stacking memories  
+**Category:** Bugfix / Mechanics  
+**Dependencies:** None  
+**Status:** DONE (power source + sim variety)  
+**Output:** VR pods transmit power without conduits, generate 1–2kW when occupied, randomised sim choice from passion/skill, and sim memories can stack  
+**Owner:** AI
+
 ---
 
 # UI & UX

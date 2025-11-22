@@ -21,6 +21,7 @@ namespace VirtuAwake
         private readonly Dictionary<Pawn, int> benefitTimers = new Dictionary<Pawn, int>();
         private readonly HashSet<int> breakoutTriggered = new HashSet<int>();
         private const bool DebugVR = false;
+        private const float IdlePowerDraw = 0f;
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
 
@@ -60,6 +61,7 @@ namespace VirtuAwake
         {
             if (this.currentUsers.Count == 0)
             {
+                UpdatePowerOutput(null);
                 return;
             }
 
@@ -112,6 +114,8 @@ namespace VirtuAwake
                     Hediff inst = pawn.health?.hediffSet?.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamedSilentFail("VA_Instability"));
                     CheckBreakout(pawn, lucidity);
                     TryTriggerGlitch(pawn, lucidity, inst, simType);
+                    float powerNow = UpdatePowerOutput(pawn);
+                    ApplyInstabilityFromPower(inst, powerNow);
                 }
 
                 this.memoryTimers[pawn] = memTimer;
@@ -141,6 +145,7 @@ namespace VirtuAwake
                     Log.Message($"[VA] SetUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
                 }
             }
+            UpdatePowerOutput(null);
         }
 
         public void AddUser(Pawn pawn)
@@ -157,6 +162,7 @@ namespace VirtuAwake
                     Log.Message($"[VA] AddUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
                 }
             }
+            UpdatePowerOutput(null);
         }
 
         public void RemoveUser(Pawn pawn)
@@ -173,6 +179,10 @@ namespace VirtuAwake
                 {
                     Log.Message($"[VA] RemoveUser: {pawn.LabelShortCap} removed from {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
                 }
+            }
+            if (this.currentUsers.Count == 0)
+            {
+                UpdatePowerOutput(null);
             }
         }
 
@@ -707,6 +717,7 @@ namespace VirtuAwake
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_Shatter"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_Echo"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_Warp"));
                 if (paranoid && psychic)
                 {
                     pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_ParanoidSensitive"));
@@ -722,6 +733,7 @@ namespace VirtuAwake
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Archive"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Detached"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Pause"));
             }
 
             if (sanguine && severity != GlitchSeverity.Major)
@@ -730,6 +742,7 @@ namespace VirtuAwake
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Calm"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_SanguineModder"));
                 pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Halo"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Lull"));
             }
             else if (severity != GlitchSeverity.Major)
             {
@@ -904,6 +917,41 @@ namespace VirtuAwake
                     memories.RemoveMemoriesOfDef(soaked);
                 }
             }
+        }
+
+        private float UpdatePowerOutput(Pawn pawn)
+        {
+            var power = this.parent?.TryGetComp<CompPowerTrader>();
+            if (power == null)
+            {
+                return 0f;
+            }
+
+            if (pawn == null)
+            {
+                power.PowerOutput = IdlePowerDraw;
+                return IdlePowerDraw;
+            }
+
+            float mood = pawn.needs?.mood?.CurLevel ?? 0.5f;
+            float deviation = Mathf.Abs(mood - 0.5f); // 0..0.5
+            float extremeness = Mathf.Clamp01(deviation / 0.5f);
+            float output = Mathf.Lerp(1000f, 2000f, extremeness);
+            power.PowerOutput = output;
+            return output;
+        }
+
+        private void ApplyInstabilityFromPower(Hediff instability, float powerOutput)
+        {
+            if (instability == null || powerOutput <= 0f)
+            {
+                return;
+            }
+
+            // Scale instability gain based on power output; 2000w -> full tick, 1000w -> half tick.
+            float factor = Mathf.InverseLerp(1000f, 2000f, powerOutput);
+            float gain = this.Props.instabilityGainPerTick * 0.5f + (this.Props.instabilityGainPerTick * factor);
+            instability.Severity = Mathf.Clamp(instability.Severity + gain, 0f, instability.def.maxSeverity);
         }
 
         private void CheckBreakout(Pawn pawn, Need_Lucidity lucidity)
