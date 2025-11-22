@@ -1191,12 +1191,61 @@ namespace VirtuAwake
             }
 
             def ??= GetMentalState("Berserk");
-            pawn.mindState?.mentalStateHandler?.TryStartMentalState(def, "VR breakout", forceWake: true);
+            bool started = pawn.mindState?.mentalStateHandler?.TryStartMentalState(def, "VR breakout", forceWake: true) ?? false;
+            GiveAwakeningMemory(pawn, started ? def : null);
         }
 
         private MentalStateDef GetMentalState(string defName)
         {
             return DefDatabase<MentalStateDef>.GetNamedSilentFail(defName) ?? MentalStateDefOf.Berserk;
+        }
+
+        private void GiveAwakeningMemory(Pawn pawn, MentalStateDef state)
+        {
+            var memories = pawn?.needs?.mood?.thoughts?.memories;
+            if (memories == null)
+            {
+                return;
+            }
+
+            string thoughtDefName = null;
+            string stateName = state?.defName;
+
+            switch (stateName)
+            {
+                case "PanicFlee":
+                    thoughtDefName = "VA_Awakening_PanicBreak";
+                    break;
+                case "SadWander":
+                    thoughtDefName = "VA_Awakening_SadWander";
+                    break;
+                case "FireStartingSpree":
+                    thoughtDefName = "VA_Awakening_PyroRapture";
+                    break;
+                case "Berserk":
+                case "InsultingSpree":
+                    thoughtDefName = "VA_Awakening_BerserkReality";
+                    break;
+                default:
+                    thoughtDefName = "VA_Awakening_CompliantCalm";
+                    break;
+            }
+
+            ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail(thoughtDefName);
+            if (thought == null)
+            {
+                return;
+            }
+
+            if (!memories.Memories.Any(m => m?.def == thought))
+            {
+                memories.TryGainMemory(thought);
+
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA] Awakening memory {thoughtDefName} applied to {pawn.LabelShortCap} (state {stateName ?? "none"}).");
+                }
+            }
         }
 
         private enum GlitchSeverity

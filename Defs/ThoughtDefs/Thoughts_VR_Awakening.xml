@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Awakening memories keyed to the type of mental break that exposed the seams -->
+  <ThoughtDef>
+    <defName>VA_Awakening_CompliantCalm</defName>
+    <label>calm awakening ripple</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>2.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>soft compliance</label>
+        <description>A polite system prompt flickered over everything: "Thank you for your cooperation." The world felt like it was waiting for my next click.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Pessimist</trait>
+            <text>The simulation was a sham, what a surprise!</text>
+          </li>
+          <li>
+            <trait>Optimist</trait>
+            <text>If the world is fake, at least it says please and thank you.</text>
+          </li>
+          <li>
+            <trait>TooSmart</trait>
+            <text>The UI tried to hide its math. It blinked at the wrong Hertz.</text>
+          </li>
+          <li>
+            <trait>Paranoid</trait>
+            <text>The polite overlay felt like someone knocking on the inside of the screen.</text>
+          </li>
+          <li>
+            <trait>Ascetic</trait>
+            <text>Even the fake interface could have used fewer flourishes.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_Awakening_PanicBreak</defName>
+    <label>panic awakening glitch</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>3.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>fight-or-flight seams</label>
+        <description>In the middle of a panic break the walls duplicated, HUD elements desynced, and a dozen exit arrows pointed nowhere.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Pessimist</trait>
+            <text>Even the panic was scripted. Figures.</text>
+          </li>
+          <li>
+            <trait>Neurotic</trait>
+            <text>I made a to-do list for every ghost wall just in case.</text>
+          </li>
+          <li>
+            <trait>Paranoid</trait>
+            <text>The exits were probably just observation slits for whoever's watching.</text>
+          </li>
+          <li>
+            <trait>Masochist</trait>
+            <text>The surge of fear at least felt honest.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>Hey, at least I got a cardio session out of my existential crisis.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_Awakening_SadWander</defName>
+    <label>derealised awakening</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>4.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>hollow stroll</label>
+        <description>During the sad wander, the horizon repeated like a bad screensaver. Each step felt like walking across the debug room.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Pessimist</trait>
+            <text>Of course the sky was a jpeg. Why wouldn't it be?</text>
+          </li>
+          <li>
+            <trait>Depressive</trait>
+            <text>The only honest thing here was the emptiness.</text>
+          </li>
+          <li>
+            <trait>BodyPurist</trait>
+            <text>Even my footsteps sounded aftermarket.</text>
+          </li>
+          <li>
+            <trait>PsychicallySensitive</trait>
+            <text>I could feel the speakers hum behind the stars.</text>
+          </li>
+          <li>
+            <trait>Kind</trait>
+            <text>I should warn the others gently, before their sky folds too.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_Awakening_BerserkReality</defName>
+    <label>violent awakening</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>5.0</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>shattered UI</label>
+        <description>Rage broke through the interface. Health bars bled into the air; the world stuttered between targets.</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Bloodlust</trait>
+            <text>Nice touch: the hit sparks looked extra fake when I started swinging.</text>
+          </li>
+          <li>
+            <trait>Psychopath</trait>
+            <text>The UI tearing was pretty. Shame about the screaming.</text>
+          </li>
+          <li>
+            <trait>Brawler</trait>
+            <text>Frames dropped; fists landed. Felt good.</text>
+          </li>
+          <li>
+            <trait>Pessimist</trait>
+            <text>Even my tantrum was just another animation state.</text>
+          </li>
+          <li>
+            <trait>Wimp</trait>
+            <text>Turns out the only thing softer than me was the floor texture.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_Awakening_PyroRapture</defName>
+    <label>fiery awakening</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>3.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>burned masking layer</label>
+        <description>Fire licked the air and peeled back the colour grading. For a moment, the fake shadows looked honest.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Pyromaniac</trait>
+            <text>At least flames render correctly in any reality.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The glow almost made the apocalypse cozy.</text>
+          </li>
+          <li>
+            <trait>Ascetic</trait>
+            <text>Fire stripped away the clutter. Simple, pure.</text>
+          </li>
+          <li>
+            <trait>Greedy</trait>
+            <text>If the world is fake, I deserve the best seat by the fire.</text>
+          </li>
+          <li>
+            <trait>Pessimist</trait>
+            <text>Great, even the arson was part of the script.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+</Defs>

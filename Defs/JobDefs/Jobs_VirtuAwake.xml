@@ -33,6 +33,5 @@
     <casualInterruptible>true</casualInterruptible>
     <playerInterruptible>true</playerInterruptible>
     <checkOverrideOnDamage>Always</checkOverrideOnDamage>
-    <workSkill>Intellectual</workSkill>
   </JobDef>
 </Defs>

@@ -116,9 +116,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Define awakening tier thoughts (Compliant, Flicker, Dissociation, Realisation, Breakthrough) tied to Lucidity thresholds  
 **Category:** XML  
 **Dependencies:** PSY-001, PSY-002  
-**Status:** TODO  
+**Status:** DONE (awakening ThoughtDefs with trait variants)  
 **Output:** ThoughtDefs_VR_Awakening.xml with stage-tied mood effects  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-PSY-005
 **Description:** Add mental states for high lucidity/instability (panic, derealisation)  
@@ -196,9 +196,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Create SimType defs (Combat, Artistic, Nature, Medicine, Social, Intellectual, etc.)  
 **Category:** XML  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (VirtuSimTypes.xml authored with skill weights and labels)  
 **Output:** Defs/VirtuSimTypes.xml with XP mappings and weights  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-SIM-002
 **Description:** Implement SimType-driven XP application utility  
@@ -212,9 +212,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Create social VR session job (two pawns enter linked pods)  
 **Category:** C#  
 **Dependencies:** CORE-001, SIM-001  
-**Status:** TODO  
+**Status:** DONE (JobDriver_UseVRPodSocial + float menu pairing)  
 **Output:** JobDriver_EnterSocialVR for linked pods, paired toil logic, social memories hook  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-SIM-004
 **Description:** Add trait-aware VR memory selector for events/sessions  
