@@ -11,15 +11,4 @@
       <li>VA_VRPod_Basic</li>
     </thingDefs>
   </JoyGiverDef>
-  <JoyGiverDef>
-    <defName>VA_Joy_UseVirtuDreamPod</defName>
-    <giverClass>VirtuAwake.JoyGiver_UseVRPod</giverClass>
-    <jobDef>VA_UseVirtuDreamPod</jobDef>
-    <joyKind>Meditative</joyKind>
-    <baseChance>0.6</baseChance>
-    <pctPawnsEverDo>1.0</pctPawnsEverDo>
-    <thingDefs>
-      <li>VA_VirtuDreamPod</li>
-    </thingDefs>
-  </JoyGiverDef>
 </Defs>

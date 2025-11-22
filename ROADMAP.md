@@ -14,7 +14,7 @@ This document outlines planned features, prioritised development stages, and lon
 - Skill-based VR training (SimTypes)
 - Social VR sessions (two-pawn scenes)
 
-### ✔ Virtu-Dream Pods
+### ✖ Virtu-Dream Pods (removed)
 - Long-term immersion
 - Nutrient pipe support (VFE integration)
 - Suspended animation logic

@@ -33,7 +33,7 @@ namespace VirtuAwake
                     return false;
                 }
 
-                return defName == "VA_UseVRPod" || defName == "VA_UseVirtuDreamPod" || defName == "VA_UseVRPodSocial";
+                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial";
             }
         }
     }

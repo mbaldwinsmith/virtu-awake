@@ -45,11 +45,11 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** AI
 
 ## TASK-CORE-002
-**Description:** Implement Virtu-Dream Pod (long-term immersion)  
+**Description:** Implement Virtu-Dream Pod (long-term immersion) — removed per design change  
 **Category:** C# / Building System  
 **Dependencies:** CORE-001  
-**Status:** DONE  
-**Output:** Building_VirtuDreamPod, JobDriver_UseVirtuDreamPod (indefinite), JoyGiver, ThingDef  
+**Status:** DONE (feature removed)  
+**Output:** Dream pod definitions and jobs removed from the mod  
 **Owner:** AI
 
 ## TASK-CORE-003
@@ -77,12 +77,12 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** AI
 
 ## TASK-CORE-005
-**Description:** Add nutrient/power maintenance hooks for Virtu-Dream Pod (optional VFE nutrient pipe support)  
+**Description:** Add nutrient/power maintenance hooks for Virtu-Dream Pod (optional VFE nutrient pipe support) — removed with dream pod  
 **Category:** C# / Integration  
 **Dependencies:** CORE-002  
-**Status:** TODO  
-**Output:** Comp for nutrient consumption; fallback to hunger/rest if absent  
-**Owner:** Unassigned
+**Status:** DONE (not applicable after dream pod removal)  
+**Output:** No nutrient support needed; feature retired  
+**Owner:** AI
 
 ---
 
@@ -105,7 +105,7 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** AI
 
 ## TASK-PSY-003
-**Description:** Link pod usage ticks to Lucidity gain and Instability progression; add CompProps tuning (VR vs Dream pods), trait multipliers, session caps, and out-of-pod decay  
+**Description:** Link pod usage ticks to Lucidity gain and Instability progression; add CompProps tuning for VR pods, trait multipliers, session caps, and out-of-pod decay  
 **Category:** C# / Mechanics  
 **Dependencies:** PSY-001, PSY-002, CORE-001  
 **Status:** DONE (VR pod ticks adjust lucidity/instability with trait + long-term tuning)  
@@ -301,7 +301,7 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** AI
 
 ## TASK-UI-002
-**Description:** Add pod gizmos for eject/cancel/session info (VR + Dream pods)  
+**Description:** Add pod gizmos for eject/cancel/session info (VR pods)  
 **Category:** C# / UI  
 **Dependencies:** CORE-001  
 **Status:** TODO  
@@ -329,12 +329,12 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** Unassigned
 
 ## TASK-ART-002
-**Description:** Create Virtu-Dream Pod sprites  
+**Description:** Create Virtu-Dream Pod sprites — removed with dream pod  
 **Category:** Art  
 **Dependencies:** CORE-002  
-**Status:** TODO  
-**Output:** Textures/Things/Building/VA_VirtuDreamPod.png (+ variants)  
-**Owner:** Unassigned
+**Status:** DONE (not needed)  
+**Output:** No sprite required; feature retired  
+**Owner:** AI
 
 ## TASK-ART-003
 **Description:** Add glitch overlay FX for events  
@@ -385,12 +385,12 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** Unassigned
 
 ## TASK-COMP-003
-**Description:** Add VFE nutrient pipe integration patch for Virtu-Dream Pod  
+**Description:** Add VFE nutrient pipe integration patch for Virtu-Dream Pod — removed with dream pod  
 **Category:** C# / Patch  
 **Dependencies:** CORE-005  
-**Status:** TODO  
-**Output:** PatchOperation or Harmony integration for nutrient pipes  
-**Owner:** Unassigned
+**Status:** DONE (not applicable)  
+**Output:** No nutrient patch required after dream pod removal  
+**Owner:** AI
 
 ---
 
@@ -405,9 +405,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Owner:** AI
 
 ## TASK-QA-002
-**Description:** Playtest checklist for MVP (VR Pod, Dream Pod, lucidity/instability loop)  
+**Description:** Playtest checklist for MVP (VR pod + lucidity/instability loop; dream pod removed)  
 **Category:** QA  
-**Dependencies:** CORE-002, PSY-003  
+**Dependencies:** CORE-001, PSY-003  
 **Status:** TODO  
 **Output:** PLAYTEST.md with scenarios and expected outcomes  
 **Owner:** Unassigned
@@ -621,11 +621,11 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 
 
 ## TASK-CORE-006
-**Description:** Allow VR Pod to run long-term simulation sessions (repurposing VirtuDream job via right-click and pod target gizmo)  
+**Description:** Allow VR Pod to run long-term simulation sessions (feature retired with dream pod removal)  
 **Category:** C# / Core Gameplay  
 **Dependencies:** CORE-001, CORE-002  
-**Status:** DONE (long-term job + target gizmo wired)  
-**Output:** VR Pod float menu long-term option; pod gizmo assigns colonist/prisoner/slave to VA_UseVirtuDreamPod  
+**Status:** DONE (retired)  
+**Output:** Long-term option removed alongside dream pod  
 **Owner:** AI
 
 ## TASK-MEM-012
@@ -641,4 +641,5 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 - Fix memory triggering: currently interrupted by job finishing on short sessions and never fires on deep sessions.
 - Recreation gain is effectively zero even after minutes; rebalance/gate so it rises slowly but reliably post-threshold.
 - Pods now use `tickerType: Normal` so CompVRPod ticks fire; retest in-pod timers/joy/memories with Dev logs.
+- Dream pod removed; keep future tasks scoped to the standard VR pod only.
 

@@ -66,11 +66,11 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Owner:** AI
 
 ## TASK-CORE-002
-**Description:** Implement Virtu-Dream Pod (long-term immersion)  
+**Description:** Implement Virtu-Dream Pod (long-term immersion) — removed per design change  
 **Category:** C# / Building System  
 **Dependencies:** CORE-001  
-**Status:** DONE  
-**Output:** `Building_VirtuDreamPod`  
+**Status:** DONE (feature removed)  
+**Output:** Dream pod implementation removed from current build  
 **Owner:** AI
 
 ## TASK-CORE-003
@@ -294,12 +294,12 @@ Agents may claim tasks by setting `Owner: AI` and updating `Status`.
 **Owner:** Unassigned
 
 ## TASK-ART-002
-**Description:** Create Virtu-Dream Pod sprites  
+**Description:** Create Virtu-Dream Pod sprites — removed with dream pod  
 **Category:** Art  
 **Dependencies:** CORE-002  
-**Status:** TODO  
-**Output:** `/Textures/Buildings/VirtuDreamPod.png`  
-**Owner:** Unassigned
+**Status:** DONE (not needed)  
+**Output:** No sprite required; feature retired  
+**Owner:** AI
 
 ## TASK-ART-003
 **Description:** Add glitch overlay FX (optional)  

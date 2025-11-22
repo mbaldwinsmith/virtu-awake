@@ -34,39 +34,4 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="BuildingBase">
-    <defName>VA_VirtuDreamPod</defName>
-    <label>Virtu-dream pod</label>
-    <description>Designed for long-term immersion. Pawns enter a persistent simulation, resting while slowly drifting through deeper VR.</description>
-    <thingClass>VirtuAwake.Building_VirtuDreamPod</thingClass>
-    <graphicData>
-      <texPath>Things/Building/VA_VirtuDreamPod</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,1)</drawSize>
-    </graphicData>
-    <tickerType>Normal</tickerType>
-    <passability>Standable</passability>
-    <fillPercent>0</fillPercent>
-    <size>(2,1)</size>
-    <altitudeLayer>Building</altitudeLayer>
-    <designationCategory>Misc</designationCategory>
-    <costList>
-      <Steel>180</Steel>
-      <ComponentIndustrial>6</ComponentIndustrial>
-      <Uranium>20</Uranium>
-    </costList>
-    <statBases>
-      <WorkToBuild>2800</WorkToBuild>
-      <MaxHitPoints>320</MaxHitPoints>
-      <Flammability>0.35</Flammability>
-      <Beauty>3</Beauty>
-      <MeditationFocusStrength>0.1</MeditationFocusStrength>
-    </statBases>
-    <comps>
-      <li Class="VirtuAwake.CompProperties_VRPod">
-        <tickInterval>200</tickInterval>
-        <simType>VA_Sim_Social</simType>
-      </li>
-    </comps>
-  </ThingDef>
 </Defs>

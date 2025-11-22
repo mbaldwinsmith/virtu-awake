@@ -219,12 +219,7 @@ namespace VirtuAwake
                 return;
             }
 
-            bool longTerm = pawn.CurJob?.def?.defName == "VA_UseVirtuDreamPod";
             float lucidityGain = this.Props.lucidityGainPerTick * TraitLucidityFactor(pawn);
-            if (longTerm)
-            {
-                lucidityGain *= this.Props.lucidityGainLongTermMultiplier;
-            }
 
             lucidity.CurLevel = Mathf.Clamp01(lucidity.CurLevel + lucidityGain);
 
@@ -235,10 +230,6 @@ namespace VirtuAwake
             }
 
             float instGain = this.Props.instabilityGainPerTick * TraitInstabilityFactor(pawn);
-            if (longTerm)
-            {
-                instGain *= this.Props.instabilityGainLongTermMultiplier;
-            }
 
             if (lucidity.CurLevelPercentage >= this.Props.instabilityHighLucidityThreshold)
             {
@@ -379,7 +370,7 @@ namespace VirtuAwake
                 return false;
             }
 
-            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVirtuDreamPod" || job.defName == "VA_UseVRPodSocial";
+            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodSocial";
         }
 
         private static bool HasTrait(TraitSet set, string defName)
@@ -400,8 +391,7 @@ namespace VirtuAwake
                 return;
             }
 
-            bool longTerm = pawn.CurJob?.def?.defName == "VA_UseVirtuDreamPod";
-            float gain = this.Props.joyGainPerTick * (longTerm ? this.Props.joyLongTermMultiplier : 1f);
+            float gain = this.Props.joyGainPerTick;
 
             float beforeJoy = joy.CurLevel;
             joy.GainJoy(gain, simType?.primarySkill == SkillDefOf.Social ? JoyKindDefOf.Social : JoyKindDefOf.Meditative);
@@ -411,18 +401,6 @@ namespace VirtuAwake
                 Log.Message($"[VA] {pawn.LabelShortCap}: joy {beforeJoy:F3}->{joy.CurLevel:F3} (gain {gain:F4}) in pod {this.parent.Label ?? this.parent.def.defName}.");
             }
 
-            if (longTerm)
-            {
-                var rest = pawn.needs?.rest;
-                if (rest != null)
-                {
-                    rest.CurLevel = Mathf.Min(rest.MaxLevel, rest.CurLevel + this.Props.restGainPerTickLongTerm);
-                    if (Prefs.DevMode && this.parent.IsHashIntervalTick(1200))
-                    {
-                        Log.Message($"[VA] {pawn.LabelShortCap}: rest now {rest.CurLevel:F3} in long-term sim.");
-                    }
-                }
-            }
         }
 
         private void TickMemories(Pawn pawn, SimTypeDef simType, ref int timer)

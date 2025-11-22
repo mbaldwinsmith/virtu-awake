@@ -35,12 +35,10 @@
     <Compile Include="Components\Need_Lucidity.cs" />
     <Compile Include="Components\InspectTab_LucidityInstability.cs" />
     <Compile Include="Simulation\Building_VRPod.cs" />
-    <Compile Include="Simulation\Building_VirtuDreamPod.cs" />
     <Compile Include="Simulation\CompProperties_VRPod.cs" />
     <Compile Include="Simulation\CompVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPodSocial.cs" />
-    <Compile Include="Simulation\JobDriver_UseVirtuDreamPod.cs" />
     <Compile Include="Simulation\JoyGiver_UseVRPod.cs" />
     <Compile Include="Simulation\TraitMemoryExtension.cs" />
     <Compile Include="Simulation\Thought_MemoryTraitVariant.cs" />

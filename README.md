@@ -7,7 +7,6 @@ Virtu-Awake adds virtual-reality pods that deliver recreation, skill training, s
 
 ## Features
 - VR Pods for recreation, training, and social VR scenes
-- Virtu-Dream Pods for long immersion with optional nutrient support
 - Awakening loop: Lucidity and Instability with escalating tiers
 - Trait-aware VR memories (single, dual, triple legendary)
 - VR event engine with flickers, glitches, and crisis moments
@@ -35,7 +34,6 @@ Virtu-Awake adds virtual-reality pods that deliver recreation, skill training, s
 1) Build a VR Pod.  
 2) Assign a pawn for recreation or training.  
 3) Check new memories in Needs / Mood.  
-4) Use Virtu-Dream Pods for long-term immersion and watch lucidity/instability.
 
 ## Lore Snapshot
 Pawns enter simulations for joy, training, or escape. Some notice seams, hear echoes, meet doubles, or become digital prophets. A few break free - sometimes violently.
