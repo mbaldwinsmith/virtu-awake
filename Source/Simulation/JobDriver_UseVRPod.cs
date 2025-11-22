@@ -8,6 +8,7 @@ namespace VirtuAwake
     public class JobDriver_UseVRPod : JobDriver
     {
         private const int SessionDurationTicks = 2500;
+        private const int DeepSessionDurationTicks = int.MaxValue;
 
         private Building Pod => this.job?.targetA.Thing as Building;
         private CompVRPod PodComp => this.Pod?.GetComp<CompVRPod>();
@@ -32,7 +33,7 @@ namespace VirtuAwake
             var lieDown = new Toil
             {
                 defaultCompleteMode = ToilCompleteMode.Delay,
-                defaultDuration = SessionDurationTicks,
+                defaultDuration = this.GetSessionDuration(),
                 handlingFacing = true
             };
 
@@ -71,9 +72,24 @@ namespace VirtuAwake
             });
 
             lieDown.WithProgressBar(TargetIndex.A, () =>
-                1f - (lieDown.actor.jobs.curDriver.ticksLeftThisToil / (float)SessionDurationTicks));
+                1f - (lieDown.actor.jobs.curDriver.ticksLeftThisToil / (float)this.GetSessionDuration()));
 
             yield return lieDown;
+        }
+
+        private int GetSessionDuration()
+        {
+            if (this.job?.def?.defName == "VA_UseVRPodDeep")
+            {
+                return DeepSessionDurationTicks;
+            }
+
+            if (this.job?.count > 0)
+            {
+                return this.job.count;
+            }
+
+            return SessionDurationTicks;
         }
     }
 }

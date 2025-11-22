@@ -15,7 +15,7 @@
     <defName>VA_Sim_CombatTraining</defName>
     <label>combat training sim</label>
     <description>Looped sparring arenas and timed drills that hone reaction and movement.</description>
-    <xpPerTick>0.10</xpPerTick>
+    <xpPerTick>0.09</xpPerTick>
     <primarySkill>Shooting</primarySkill>
     <joyGainTier1>0.05</joyGainTier1>
     <joyGainTier2>0.08</joyGainTier2>
@@ -40,7 +40,7 @@
     <defName>VA_Sim_CombatTraining_Melee</defName>
     <label>melee combat training sim</label>
     <description>Close-quarters sparring loops focused on footwork, timing, and controlled strikes.</description>
-    <xpPerTick>0.10</xpPerTick>
+    <xpPerTick>0.09</xpPerTick>
     <primarySkill>Melee</primarySkill>
     <joyGainTier1>0.05</joyGainTier1>
     <joyGainTier2>0.08</joyGainTier2>
@@ -65,7 +65,7 @@
     <defName>VA_Sim_Melee</defName>
     <label>melee sparring sim</label>
     <description>Silent arenas tuned for close combat flow and responsive footwork.</description>
-    <xpPerTick>0.10</xpPerTick>
+    <xpPerTick>0.09</xpPerTick>
     <primarySkill>Melee</primarySkill>
     <joyGainTier1>0.05</joyGainTier1>
     <joyGainTier2>0.08</joyGainTier2>

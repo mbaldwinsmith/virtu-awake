@@ -17,4 +17,12 @@
     <joyKind>Social</joyKind>
     <joyMaxParticipants>2</joyMaxParticipants>
   </JobDef>
+  <JobDef>
+    <defName>VA_UseVRPodDeep</defName>
+    <driverClass>VirtuAwake.JobDriver_UseVRPod</driverClass>
+    <reportString>diving into a deep VR session.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
 </Defs>

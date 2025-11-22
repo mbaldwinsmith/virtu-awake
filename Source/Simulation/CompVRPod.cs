@@ -19,7 +19,7 @@ namespace VirtuAwake
         private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
         private readonly Dictionary<Pawn, int> memoryTimers = new Dictionary<Pawn, int>();
         private readonly Dictionary<Pawn, int> benefitTimers = new Dictionary<Pawn, int>();
-        private const bool DebugVR = true;
+        private const bool DebugVR = false;
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
 
@@ -102,6 +102,9 @@ namespace VirtuAwake
                     ApplyLucidityAndInstability(pawn);
                     ApplyJoy(pawn, simType);
                     TickMemories(pawn, simType, ref memTimer);
+                    Need_Lucidity lucidity = pawn.needs?.TryGetNeed<Need_Lucidity>();
+                    Hediff inst = pawn.health?.hediffSet?.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamedSilentFail("VA_Instability"));
+                    TryTriggerGlitch(pawn, lucidity, inst, simType);
                 }
 
                 this.memoryTimers[pawn] = memTimer;
@@ -163,6 +166,90 @@ namespace VirtuAwake
             return this.currentUsers.Any() && this.currentUsers.Any(u => u != pawn);
         }
 
+        public Pawn FindActiveOrPendingUser()
+        {
+            if (this.CurrentUser != null)
+            {
+                return this.CurrentUser;
+            }
+
+            Map map = this.parent?.Map;
+            if (map == null)
+            {
+                return null;
+            }
+
+            foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+            {
+                Job job = pawn?.CurJob;
+                if (job == null || job.targetA.Thing != this.parent)
+                {
+                    continue;
+                }
+
+                if (IsVRJob(job.def))
+                {
+                    return pawn;
+                }
+            }
+
+            return null;
+        }
+
+        public int TicksUntilBenefit(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return this.Props.minimumBenefitTicks;
+            }
+
+            this.benefitTimers.TryGetValue(pawn, out int timer);
+            return Mathf.Max(0, this.Props.minimumBenefitTicks - timer);
+        }
+
+        public int TicksUntilMemory(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return this.Props.memoryIntervalTicks;
+            }
+
+            this.memoryTimers.TryGetValue(pawn, out int timer);
+            return Mathf.Max(0, this.Props.memoryIntervalTicks - timer);
+        }
+
+        public bool TryEndSessionFor(Pawn pawn, string message = null, MessageTypeDef messageType = null)
+        {
+            if (pawn == null)
+            {
+                return false;
+            }
+
+            bool affected = false;
+
+            Job curJob = pawn.CurJob;
+            if (curJob != null && curJob.targetA.Thing == this.parent && IsVRJob(curJob.def))
+            {
+                pawn.jobs?.EndCurrentJob(JobCondition.InterruptForced, startNewJob: true, canReturnToPool: true);
+                affected = true;
+            }
+
+            if (this.currentUsers.Contains(pawn))
+            {
+                this.RemoveUser(pawn);
+                affected = true;
+            }
+
+            this.parent.Map?.reservationManager?.ReleaseAllForTarget(this.parent);
+
+            if (affected && !string.IsNullOrEmpty(message))
+            {
+                Messages.Message(message, new LookTargets(this.parent), messageType ?? MessageTypeDefOf.TaskCompletion, historical: false);
+            }
+
+            return affected;
+        }
+
         public SimTypeDef ResolveSimTypeFor(Pawn pawn)
         {
             if (pawn == null)
@@ -220,6 +307,7 @@ namespace VirtuAwake
             }
 
             float lucidityGain = this.Props.lucidityGainPerTick * TraitLucidityFactor(pawn);
+            lucidityGain *= MoodLucidityFactor(pawn);
 
             lucidity.CurLevel = Mathf.Clamp01(lucidity.CurLevel + lucidityGain);
 
@@ -308,12 +396,27 @@ namespace VirtuAwake
 
             if (HasTrait(traits, "TooSmart"))
             {
-                factor += 0.12f;
+                factor += 0.2f;
+            }
+
+            if (HasTrait(traits, "Paranoid") || HasTrait(traits, "Nervous"))
+            {
+                factor += 0.15f;
+            }
+
+            if (HasTrait(traits, "PsychicallySensitive") || HasTrait(traits, "PsychicallyHypersensitive"))
+            {
+                factor += 0.1f;
             }
 
             if (HasTrait(traits, "Sanguine"))
             {
-                factor += 0.08f;
+                factor -= 0.1f;
+            }
+
+            if (HasTrait(traits, "Gourmand") || HasTrait(traits, "Bloodlust") || HasTrait(traits, "Greedy"))
+            {
+                factor -= 0.08f;
             }
 
             if (HasTrait(traits, "Depressive"))
@@ -327,6 +430,28 @@ namespace VirtuAwake
             }
 
             return Mathf.Max(0.2f, factor);
+        }
+
+        private float MoodLucidityFactor(Pawn pawn)
+        {
+            float mood = pawn.needs?.mood?.CurLevel ?? 0.5f;
+
+            if (mood < 0.3f || mood > 0.8f)
+            {
+                return 1.5f;
+            }
+
+            if (mood > 0.45f && mood < 0.65f)
+            {
+                return -0.3f; // mild good mood slowly cools lucidity
+            }
+
+            if (mood >= 0.65f && mood <= 0.8f)
+            {
+                return 0.6f; // slightly good mood grows slowly
+            }
+
+            return 1f;
         }
 
         private float TraitInstabilityFactor(Pawn pawn)
@@ -370,7 +495,7 @@ namespace VirtuAwake
                 return false;
             }
 
-            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodSocial";
+            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodSocial" || job.defName == "VA_UseVRPodDeep";
         }
 
         private static bool HasTrait(TraitSet set, string defName)
@@ -438,6 +563,151 @@ namespace VirtuAwake
                 }
 
                 if (defName.StartsWith("VA_VRMemory") || defName.StartsWith("VA_VRCombo"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void TryTriggerGlitch(Pawn pawn, Need_Lucidity lucidity, Hediff instability, SimTypeDef simType)
+        {
+            if (pawn == null || lucidity == null)
+            {
+                return;
+            }
+
+            float luc = lucidity.CurLevel;
+            float inst = Mathf.Clamp01(instability?.Severity ?? 0f);
+            float mood = pawn.needs?.mood?.CurLevel ?? 0.5f;
+
+            float chance = (luc * 0.4f) + (inst * 0.5f);
+            if (luc >= 0.85f) chance += 0.12f;
+            else if (luc >= 0.65f) chance += 0.06f;
+
+            if (inst >= 0.75f) chance += 0.1f;
+            else if (inst >= 0.45f) chance += 0.05f;
+
+            chance *= TraitGlitchFactor(pawn);
+            chance *= MoodGlitchFactor(mood);
+            chance *= this.Props.tickInterval / 200f;
+            chance = Mathf.Clamp01(chance * 0.02f);
+
+            if (!Rand.Chance(chance))
+            {
+                return;
+            }
+
+            ThoughtDef glitch = PickGlitchThought(pawn, luc, inst);
+            if (glitch == null || HasActiveThought(pawn, glitch))
+            {
+                return;
+            }
+
+            pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(glitch);
+
+            if (Prefs.DevMode)
+            {
+                Log.Message($"[VA] Glitch memory {glitch.defName} applied to {pawn.LabelShortCap} (lucidity {luc:F2}, instability {inst:F2}, mood {mood:F2}).");
+            }
+        }
+
+        private ThoughtDef PickGlitchThought(Pawn pawn, float luc, float inst)
+        {
+            bool major = luc >= 0.8f || inst >= 0.7f;
+            bool mid = !major && (luc >= 0.6f || inst >= 0.45f);
+            bool positive = HasTrait(pawn.story?.traits, "Sanguine") || HasTrait(pawn.story?.traits, "BodyModder");
+            bool neutral = HasTrait(pawn.story?.traits, "Psychopath");
+            bool veryNegativeTrait = HasTrait(pawn.story?.traits, "Paranoid") || HasTrait(pawn.story?.traits, "TooSmart") ||
+                                     HasTrait(pawn.story?.traits, "Nervous") || HasTrait(pawn.story?.traits, "PsychicallySensitive") ||
+                                     HasTrait(pawn.story?.traits, "PsychicallyHypersensitive") || HasTrait(pawn.story?.traits, "BodyPurist");
+
+            ThoughtDef def;
+            if (neutral)
+            {
+                def = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral");
+            }
+            else if (positive && !veryNegativeTrait && !major)
+            {
+                def = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive");
+            }
+            else if (major || veryNegativeTrait)
+            {
+                def = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor");
+            }
+            else if (mid)
+            {
+                def = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
+            }
+            else
+            {
+                def = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
+            }
+
+            return def ?? DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
+        }
+
+        private float TraitGlitchFactor(Pawn pawn)
+        {
+            TraitSet traits = pawn.story?.traits;
+            if (traits == null)
+            {
+                return 1f;
+            }
+
+            float factor = 1f;
+            if (HasTrait(traits, "Paranoid") || HasTrait(traits, "TooSmart") || HasTrait(traits, "Nervous"))
+            {
+                factor += 0.25f;
+            }
+            if (HasTrait(traits, "PsychicallySensitive") || HasTrait(traits, "PsychicallyHypersensitive") || HasTrait(traits, "BodyPurist"))
+            {
+                factor += 0.15f;
+            }
+            if (HasTrait(traits, "Sanguine") || HasTrait(traits, "BodyModder"))
+            {
+                factor -= 0.2f;
+            }
+            if (HasTrait(traits, "Psychopath"))
+            {
+                factor -= 0.25f;
+            }
+
+            return Mathf.Max(0.25f, factor);
+        }
+
+        private float MoodGlitchFactor(float mood)
+        {
+            if (mood < 0.3f)
+            {
+                return 1.3f;
+            }
+
+            if (mood > 0.8f)
+            {
+                return 1.15f;
+            }
+
+            if (mood > 0.45f && mood < 0.65f)
+            {
+                return 0.85f;
+            }
+
+            return 1f;
+        }
+
+        private static bool HasActiveThought(Pawn pawn, ThoughtDef thought)
+        {
+            var memories = pawn.needs?.mood?.thoughts?.memories?.Memories;
+            if (memories == null || thought == null)
+            {
+                return false;
+            }
+
+            foreach (var mem in memories)
+            {
+                if (mem?.def == thought && mem.CurStageIndex >= 0)
                 {
                     return true;
                 }

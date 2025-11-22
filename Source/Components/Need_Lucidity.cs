@@ -13,13 +13,12 @@ namespace VirtuAwake
             this.curLevelInt = 0f;
         }
 
-        protected override bool IsFrozen => !InVRSession;
+        protected override bool IsFrozen => false;
 
         public override void NeedInterval()
         {
-            if (this.IsFrozen)
+            if (this.InVRSession)
             {
-                this.CurLevel = 0f;
                 return;
             }
 
@@ -42,7 +41,7 @@ namespace VirtuAwake
                     return false;
                 }
 
-                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial";
+                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial" || defName == "VA_UseVRPodDeep";
             }
         }
     }

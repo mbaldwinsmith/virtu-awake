@@ -10,7 +10,9 @@ namespace VirtuAwake
     /// </summary>
     public class Hediff_Instability : HediffWithComps
     {
-        public override bool Visible => InVRSession;
+        private const float DecayPerDay = 0.05f;
+
+        public override bool Visible => true;
 
         public override void Tick()
         {
@@ -18,8 +20,13 @@ namespace VirtuAwake
 
             if (!InVRSession)
             {
-                // Outside VR, instability should not apply; remove the hediff to keep health tidy.
-                this.pawn.health?.RemoveHediff(this);
+                float decayPerTick = DecayPerDay / GenDate.TicksPerDay;
+                this.Severity = Mathf.Max(0f, this.Severity - decayPerTick);
+
+                if (this.Severity <= 0f)
+                {
+                    this.pawn.health?.RemoveHediff(this);
+                }
             }
         }
 
@@ -33,7 +40,7 @@ namespace VirtuAwake
                     return false;
                 }
 
-                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial";
+                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial" || defName == "VA_UseVRPodDeep";
             }
         }
     }

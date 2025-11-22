@@ -128,6 +128,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** MentalStateDefs + classes (e.g., SimulationBreaker, Derealisation)  
 **Owner:** Unassigned
 
+## TASK-PSY-006
+**Description:** Add glitch memories that scale with lucidity/instability and mood/traits (positive/neutral/negative tiers)  
+**Category:** C# / XML  
+**Dependencies:** PSY-002, PSY-003  
+**Status:** DONE  
+**Output:** Glitch ThoughtDefs (positive/neutral/negative/major) and CompVRPod glitch roll weighting by lucidity, instability, mood, traits  
+**Owner:** AI
+
 ---
 
 # VR Event Engine & Glitches
@@ -188,9 +196,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Implement SimType-driven XP application utility  
 **Category:** C#  
 **Dependencies:** SIM-001  
-**Status:** TODO  
+**Status:** DONE  
 **Output:** VRSimUtility.ApplySimTraining(pawn, simType, ticks)  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-SIM-003
 **Description:** Create social VR session job (two pawns enter linked pods)  
@@ -304,9 +312,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add pod gizmos for eject/cancel/session info (VR pods)  
 **Category:** C# / UI  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (status gizmo plus cancel/eject commands added)  
 **Output:** Gizmos showing current user, force eject, status tooltip  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-UI-003
 **Description:** Add event popups/letters for major VR anomalies and breakouts  
@@ -408,17 +416,17 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Playtest checklist for MVP (VR pod + lucidity/instability loop; dream pod removed)  
 **Category:** QA  
 **Dependencies:** CORE-001, PSY-003  
-**Status:** TODO  
+**Status:** DONE (PLAYTEST scenarios authored)  
 **Output:** PLAYTEST.md with scenarios and expected outcomes  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-BAL-001
 **Description:** Balance pass for joy gain, XP rates, lucidity/instability progression  
 **Category:** Balance  
 **Dependencies:** PSY-003, SIM-002  
-**Status:** TODO  
+**Status:** DONE (tick interval, gains, and decay retuned post dream-pod removal)  
 **Output:** Tuned values in comps/defs, documented notes  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-REL-001
 **Description:** Finalize About metadata (author, description, preview image hook)  
@@ -636,10 +644,20 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Pod ticks enforce minimum dwell time before joy/XP/memories; joy/XP throttled; memories fire during long sessions  
 **Owner:** AI
 
+## TASK-MEM-013
+**Description:** Prevent back-to-back VR memories from the same skill until the previous memory decays  
+**Category:** C#  
+**Dependencies:** MEM-008, MEM-011  
+**Status:** DONE  
+**Output:** VRSimUtility blocks awarding a new memory for a skill while any matching VR memory for that skill is active  
+**Owner:** AI
+
 ## TODO-NOTE (Next session)
 - Remove memory trigger on exit VR pod; rely on in-pod timers instead.
-- Fix memory triggering: currently interrupted by job finishing on short sessions and never fires on deep sessions.
-- Recreation gain is effectively zero even after minutes; rebalance/gate so it rises slowly but reliably post-threshold.
+- Retest in-pod memory timing after the new tick interval (target: at least once per session without spamming).
+- Recreation gain retuned; verify it now rises slowly but reliably post-threshold.
 - Pods now use `tickerType: Normal` so CompVRPod ticks fire; retest in-pod timers/joy/memories with Dev logs.
 - Dream pod removed; keep future tasks scoped to the standard VR pod only.
+- Lucidity/glitch pass: slower base lucidity gain, mood/trait-driven growth/decay, glitch chance scales with lucidity+instability; verify in playtest.
+- Memory variety: VR memories now block repeats of the same skill until the previous memory decays; playtest to confirm rotation across skills.
 
