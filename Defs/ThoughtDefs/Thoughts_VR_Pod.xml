@@ -9,6 +9,7 @@
     <stages>
       <li>
         <label>unburdened</label>
+        <description>I let the sim breeze touch every part of me with nothing in the way.</description>
         <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
@@ -22,6 +23,7 @@
     <stages>
       <li>
         <label>safe below</label>
+        <description>I stayed deep under simulated stone where the sky couldn’t reach me.</description>
         <baseMoodEffect>5</baseMoodEffect>
       </li>
     </stages>

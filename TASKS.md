@@ -276,25 +276,25 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Implement breakout condition check (Lucidity + Instability thresholds)  
 **Category:** C#  
 **Dependencies:** PSY-003  
-**Status:** TODO  
-**Output:** ShouldBreakOut() utility  
-**Owner:** Unassigned
+**Status:** DONE (breakout triggers at 90%+ lucidity)  
+**Output:** Breakout check hooked into VR sessions; triggers trait-specific mental states/prisoner/slave break behaviours  
+**Owner:** AI
 
 ## TASK-BRK-002
 **Description:** Add breakout mental states/behaviours (panic, sabotage, free others)  
 **Category:** C#  
 **Dependencies:** BRK-001  
-**Status:** TODO  
-**Output:** Mental states + behaviour trees for breakout attempts  
-**Owner:** Unassigned
+**Status:** DONE (uses vanilla mental breaks based on traits)  
+**Output:** Trait-based breakouts: panic flee (Nervous/Wimp), food/drug binge, fire-starting, berserk, sad wander, insulting spree, plus prison/slave break flows  
+**Owner:** AI
 
 ## TASK-BRK-003
 **Description:** Execute breakout sequence (forced eject, flee/attack AI, sabotage targets)  
 **Category:** C#  
 **Dependencies:** BRK-002  
-**Status:** TODO  
-**Output:** StartBreakoutSequence() orchestration  
-**Owner:** Unassigned
+**Status:** DONE (sequence integrated into CompVRPod tick)  
+**Output:** Breakout orchestration runs when lucidity >= 90%, invoking prisoner/slave breaks or mental state starts  
+**Owner:** AI
 
 ---
 

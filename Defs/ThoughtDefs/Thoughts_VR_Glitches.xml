@@ -6,7 +6,7 @@
     <description>A flicker cut through the sim and I felt the seams around me slip.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
-    <stackLimit>1</stackLimit>
+    <stackLimit>2</stackLimit>
     <stages>
       <li>
         <label>unsettling glitch</label>
@@ -21,7 +21,7 @@
     <description>The sim tore open around me, jagged echoes clawing at everything I thought was real.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>1.2</durationDays>
-    <stackLimit>1</stackLimit>
+    <stackLimit>2</stackLimit>
     <stages>
       <li>
         <label>frightening glitch</label>
@@ -36,7 +36,7 @@
     <description>A soft break in the sim felt like a secret doorway I could step through.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
-    <stackLimit>1</stackLimit>
+    <stackLimit>2</stackLimit>
     <stages>
       <li>
         <label>warming glitch</label>
@@ -51,7 +51,7 @@
     <description>The glitch blinked in and out; I logged it and moved on.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
-    <stackLimit>1</stackLimit>
+    <stackLimit>2</stackLimit>
     <stages>
       <li>
         <label>clinical glitch</label>
@@ -132,6 +132,111 @@
         <label>body panic</label>
         <description>I recoiled as the sim tried to rewrite me.</description>
         <baseMoodEffect>-11</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Negative_Shatter</defName>
+    <label>shattering glitch</label>
+    <description>The sim cracked like glass and I felt bits of me scatter.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.9</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>splintered</label>
+        <description>I held my breath while everything splintered.</description>
+        <baseMoodEffect>-7</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_NegativeMajor_Dissonance</defName>
+    <label>dissonant glitch</label>
+    <description>The world screamed in two keys at once and dragged me between them.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.4</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>ripped between</label>
+        <description>I was pulled apart by competing signals.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Negative_Echo</defName>
+    <label>echo glitch</label>
+    <description>The sim echoed back my own voice in a pitch that wasn’t mine.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>unsteady voice</label>
+        <description>I heard myself argue with me.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Positive_Halo</defName>
+    <label>halo glitch</label>
+    <description>A ring of light circled me and the sim felt almost sacred.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>warm halo</label>
+        <description>I stood in the glow and let it hold me up.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Neutral_Detached</defName>
+    <label>detached glitch</label>
+    <description>The glitch slid past and I drifted like a spectator.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.7</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>watching</label>
+        <description>I watched myself inside the sim.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Positive_Calm</defName>
+    <label>soothing glitch</label>
+    <description>A calm pulse rolled through the break and eased me.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.7</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>soothed by static</label>
+        <description>I floated on the soft hiss.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Neutral_Archive</defName>
+    <label>archived glitch</label>
+    <description>I tagged the error, saved the log, and kept observing.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>2</stackLimit>
+    <stages>
+      <li>
+        <label>catalogued anomaly</label>
+        <description>I filed the glitch away for later.</description>
+        <baseMoodEffect>0</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>

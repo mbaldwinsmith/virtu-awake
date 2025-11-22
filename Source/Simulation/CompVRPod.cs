@@ -19,6 +19,7 @@ namespace VirtuAwake
         private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
         private readonly Dictionary<Pawn, int> memoryTimers = new Dictionary<Pawn, int>();
         private readonly Dictionary<Pawn, int> benefitTimers = new Dictionary<Pawn, int>();
+        private readonly HashSet<int> breakoutTriggered = new HashSet<int>();
         private const bool DebugVR = false;
 
         public CompProperties_VRPod Props => (CompProperties_VRPod)this.props;
@@ -109,6 +110,7 @@ namespace VirtuAwake
                     TickMemories(pawn, simType, ref memTimer);
                     Need_Lucidity lucidity = pawn.needs?.TryGetNeed<Need_Lucidity>();
                     Hediff inst = pawn.health?.hediffSet?.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamedSilentFail("VA_Instability"));
+                    CheckBreakout(pawn, lucidity);
                     TryTriggerGlitch(pawn, lucidity, inst, simType);
                 }
 
@@ -166,6 +168,7 @@ namespace VirtuAwake
                 this.memoryTimers.Remove(pawn);
                 this.benefitTimers.Remove(pawn);
                 VRSessionTracker.Unregister(pawn);
+                this.breakoutTriggered.Remove(pawn.thingIDNumber);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] RemoveUser: {pawn.LabelShortCap} removed from {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -622,7 +625,7 @@ namespace VirtuAwake
             }
 
             ThoughtDef glitch = PickGlitchThought(pawn, luc, inst, severity);
-            if (glitch == null || HasActiveThought(pawn, glitch))
+            if (glitch == null)
             {
                 return;
             }
@@ -637,40 +640,21 @@ namespace VirtuAwake
 
         private ThoughtDef PickGlitchThought(Pawn pawn, float luc, float inst, GlitchSeverity severity)
         {
-            TraitSet traits = pawn.story?.traits;
-            bool positive = HasTrait(traits, "Sanguine") || HasTrait(traits, "Optimist") || HasTrait(traits, "BodyModder");
-            bool neutral = HasTrait(traits, "Psychopath");
-            bool veryNegativeTrait = HasTrait(traits, "Paranoid") || HasTrait(traits, "TooSmart") ||
-                                     HasTrait(traits, "Nervous") || HasTrait(traits, "PsychicallySensitive") ||
-                                     HasTrait(traits, "PsychicallyHypersensitive") || HasTrait(traits, "BodyPurist");
-
-            ThoughtDef variant = ResolveGlitchVariant(pawn, severity);
-            if (variant != null)
-            {
-                return variant;
-            }
-
-            if (neutral)
-            {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral");
-            }
-
-            if (positive && severity != GlitchSeverity.Major && !veryNegativeTrait)
-            {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive");
-            }
-
-            if (severity == GlitchSeverity.Major || veryNegativeTrait)
-            {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor");
-            }
-
-            if (severity == GlitchSeverity.Mid || severity == GlitchSeverity.Minor)
+            List<ThoughtDef> pool = ResolveGlitchPool(pawn, severity);
+            if (pool.NullOrEmpty())
             {
                 return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
             }
 
-            return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
+            pool = pool.Where(def => def != null && !HasActiveThought(pawn, def)).ToList();
+            if (pool.Count == 0)
+            {
+                pool = ResolveGlitchPool(pawn, severity);
+            }
+
+            return pool.Where(d => d != null).TryRandomElement(out ThoughtDef chosen)
+                ? chosen
+                : DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative");
         }
 
         private GlitchSeverity DetermineGlitchSeverity(float luc, float inst)
@@ -693,48 +677,66 @@ namespace VirtuAwake
             return GlitchSeverity.None;
         }
 
-        private ThoughtDef ResolveGlitchVariant(Pawn pawn, GlitchSeverity severity)
+        private List<ThoughtDef> ResolveGlitchPool(Pawn pawn, GlitchSeverity severity)
         {
             TraitSet traits = pawn.story?.traits;
-            if (traits == null)
-            {
-                return null;
-            }
-
             bool paranoid = HasTrait(traits, "Paranoid") || HasTrait(traits, "Nervous");
             bool psychic = HasTrait(traits, "PsychicallySensitive") || HasTrait(traits, "PsychicallyHypersensitive");
             bool tooSmart = HasTrait(traits, "TooSmart");
             bool purist = HasTrait(traits, "BodyPurist");
-            bool sanguine = HasTrait(traits, "Sanguine") || HasTrait(traits, "Optimist");
-            bool modder = HasTrait(traits, "BodyModder");
+            bool sanguine = HasTrait(traits, "Sanguine") || HasTrait(traits, "Optimist") || HasTrait(traits, "BodyModder");
             bool psychopath = HasTrait(traits, "Psychopath");
 
-            if (psychopath && severity != GlitchSeverity.None)
-            {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Psychopath");
-            }
+            var pool = new List<ThoughtDef>();
 
-            if (paranoid && psychic)
+            if (severity == GlitchSeverity.Major)
             {
-                if (severity == GlitchSeverity.Major)
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor_Dissonance"));
+                if (paranoid && psychic)
                 {
-                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor_ParanoidSensitive");
+                    pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor_ParanoidSensitive"));
                 }
-
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_ParanoidSensitive");
+                if (purist && (psychic || tooSmart))
+                {
+                    pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor_Purist"));
+                }
             }
-
-            if (purist && (psychic || tooSmart) && severity != GlitchSeverity.None)
+            else if (severity == GlitchSeverity.Mid || severity == GlitchSeverity.Minor)
             {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_NegativeMajor_Purist");
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_Shatter"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_Echo"));
+                if (paranoid && psychic)
+                {
+                    pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Negative_ParanoidSensitive"));
+                }
             }
 
-            if (modder && sanguine && severity != GlitchSeverity.Major)
+            if (psychopath)
             {
-                return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_SanguineModder");
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Psychopath"));
+            }
+            else
+            {
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Archive"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Neutral_Detached"));
             }
 
-            return null;
+            if (sanguine && severity != GlitchSeverity.Major)
+            {
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Calm"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_SanguineModder"));
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Halo"));
+            }
+            else if (severity != GlitchSeverity.Major)
+            {
+                pool.Add(DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRGlitch_Positive_Calm"));
+            }
+
+            return pool;
         }
 
         private float TraitGlitchFactor(Pawn pawn)
@@ -829,7 +831,9 @@ namespace VirtuAwake
             var comfort = pawn.needs?.comfort;
             if (comfort != null)
             {
-                comfort.CurLevel = Mathf.Clamp01(comfort.CurLevel + 0.12f);
+                float luc = pawn.needs?.TryGetNeed<Need_Lucidity>()?.CurLevel ?? 0f;
+                float delta = Mathf.Lerp(0.08f, -0.12f, luc); // high lucidity erodes comfort
+                comfort.CurLevel = Mathf.Clamp01(comfort.CurLevel + delta);
             }
         }
 
@@ -900,6 +904,87 @@ namespace VirtuAwake
                     memories.RemoveMemoriesOfDef(soaked);
                 }
             }
+        }
+
+        private void CheckBreakout(Pawn pawn, Need_Lucidity lucidity)
+        {
+            if (pawn == null || lucidity == null)
+            {
+                return;
+            }
+
+            if (lucidity.CurLevel < 0.9f)
+            {
+                this.breakoutTriggered.Remove(pawn.thingIDNumber);
+                return;
+            }
+
+            if (this.breakoutTriggered.Contains(pawn.thingIDNumber))
+            {
+                return;
+            }
+
+            this.breakoutTriggered.Add(pawn.thingIDNumber);
+            TryTriggerBreakout(pawn);
+        }
+
+        private void TryTriggerBreakout(Pawn pawn)
+        {
+            if (pawn.InMentalState || pawn.Downed || pawn.Dead)
+            {
+                return;
+            }
+
+            // Prisoners and slaves use colony break mechanics first.
+            if (pawn.IsPrisonerOfColony && pawn.Map != null)
+            {
+                PrisonBreakUtility.InitiatePrisonBreak(pawn.Map);
+                return;
+            }
+
+            if (pawn.IsSlaveOfColony && pawn.Map != null)
+            {
+                if (!SlaveRebellionUtility.InitiateSlaveRebellion(pawn))
+                {
+                    pawn.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.SlaveRebellion, "VR breakout", forceWake: true);
+                }
+                return;
+            }
+
+            TraitSet traits = pawn.story?.traits;
+            MentalStateDef def = null;
+
+            if (HasTrait(traits, "Nervous") || HasTrait(traits, "Wimp"))
+            {
+                def = MentalStateDefOf.PanicFlee;
+            }
+            else if (HasTrait(traits, "Gourmand"))
+            {
+                def = MentalStateDefOf.FoodBinge;
+            }
+            else if (HasTrait(traits, "ChemicalInterest") || HasTrait(traits, "ChemicalFascination"))
+            {
+                def = MentalStateDefOf.DrugBinge;
+            }
+            else if (HasTrait(traits, "Pyromaniac"))
+            {
+                def = MentalStateDefOf.FireStartingSpree;
+            }
+            else if (HasTrait(traits, "Bloodlust") || HasTrait(traits, "Berserk") || HasTrait(traits, "Cannibal"))
+            {
+                def = MentalStateDefOf.Berserk;
+            }
+            else if (HasTrait(traits, "Depressive"))
+            {
+                def = MentalStateDefOf.SadWander;
+            }
+            else if (HasTrait(traits, "Abrasive"))
+            {
+                def = MentalStateDefOf.InsultingSpree;
+            }
+
+            def ??= MentalStateDefOf.Berserk;
+            pawn.mindState?.mentalStateHandler?.TryStartMentalState(def, "VR breakout", forceWake: true);
         }
 
         private enum GlitchSeverity
