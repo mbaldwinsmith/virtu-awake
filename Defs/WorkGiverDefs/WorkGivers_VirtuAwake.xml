@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <WorkGiverDef>
+    <defName>VA_StabilizeVRPods</defName>
+    <label>stabilise VR simulations</label>
+    <giverClass>VirtuAwake.WorkGiver_StabilizeVRPod</giverClass>
+    <workType>Research</workType>
+    <priorityInType>120</priorityInType>
+    <verb>stabilise</verb>
+    <gerund>stabilising</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <canBeDoneByMechs>false</canBeDoneByMechs>
+  </WorkGiverDef>
+</Defs>

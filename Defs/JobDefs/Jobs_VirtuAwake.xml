@@ -25,4 +25,14 @@
     <playerInterruptible>true</playerInterruptible>
     <joyKind>Meditative</joyKind>
   </JobDef>
+  <JobDef>
+    <defName>VA_StabilizeVRPod</defName>
+    <label>stabilise VR pod</label>
+    <driverClass>VirtuAwake.JobDriver_StabilizeVRPod</driverClass>
+    <reportString>stabilising the simulation.</reportString>
+    <casualInterruptible>true</casualInterruptible>
+    <playerInterruptible>true</playerInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <workSkill>Intellectual</workSkill>
+  </JobDef>
 </Defs>

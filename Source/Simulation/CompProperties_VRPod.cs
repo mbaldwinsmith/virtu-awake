@@ -18,6 +18,13 @@ namespace VirtuAwake
         public float joyGainPerTick = 0.017f;
         public float joyLongTermMultiplier = 1.0f;
         public float restGainPerTickLongTerm = 0.0008f;
+        public int stabilizationJobDurationTicks = 600;
+        public int stabilizationCooldownTicks = 3600;
+        public float stabilizationSeverityReductionPerTick = 0.0002f;
+        public float stabilizationMaxSeverityReductionPerJob = 0.22f;
+        public float stabilizationXpPerTick = 0.08f;
+        public float stabilizationMinInstability = 0.08f;
+        public int stabilizationLongSessionTicks = 1800;
 
         public CompProperties_VRPod()
         {

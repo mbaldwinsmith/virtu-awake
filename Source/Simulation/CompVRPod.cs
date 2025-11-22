@@ -19,6 +19,7 @@ namespace VirtuAwake
         private readonly Dictionary<Pawn, SimTypeDef> sessionSimTypes = new Dictionary<Pawn, SimTypeDef>();
         private readonly Dictionary<Pawn, int> memoryTimers = new Dictionary<Pawn, int>();
         private readonly Dictionary<Pawn, int> benefitTimers = new Dictionary<Pawn, int>();
+        private readonly Dictionary<int, int> nextStabilizeTick = new Dictionary<int, int>();
         private readonly HashSet<int> breakoutTriggered = new HashSet<int>();
         private const bool DebugVR = false;
         private const float IdlePowerDraw = 0f;
@@ -133,12 +134,14 @@ namespace VirtuAwake
             this.sessionSimTypes.Clear();
             this.memoryTimers.Clear();
             this.benefitTimers.Clear();
+            this.nextStabilizeTick.Clear();
             if (pawn != null)
             {
                 this.currentUsers.Add(pawn);
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
+                this.nextStabilizeTick[pawn.thingIDNumber] = 0;
                 VRSessionTracker.Register(pawn);
                 if (Prefs.DevMode)
                 {
@@ -156,6 +159,7 @@ namespace VirtuAwake
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
+                this.nextStabilizeTick[pawn.thingIDNumber] = 0;
                 VRSessionTracker.Register(pawn);
                 if (Prefs.DevMode)
                 {
@@ -173,6 +177,7 @@ namespace VirtuAwake
                 this.sessionSimTypes.Remove(pawn);
                 this.memoryTimers.Remove(pawn);
                 this.benefitTimers.Remove(pawn);
+                this.nextStabilizeTick.Remove(pawn.thingIDNumber);
                 VRSessionTracker.Unregister(pawn);
                 this.breakoutTriggered.Remove(pawn.thingIDNumber);
                 if (Prefs.DevMode)
@@ -318,6 +323,131 @@ namespace VirtuAwake
             }
         }
 
+        public int StabilizationJobDuration => Mathf.Max(120, this.Props.stabilizationJobDurationTicks);
+
+        public bool TryGetStabilizationTarget(Pawn worker, bool forced, out Pawn occupant, out string failReason)
+        {
+            occupant = this.CurrentUser;
+            failReason = null;
+
+            if (worker == null)
+            {
+                failReason = "No worker available.";
+                return false;
+            }
+
+            if (worker.WorkTypeIsDisabled(WorkTypeDefOf.Research))
+            {
+                failReason = "Research work disabled.";
+                return false;
+            }
+
+            if (worker.Downed || worker.InMentalState)
+            {
+                failReason = "Worker unavailable.";
+                return false;
+            }
+
+            if (!worker.health.capacities.CapableOf(PawnCapacityDefOf.Manipulation))
+            {
+                failReason = "Incapable of manipulation.";
+                return false;
+            }
+
+            if (this.parent.IsForbidden(worker))
+            {
+                failReason = "ForbiddenLower".Translate();
+                return false;
+            }
+
+            if (occupant == null)
+            {
+                failReason = "No pawn immersed.";
+                return false;
+            }
+
+            if (occupant == worker)
+            {
+                failReason = "Cannot stabilise while immersed.";
+                return false;
+            }
+
+            if (occupant.Dead || occupant.Map != worker.Map)
+            {
+                failReason = "Occupant not present.";
+                return false;
+            }
+
+            if (occupant.Faction != worker.Faction && occupant.HostFaction != worker.Faction)
+            {
+                failReason = "Not aligned with the colony.";
+                return false;
+            }
+
+            if (!VRSessionTracker.IsInVR(occupant) || this.CurrentUser != occupant)
+            {
+                failReason = "No active simulation.";
+                return false;
+            }
+
+            if (!forced)
+            {
+                if (!HasLongSession(occupant))
+                {
+                    failReason = "Session not yet long-term.";
+                    return false;
+                }
+
+                if (!IsInstabilityHighEnough(occupant))
+                {
+                    failReason = "Instability already low.";
+                    return false;
+                }
+
+                if (IsOnStabilizationCooldown(occupant))
+                {
+                    failReason = "Recently stabilised.";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public float ApplyStabilizationTick(Pawn worker, Pawn occupant)
+        {
+            if (worker == null || occupant == null)
+            {
+                return 0f;
+            }
+
+            float skill = worker.skills?.GetSkill(SkillDefOf.Intellectual)?.Level ?? 0f;
+            float skillFactor = Mathf.Lerp(0.45f, 1.6f, Mathf.InverseLerp(0f, 20f, skill));
+            GainStabilizationXp(worker, skillFactor);
+
+            Hediff instability = GetInstability(occupant);
+            if (instability == null)
+            {
+                return 0f;
+            }
+
+            float reduction = this.Props.stabilizationSeverityReductionPerTick * skillFactor;
+            reduction = Mathf.Min(reduction, instability.Severity);
+            instability.Severity = Mathf.Max(0f, instability.Severity - reduction);
+            return reduction;
+        }
+
+        public void MarkStabilized(Pawn occupant)
+        {
+            if (occupant == null)
+            {
+                return;
+            }
+
+            int nextTick = Find.TickManager.TicksGame + this.Props.stabilizationCooldownTicks;
+            this.nextStabilizeTick[occupant.thingIDNumber] = nextTick;
+        }
+
         private void ApplyLucidityAndInstability(Pawn pawn)
         {
             if (pawn == null)
@@ -357,6 +487,51 @@ namespace VirtuAwake
             {
                 instability.Severity = Mathf.Max(0f, instability.Severity - this.Props.instabilityDecayPerTick);
             }
+        }
+
+        private bool HasLongSession(Pawn pawn)
+        {
+            this.benefitTimers.TryGetValue(pawn, out int timer);
+            int threshold = Mathf.Max(this.Props.minimumBenefitTicks, this.Props.stabilizationLongSessionTicks);
+            return timer >= threshold;
+        }
+
+        private bool IsInstabilityHighEnough(Pawn pawn)
+        {
+            Hediff inst = GetInstability(pawn);
+            float severity = inst?.Severity ?? 0f;
+            return severity >= this.Props.stabilizationMinInstability;
+        }
+
+        private bool IsOnStabilizationCooldown(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return false;
+            }
+
+            if (this.nextStabilizeTick.TryGetValue(pawn.thingIDNumber, out int nextTick))
+            {
+                return Find.TickManager.TicksGame < nextTick;
+            }
+
+            return false;
+        }
+
+        private Hediff GetInstability(Pawn pawn)
+        {
+            return pawn?.health?.hediffSet?.GetFirstHediffOfDef(DefDatabase<HediffDef>.GetNamedSilentFail("VA_Instability"));
+        }
+
+        private void GainStabilizationXp(Pawn worker, float skillFactor)
+        {
+            if (worker?.skills == null)
+            {
+                return;
+            }
+
+            float xp = this.Props.stabilizationXpPerTick * Mathf.Max(0.6f, skillFactor);
+            worker.skills.Learn(SkillDefOf.Intellectual, xp, false);
         }
 
         private Hediff EnsureInstability(Pawn pawn)

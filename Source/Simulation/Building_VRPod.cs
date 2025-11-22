@@ -29,16 +29,9 @@ namespace VirtuAwake
                 yield break;
             }
 
-            if (!pawn.CanReserveAndReach(this, PathEndMode.InteractionCell, Danger.Some))
+            if (!pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Some))
             {
                 yield return new FloatMenuOption("CannotReach".Translate(), null);
-                yield break;
-            }
-
-            CompVRPod podComp = this.GetComp<CompVRPod>();
-            if (podComp != null && podComp.CurrentUser != null && podComp.CurrentUser != pawn)
-            {
-                yield return new FloatMenuOption("InUseLower".Translate(podComp.CurrentUser.LabelShort), null);
                 yield break;
             }
 
@@ -48,55 +41,100 @@ namespace VirtuAwake
                 yield break;
             }
 
-            FloatMenuOption useOption = new FloatMenuOption("Use VR pod (recreation)", () =>
+            CompVRPod podComp = this.GetComp<CompVRPod>();
+            Pawn activeUser = podComp?.CurrentUser;
+            bool inUseByOther = podComp != null && activeUser != null && activeUser != pawn;
+
+            if (inUseByOther)
             {
-                Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), this);
-                job.playerForced = true;
-                pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-            });
+                yield return new FloatMenuOption("InUseLower".Translate(activeUser.LabelShort), null);
+            }
 
-            yield return FloatMenuUtility.DecoratePrioritizedTask(useOption, pawn, this);
+            bool canReserveForVR = pawn.CanReserveAndReach(this, PathEndMode.InteractionCell, Danger.Some);
 
-            FloatMenuOption deepOption = new FloatMenuOption("Deep VR session (long)", () =>
+            if (!inUseByOther && canReserveForVR)
             {
-                Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPodDeep"), this);
-                job.playerForced = true;
-                pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
-            });
-
-            yield return FloatMenuUtility.DecoratePrioritizedTask(deepOption, pawn, this);
-
-            foreach (Pawn partner in pawn.Map.mapPawns.FreeColonistsSpawned)
-            {
-                if (partner == pawn || partner.Downed || partner.InMentalState || partner == null)
+                FloatMenuOption useOption = new FloatMenuOption("Use VR pod (recreation)", () =>
                 {
-                    continue;
-                }
-
-                if (!partner.CanReserve(this))
-                {
-                    continue;
-                }
-
-                Building partnerPod = FindAvailableLinkedPod(partner, this);
-                if (partnerPod == null)
-                {
-                    continue;
-                }
-
-                var option = new FloatMenuOption($"Social VR (linked pods) with {partner.LabelShortCap}", () =>
-                {
-                    // Initiator uses this pod; partner uses a linked free pod.
-                    var jobA = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), this);
-                    jobA.playerForced = true;
-                    pawn.jobs.TryTakeOrderedJob(jobA, JobTag.Misc);
-
-                    var jobB = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), partnerPod);
-                    jobB.playerForced = true;
-                    partner.jobs.TryTakeOrderedJob(jobB, JobTag.Misc);
+                    Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), this);
+                    job.playerForced = true;
+                    pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                 });
 
-                yield return FloatMenuUtility.DecoratePrioritizedTask(option, pawn, this);
+                yield return FloatMenuUtility.DecoratePrioritizedTask(useOption, pawn, this);
+
+                FloatMenuOption deepOption = new FloatMenuOption("Deep VR session (long)", () =>
+                {
+                    Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPodDeep"), this);
+                    job.playerForced = true;
+                    pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                });
+
+                yield return FloatMenuUtility.DecoratePrioritizedTask(deepOption, pawn, this);
+
+                foreach (Pawn partner in pawn.Map.mapPawns.FreeColonistsSpawned)
+                {
+                    if (partner == pawn || partner.Downed || partner.InMentalState || partner == null)
+                    {
+                        continue;
+                    }
+
+                    if (!partner.CanReserve(this))
+                    {
+                        continue;
+                    }
+
+                    Building partnerPod = FindAvailableLinkedPod(partner, this);
+                    if (partnerPod == null)
+                    {
+                        continue;
+                    }
+
+                    var option = new FloatMenuOption($"Social VR (linked pods) with {partner.LabelShortCap}", () =>
+                    {
+                        // Initiator uses this pod; partner uses a linked free pod.
+                        var jobA = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), this);
+                        jobA.playerForced = true;
+                        pawn.jobs.TryTakeOrderedJob(jobA, JobTag.Misc);
+
+                        var jobB = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_UseVRPod"), partnerPod);
+                        jobB.playerForced = true;
+                        partner.jobs.TryTakeOrderedJob(jobB, JobTag.Misc);
+                    });
+
+                    yield return FloatMenuUtility.DecoratePrioritizedTask(option, pawn, this);
+                }
+            }
+            else if (!inUseByOther && !canReserveForVR)
+            {
+                yield return new FloatMenuOption("CannotReserve".Translate(), null);
+            }
+
+            string failReason = null;
+            Pawn stabilizeTarget = null;
+            bool canStabilize = podComp != null && podComp.TryGetStabilizationTarget(pawn, true, out stabilizeTarget, out failReason);
+            if (canStabilize)
+            {
+                if (pawn.CanReserve(this, 1, -1, null, ignoreOtherReservations: true))
+                {
+                    var stabilizeOption = new FloatMenuOption("Stabilise simulation (Research)", () =>
+                    {
+                        Job job = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("VA_StabilizeVRPod"), this, stabilizeTarget);
+                        job.count = podComp.StabilizationJobDuration;
+                        job.playerForced = true;
+                        pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+                    });
+
+                    yield return FloatMenuUtility.DecoratePrioritizedTask(stabilizeOption, pawn, this);
+                }
+                else
+                {
+                    yield return new FloatMenuOption("Reserved".Translate(), null);
+                }
+            }
+            else if (activeUser != null && !string.IsNullOrEmpty(failReason))
+            {
+                yield return new FloatMenuOption($"Cannot stabilise: {failReason}", null);
             }
         }
 

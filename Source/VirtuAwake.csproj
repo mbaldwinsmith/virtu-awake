@@ -37,6 +37,7 @@
     <Compile Include="Simulation\Building_VRPod.cs" />
     <Compile Include="Simulation\CompProperties_VRPod.cs" />
     <Compile Include="Simulation\CompVRPod.cs" />
+    <Compile Include="Simulation\JobDriver_StabilizeVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPodSocial.cs" />
     <Compile Include="Simulation\JoyGiver_UseVRPod.cs" />
@@ -44,6 +45,7 @@
     <Compile Include="Simulation\Thought_MemoryTraitVariant.cs" />
     <Compile Include="Simulation\SimTypeDef.cs" />
     <Compile Include="Simulation\VRSimUtility.cs" />
+    <Compile Include="Simulation\WorkGiver_StabilizeVRPod.cs" />
     <Compile Include="Simulation\WorkGiver_UseVRPod.cs" />
     <Compile Include="Util\Gizmo_VRPawnStatus.cs" />
     <Compile Include="Util\InteractionPatches.cs" />

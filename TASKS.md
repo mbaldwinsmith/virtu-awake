@@ -136,6 +136,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Glitch ThoughtDefs (positive/neutral/negative/major) and CompVRPod glitch roll weighting by lucidity, instability, mood, traits  
 **Owner:** AI
 
+## TASK-PSY-007
+**Description:** Add a research work-type stabilization job for occupied VR pods that periodically reduces Instability and grants Intellectual XP based on skill level, with a manual float-menu option  
+**Category:** C# / Mechanics  
+**Dependencies:** CORE-001, PSY-002  
+**Status:** DONE (research stabilization job + manual option implemented)  
+**Output:** Research work giver + job driver + defs; right-click float menu action to Stabilise VR simulations  
+**Owner:** AI
+
 ---
 
 # VR Event Engine & Glitches
