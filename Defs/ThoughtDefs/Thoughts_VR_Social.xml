@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Social network memories for linked pods. Uses Thought_MemoryTraitVariant so trait overlays still append. -->
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Ambient</defName>
+    <label>vr: passing voices</label>
+    <description>Faint shared chatter floated through the pods. It was almost comforting.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>0.75</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>2</baseMoodEffect>
+        <description>Voices drifted across the network, brushing past without pulling me in.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Ascetic</trait>
+            <text>The quiet murmur was enough. Nothing elaborate, just presence.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Friend</defName>
+    <label>vr: linked with a friend</label>
+    <description>I felt a familiar friend on the other side of the dream.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>7</baseMoodEffect>
+        <description>We synced up mid-sim, sharing jokes only we would get.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Kind</trait>
+            <text>I checked in on them, making sure they felt grounded.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>We turned the sim into a private party.</text>
+          </li>
+          <li>
+            <trait>Optimist</trait>
+            <text>Even a glitch felt like an in-joke between us.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_BestFriend</defName>
+    <label>vr: braided memories</label>
+    <description>Our dreams braided together like we were thinking with one voice.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>10</baseMoodEffect>
+        <description>We finished each other's thoughts inside the sim.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Neurotic</trait>
+            <text>I kept checking their signal, terrified of losing the link.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Lover</defName>
+    <label>vr: shared breath</label>
+    <description>Our pods hummed together; I could feel their breath in mine.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>14</baseMoodEffect>
+        <description>We drifted in lockstep, heartbeats phasing inside the sim.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Jealous</trait>
+            <text>I caught ghost echoes of others; it stung, even in VR.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The sim bent around us, carrying our pulse in its glow.</text>
+          </li>
+          <li>
+            <trait>Ascetic</trait>
+            <text>Nothing flashy—just warmth, breath, and shared silence.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Family</defName>
+    <label>vr: echo of family</label>
+    <description>I felt family lines pulsing through the network.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.5</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>9</baseMoodEffect>
+        <description>Memories layered—old lullabies under the simulation's hum.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>BodyPurist</trait>
+            <text>I worried what the machine might do to us, together.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Rival</defName>
+    <label>vr: signal clash</label>
+    <description>Our signals clashed inside the simulation.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>-6</baseMoodEffect>
+        <description>The other presence grated on me. Even in VR, they were sand in the gears.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Abrasive</trait>
+            <text>Every stray packet felt like another insult.</text>
+          </li>
+          <li>
+            <trait>Bloodlust</trait>
+            <text>I imagined cutting their feed and silencing them.</text>
+          </li>
+          <li>
+            <trait>Psychopath</trait>
+            <text>I probed their reactions just to see what would break.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_Empathic</defName>
+    <label>vr: empathic bleed</label>
+    <description>I absorbed someone else's mood—like feelings leaking through the wires.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>5</baseMoodEffect>
+        <description>Emotions bled through the sim until I couldn't tell which were mine.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Kind</trait>
+            <text>I buffered their fear, keeping it from overwhelming them.</text>
+          </li>
+          <li>
+            <trait>PsychicallySensitive</trait>
+            <text>The link rang like a low psychic chord.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRSocial_Link_PsychicChord</defName>
+    <label>vr: psychic chord</label>
+    <description>A clean psychic chord hummed through the pods.</description>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <baseMoodEffect>8</baseMoodEffect>
+        <description>The whole network resonated; I could feel everyone, all at once.</description>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>PsychicallySensitive</trait>
+            <text>The chord flared bright, almost musical.</text>
+          </li>
+          <li>
+            <trait>PsychicallyDull</trait>
+            <text>I sensed the chord dimly, like listening through walls.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+</Defs>

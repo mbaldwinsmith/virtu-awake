@@ -124,15 +124,7 @@ namespace VirtuAwake
             SkillDef dominantSkill = GetDominantSkill(pawn, simType);
             int tier = PickTier(pawn, dominantSkill);
 
-            ThoughtDef comboThought = PickComboThought(pawn, tier);
-
             float joyGain = simType.joyGainTier1;
-            ThoughtDef chosen = tier switch
-            {
-                1 => simType.thoughtTier1,
-                2 => simType.thoughtTier2,
-                _ => simType.thoughtTier3
-            };
             joyGain = tier switch
             {
                 1 => simType.joyGainTier1,
@@ -140,20 +132,7 @@ namespace VirtuAwake
                 _ => simType.joyGainTier3
             };
 
-            if (comboThought != null)
-            {
-                chosen = comboThought;
-            }
-            else if (chosen == null)
-            {
-                chosen = simType.thoughtOnSession ?? simType.thoughtTier1;
-            }
-
-            // Trait-specific and base fallbacks to ensure a memory always fires.
-            if (chosen == null)
-            {
-                chosen = PickTraitMemory(pawn) ?? PickBaseMemory(tier);
-            }
+            ThoughtDef chosen = VRMemorySelector.SelectSimMemory(pawn, simType, dominantSkill, tier);
 
             if (chosen != null)
             {
@@ -361,161 +340,5 @@ namespace VirtuAwake
             return pawn.story.traits.HasTrait(DefDatabase<TraitDef>.GetNamedSilentFail(traitDefName));
         }
 
-        private static ThoughtDef PickComboThought(Pawn pawn, int tier)
-        {
-            if (pawn?.story?.traits == null)
-            {
-                return null;
-            }
-
-            ThoughtDef best = null;
-            int bestTraitCount = 1;
-
-            foreach (var def in DefDatabase<ThoughtDef>.AllDefsListForReading)
-            {
-                if (string.IsNullOrEmpty(def?.defName) || !def.defName.StartsWith("VA_VRCombo_"))
-                {
-                    continue;
-                }
-
-                var ext = def.GetModExtension<TraitMemoryExtension>();
-                if (ext?.variants == null)
-                {
-                    continue;
-                }
-
-                foreach (var variant in ext.variants)
-                {
-                    if (variant == null)
-                    {
-                        continue;
-                    }
-
-                    if (variant.tier > 0 && variant.tier != tier)
-                    {
-                        continue;
-                    }
-
-                    List<string> traits = GetTraitsForVariant(variant);
-                    int traitCount = traits.Count;
-                    if (traitCount <= 1)
-                    {
-                        continue;
-                    }
-
-                    if (!traits.All(t => HasTrait(pawn, t)))
-                    {
-                        continue;
-                    }
-
-                    if (traitCount > bestTraitCount)
-                    {
-                        bestTraitCount = traitCount;
-                        best = def;
-                    }
-                }
-            }
-
-            return best;
-        }
-
-        private static ThoughtDef PickTraitMemory(Pawn pawn)
-        {
-            if (pawn?.story?.traits == null)
-            {
-                return null;
-            }
-
-            var candidates = new List<ThoughtDef>();
-
-            TryAddTraitMemory(pawn, candidates, "Pessimist", "VA_VRTrait_Pessimist");
-            TryAddTraitMemory(pawn, candidates, "Optimist", "VA_VRTrait_Optimist");
-            TryAddTraitMemory(pawn, candidates, "TooSmart", "VA_VRTrait_TooSmart");
-            TryAddTraitMemory(pawn, candidates, "Paranoid", "VA_VRTrait_Paranoid");
-            TryAddTraitMemory(pawn, candidates, "Sanguine", "VA_VRTrait_Sanguine");
-            TryAddTraitMemory(pawn, candidates, "Masochist", "VA_VRTrait_Masochist");
-            TryAddTraitMemory(pawn, candidates, "Pyromaniac", "VA_VRTrait_Pyromaniac");
-            TryAddTraitMemory(pawn, candidates, "Ascetic", "VA_VRTrait_Ascetic");
-            TryAddTraitMemory(pawn, candidates, "Greedy", "VA_VRTrait_Greedy");
-            TryAddTraitMemory(pawn, candidates, "Kind", "VA_VRTrait_Kind");
-            TryAddTraitMemory(pawn, candidates, "BodyPurist", "VA_VRTrait_BodyPurist");
-            TryAddTraitMemory(pawn, candidates, "Psychopath", "VA_VRTrait_Psychopath");
-
-            if (candidates.Count == 0)
-            {
-                return null;
-            }
-
-            return candidates.RandomElement();
-        }
-
-        private static ThoughtDef PickBaseMemory(int tier)
-        {
-            // Map tiers to simple base experiences; higher tiers lean darker.
-            switch (tier)
-            {
-                case 1:
-                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_SoftGlint");
-                case 2:
-                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_ParallaxEcho");
-                default:
-                    // Random between the heavier exits/crisis memories.
-                    if (Rand.Chance(0.5f))
-                    {
-                        var crisis = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_CrisisStutter");
-                        if (crisis != null)
-                        {
-                            return crisis;
-                        }
-                    }
-                    return DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRMemory_Base_HeavyExit");
-            }
-        }
-
-        private static void TryAddTraitMemory(Pawn pawn, List<ThoughtDef> list, string traitDefName, string thoughtDefName)
-        {
-            if (!HasTrait(pawn, traitDefName))
-            {
-                return;
-            }
-
-            ThoughtDef thought = DefDatabase<ThoughtDef>.GetNamedSilentFail(thoughtDefName);
-            if (thought != null)
-            {
-                list.Add(thought);
-            }
-        }
-
-        private static List<string> GetTraitsForVariant(TraitMemoryVariant variant)
-        {
-            var traits = new List<string>();
-            if (variant == null)
-            {
-                return traits;
-            }
-
-            if (variant.traits != null)
-            {
-                foreach (var t in variant.traits)
-                {
-                    if (!string.IsNullOrEmpty(t) && !traits.Contains(t))
-                    {
-                        traits.Add(t);
-                    }
-                }
-            }
-
-            if (!string.IsNullOrEmpty(variant.trait) && !traits.Contains(variant.trait))
-            {
-                traits.Add(variant.trait);
-            }
-
-            if (!string.IsNullOrEmpty(variant.trait2) && !traits.Contains(variant.trait2))
-            {
-                traits.Add(variant.trait2);
-            }
-
-            return traits;
-        }
     }
 }

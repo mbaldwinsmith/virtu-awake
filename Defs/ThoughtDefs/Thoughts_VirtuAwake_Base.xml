@@ -32,6 +32,47 @@
   </ThoughtDef>
 
   <ThoughtDef>
+    <defName>VA_VRMemory_Event_ParallaxTear</defName>
+    <label>parallax tear</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>parallax tear</label>
+        <description>Background and foreground separated for a beat, like the world was two windows out of sync.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Pessimist</trait>
+            <text>Of course the world tears at the seams when I look at it.</text>
+          </li>
+          <li>
+            <trait>TooSmart</trait>
+            <text>I could almost see the render layers; the math was sloppy.</text>
+          </li>
+          <li>
+            <trait>Paranoid</trait>
+            <text>Someone was peeking between the layers when it slipped.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>The split looked like two sunsets. I picked the prettier one.</text>
+          </li>
+          <li>
+            <trait>BodyPurist</trait>
+            <text>If the world is fake, I’m definitely keeping the real me.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
+
+  <ThoughtDef>
     <defName>VA_VRMemory_Base_HeavyExit</defName>
     <label>heavy VR exit</label>
     <thoughtClass>Thought_Memory</thoughtClass>
@@ -59,5 +100,46 @@
         <baseMoodEffect>-4</baseMoodEffect>
       </li>
     </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>VA_VRMemory_Event_GlitchChorus</defName>
+    <label>glitch chorus</label>
+    <thoughtClass>VirtuAwake.Thought_MemoryTraitVariant</thoughtClass>
+    <durationDays>1.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>glitch chorus</label>
+        <description>Voices overlapped in different languages, all trying to say the same thing.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="VirtuAwake.TraitMemoryExtension">
+        <variants>
+          <li>
+            <trait>Psychopath</trait>
+            <text>I listened for the most efficient tone. Cold beats panic.</text>
+          </li>
+          <li>
+            <trait>Paranoid</trait>
+            <text>They were coordinating. With who?</text>
+          </li>
+          <li>
+            <trait>Kind</trait>
+            <text>They all sounded scared. I wanted to answer back.</text>
+          </li>
+          <li>
+            <trait>TooSmart</trait>
+            <text>That many desyncs means the server is bleeding through.</text>
+          </li>
+          <li>
+            <trait>Sanguine</trait>
+            <text>Honestly, it was almost musical.</text>
+          </li>
+        </variants>
+      </li>
+    </modExtensions>
   </ThoughtDef>
 </Defs>

@@ -152,33 +152,33 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Create MapComponent_VirtuAwakeEvents for scheduling anomaly rolls  
 **Category:** C# / Events  
 **Dependencies:** PSY-001, PSY-002, CORE-001  
-**Status:** TODO  
+**Status:** DONE (MapComponent rolls anomalies from active VR pawns)  
 **Output:** MapComponent ticking active pods; hooks into Lucidity/Instability  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-EVT-002
 **Description:** Implement event severity selection (Minor, Moderate, Major, Crisis) with weighting by instability and traits  
 **Category:** C# / RNG  
 **Dependencies:** EVT-001  
-**Status:** TODO  
+**Status:** DONE (severity picker with trait tilt)  
 **Output:** MatrixEventSeverity enum + selection utility  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-EVT-003
 **Description:** Add MatrixEventDef and XML registry for events  
 **Category:** XML + C# Defs  
 **Dependencies:** EVT-002  
-**Status:** TODO  
+**Status:** DONE (MatrixEventDef class + MatrixEvents.xml samples per severity added)  
 **Output:** Def class + Defs/Events/MatrixEvents.xml with sample events per severity  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-EVT-004
 **Description:** Implement event resolution effects (memories, Lucidity/Instability adjustments, side effects)  
 **Category:** C#  
 **Dependencies:** EVT-003, PSY-004  
-**Status:** TODO  
+**Status:** DONE (event resolution applies state changes + trait-aware thoughts)  
 **Output:** ApplyMatrixEventEffects() with hooks for pawn state changes  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-EVT-005
 **Description:** Add catastrophic multi-pod glitch events (Crisis tier)  
@@ -188,7 +188,39 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Event_CatastrophicGlitch handling multiple pods/pawns  
 **Owner:** Unassigned
 
----
+## TASK-EVT-006
+**Description:** Scaffold Shared Dream Network event chain (defs + state machine for linked pods)  
+**Category:** C# / Events  
+**Dependencies:** EVT-004  
+**Status:** DONE (Shared Dream chain scaffolding, map component state, and sample chain defs added)  
+**Output:** Chain data/state handling plus initial MatrixEventDef entries for shared dreams  
+**Owner:** AI
+
+## TASK-EVT-007
+**Description:** Implement multi-pod sync anomaly worker with resolution effects across linked sleepers  
+**Category:** C# / Events  
+**Dependencies:** EVT-006  
+**Status:** DONE (shared dream group worker, sync effects, wake/eject handling implemented)  
+**Output:** Event worker that targets multiple pods, applies shared effects, and coordinates wake/eject flows  
+**Owner:** AI
+
+## TASK-EVT-008
+**Description:** Add trait-aware branches for Shared Dream Network outcomes (memories/letters/text)  
+**Category:** XML / Narrative  
+**Dependencies:** EVT-006, EVT-007  
+**Status:** TODO  
+**Output:** MatrixEvents with trait overlays, outcome memories, and keyed letter text for the chain  
+**Owner:** Unassigned
+
+## TASK-EVT-009
+**Description:** Balance/QA pass for Shared Dream Network (weights, cooldowns, failure recovery)  
+**Category:** QA / Balance  
+**Dependencies:** EVT-008  
+**Status:** TODO  
+**Output:** Tuned event weights/cooldowns, failure safeguards, and QA notes for the chain  
+**Owner:** Unassigned
+
+--- 
 
 # Sim Types & Training Content
 
@@ -220,9 +252,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add trait-aware VR memory selector for events/sessions  
 **Category:** C#  
 **Dependencies:** EVT-004  
-**Status:** TODO  
+**Status:** DONE (VRMemorySelector centralises sim/event memory picks)  
 **Output:** VRMemorySelector.GetMemoryFor(pawn, event/sim)  
-**Owner:** Unassigned
+**Owner:** AI
 
 ---
 
@@ -264,9 +296,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add social VR memory variants (friendship, rivalry, romance)  
 **Category:** XML  
 **Dependencies:** SIM-003  
-**Status:** TODO  
+**Status:** DONE (Social network memories added with relationship/trait overlays)  
 **Output:** Thoughts_VR_Social.xml  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-MEM-007
 **Description:** Author full trait+skill memory lines for all tiers per guides  
@@ -336,9 +368,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add event popups/letters for major VR anomalies and breakouts  
 **Category:** C# / UI  
 **Dependencies:** EVT-004, BRK-002  
-**Status:** TODO  
+**Status:** DONE (letters for major glitches + breakouts)  
 **Output:** Letter/small popup system for VR events  
-**Owner:** Unassigned
+**Owner:** AI
 
 ---
 
@@ -376,17 +408,17 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add lore text for pods, glitch logs, ancient messages  
 **Category:** XML / Keyed  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (lore keyed strings added)  
 **Output:** Languages/English/Keyed/VirtuAwake_Lore.xml  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-LORE-002
 **Description:** Add flavour text for catastrophic events and awakenings  
 **Category:** XML / Keyed  
 **Dependencies:** EVT-005, PSY-004  
-**Status:** TODO  
+**Status:** DONE (glitch/awakening keyed strings added)  
 **Output:** Languages/English/Keyed/VirtuAwake_GlitchDescriptions.xml  
-**Owner:** Unassigned
+**Owner:** AI
 
 ---
 
@@ -396,17 +428,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add Harmony hooks/patches for vanilla jobs that conflict with pod usage (if any)  
 **Category:** C# / Harmony  
 **Dependencies:** CORE-001  
-**Status:** TODO  
+**Status:** DONE (reservation block for VR-immersed pawns)  
 **Output:** Harmony patches in Source/Util or Patches/ folder  
-**Owner:** Unassigned
-
-## TASK-COMP-002
-**Description:** Add RJW/other mod metadata fixes (download/steam URLs) to avoid load warnings when bundled  
-**Category:** Packaging  
-**Dependencies:** OPS-002  
-**Status:** TODO  
-**Output:** About.xml dependency metadata corrected or documented  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-COMP-003
 **Description:** Add VFE nutrient pipe integration patch for Virtu-Dream Pod — removed with dream pod  
@@ -700,4 +724,12 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 - Dream pod removed; keep future tasks scoped to the standard VR pod only.
 - Lucidity/glitch pass: slower base lucidity gain, mood/trait-driven growth/decay, glitch chance scales with lucidity+instability; verify in playtest.
 - Memory variety: VR memories now block repeats of the same skill until the previous memory decays; playtest to confirm rotation across skills.
+
+## TASK-CONTENT-001
+**Description:** Author additional Matrix events with trait-aware memory overlays and custom outcomes  
+**Category:** XML / C# / Events  
+**Dependencies:** EVT-003, EVT-004  
+**Status:** DONE (expanded events with trait-aware thoughts)  
+**Output:** Expanded Defs/Events/MatrixEvents.xml with per-trait overlays and optional outcome hooks  
+**Owner:** AI
 

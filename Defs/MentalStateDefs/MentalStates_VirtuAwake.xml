@@ -25,7 +25,7 @@
     <description>The world repeats like a cheap loop. The pawn wanders, trying to find a corner that isn't duplicated.</description>
     <stateClass>MentalState_SadWander</stateClass>
     <workerClass>MentalStateWorker_SadWander</workerClass>
-    <category>Wander</category>
+    <category>Misc</category>
     <blockRandomInteraction>true</blockRandomInteraction>
     <minTicksBeforeRecovery>8000</minTicksBeforeRecovery>
     <maxTicksBeforeRecovery>16000</maxTicksBeforeRecovery>

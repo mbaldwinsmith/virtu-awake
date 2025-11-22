@@ -41,7 +41,7 @@ namespace VirtuAwake
                     return false;
                 }
 
-                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodSocial" || defName == "VA_UseVRPodDeep";
+                return defName == "VA_UseVRPod" || defName == "VA_UseVRPodDeep";
             }
         }
     }

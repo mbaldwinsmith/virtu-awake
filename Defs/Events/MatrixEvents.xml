@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_MinorFlicker</defName>
+    <label>minor flicker</label>
+    <description>A faint shimmer runs through the simulation.</description>
+    <severity>Minor</severity>
+    <baseWeight>1.0</baseWeight>
+    <minLucidity>0.4</minLucidity>
+    <minInstability>0.3</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_SoftGlint</thoughtOnFire>
+    <lucidityOffset>0.02</lucidityOffset>
+    <instabilityOffset>0.015</instabilityOffset>
+    <letterLabelKey>VA_Letter_GlitchMinor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMinor_Body</letterTextKey>
+    <letterDef>NeutralEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_ParallaxTear</defName>
+    <label>parallax tear</label>
+    <description>Parallax slips; background and foreground drift.</description>
+    <severity>Moderate</severity>
+    <baseWeight>0.8</baseWeight>
+    <minLucidity>0.5</minLucidity>
+    <minInstability>0.45</minInstability>
+    <thoughtOnFire>VA_VRMemory_Event_ParallaxTear</thoughtOnFire>
+    <lucidityOffset>0.03</lucidityOffset>
+    <instabilityOffset>0.025</instabilityOffset>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_HeavyExitPulse</defName>
+    <label>heavy exit pulse</label>
+    <description>Gravity glitches; the sleeper feels half-ejected.</description>
+    <severity>Major</severity>
+    <baseWeight>0.6</baseWeight>
+    <minLucidity>0.6</minLucidity>
+    <minInstability>0.55</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_HeavyExit</thoughtOnFire>
+    <lucidityOffset>0.04</lucidityOffset>
+    <instabilityOffset>0.05</instabilityOffset>
+    <wakePawn>true</wakePawn>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_CrisisStutter</defName>
+    <label>crisis stutter</label>
+    <description>Everything freezes mid-scene and resumes without sound.</description>
+    <severity>Crisis</severity>
+    <baseWeight>0.35</baseWeight>
+    <minLucidity>0.7</minLucidity>
+    <minInstability>0.7</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_CrisisStutter</thoughtOnFire>
+    <lucidityOffset>0.05</lucidityOffset>
+    <instabilityOffset>0.08</instabilityOffset>
+    <wakePawn>true</wakePawn>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_GlitchChorus</defName>
+    <label>glitch chorus</label>
+    <description>Voices overlap as if multiple rooms are bleeding into one channel.</description>
+    <severity>Major</severity>
+    <baseWeight>0.7</baseWeight>
+    <minLucidity>0.55</minLucidity>
+    <minInstability>0.5</minInstability>
+    <thoughtOnFire>VA_VRMemory_Event_GlitchChorus</thoughtOnFire>
+    <instabilityOffset>0.06</instabilityOffset>
+    <moodOffset>-4</moodOffset>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_PsychicHum</defName>
+    <label>psychic hum</label>
+    <description>A low psychic hum vibrates through the sim, like a signal from outside.</description>
+    <severity>Moderate</severity>
+    <baseWeight>0.9</baseWeight>
+    <minLucidity>0.45</minLucidity>
+    <minInstability>0.4</minInstability>
+    <thoughtOnFire>VA_VRTrait_PsychicSensitive</thoughtOnFire>
+    <lucidityOffset>0.04</lucidityOffset>
+    <instabilityOffset>0.02</instabilityOffset>
+    <letterLabelKey>VA_Letter_GlitchModerate_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchModerate_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_NudeExposure</defName>
+    <label>avatar texture drop</label>
+    <description>Clothing layers drop out; avatars render with only skin and light.</description>
+    <severity>Minor</severity>
+    <baseWeight>1.1</baseWeight>
+    <minLucidity>0.35</minLucidity>
+    <minInstability>0.35</minInstability>
+    <thoughtOnFire>VA_VRTrait_Nudist</thoughtOnFire>
+    <lucidityOffset>0.01</lucidityOffset>
+    <instabilityOffset>0.01</instabilityOffset>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_SharedDream_Link</defName>
+    <label>linked dream</label>
+    <description>Two sleepers feel their scenes overlap; voices drift from another pod.</description>
+    <severity>Moderate</severity>
+    <baseWeight>0.25</baseWeight>
+    <minLucidity>0.5</minLucidity>
+    <minInstability>0.45</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_ParallaxEcho</thoughtOnFire>
+    <lucidityOffset>0.025</lucidityOffset>
+    <instabilityOffset>0.02</instabilityOffset>
+    <letterLabelKey>VA_Letter_GlitchModerate_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchModerate_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+    <modExtensions>
+      <li Class="VirtuAwake.MatrixEventChainExtension">
+        <chainId>VA_SharedDream</chainId>
+        <stage>0</stage>
+        <ticksToNextStage>1200</ticksToNextStage>
+        <minParticipants>2</minParticipants>
+        <maxParticipants>3</maxParticipants>
+        <nextEventDefs>
+          <li>VA_Matrix_SharedDream_Coherence</li>
+        </nextEventDefs>
+        <startNewChain>true</startNewChain>
+        <syncLucidityLerp>0.25</syncLucidityLerp>
+        <syncInstabilityLerp>0.25</syncInstabilityLerp>
+      </li>
+    </modExtensions>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_SharedDream_Coherence</defName>
+    <label>coherent merge</label>
+    <description>Sim scenes braid together; motion feels mirrored across pods.</description>
+    <severity>Major</severity>
+    <baseWeight>0.01</baseWeight>
+    <minLucidity>0.55</minLucidity>
+    <minInstability>0.5</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_HeavyExit</thoughtOnFire>
+    <lucidityOffset>0.035</lucidityOffset>
+    <instabilityOffset>0.05</instabilityOffset>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+    <modExtensions>
+      <li Class="VirtuAwake.MatrixEventChainExtension">
+        <chainId>VA_SharedDream</chainId>
+        <stage>1</stage>
+        <ticksToNextStage>1400</ticksToNextStage>
+        <minParticipants>2</minParticipants>
+        <maxParticipants>3</maxParticipants>
+        <nextEventDefs>
+          <li>VA_Matrix_SharedDream_Echo</li>
+        </nextEventDefs>
+        <startNewChain>false</startNewChain>
+        <chainOnly>true</chainOnly>
+        <syncLucidityLerp>0.4</syncLucidityLerp>
+        <syncInstabilityLerp>0.4</syncInstabilityLerp>
+      </li>
+    </modExtensions>
+  </MatrixEventDef>
+
+  <MatrixEventDef Class="VirtuAwake.MatrixEventDef">
+    <defName>VA_Matrix_SharedDream_Echo</defName>
+    <label>echo cascade</label>
+    <description>Dreams hard-sync; pulses spike as the shared network strains.</description>
+    <severity>Crisis</severity>
+    <baseWeight>0.01</baseWeight>
+    <minLucidity>0.65</minLucidity>
+    <minInstability>0.65</minInstability>
+    <thoughtOnFire>VA_VRMemory_Base_CrisisStutter</thoughtOnFire>
+    <lucidityOffset>0.05</lucidityOffset>
+    <instabilityOffset>0.08</instabilityOffset>
+    <wakePawn>true</wakePawn>
+    <letterLabelKey>VA_Letter_GlitchMajor_Label</letterLabelKey>
+    <letterTextKey>VA_Letter_GlitchMajor_Body</letterTextKey>
+    <letterDef>NegativeEvent</letterDef>
+    <modExtensions>
+      <li Class="VirtuAwake.MatrixEventChainExtension">
+        <chainId>VA_SharedDream</chainId>
+        <stage>2</stage>
+        <ticksToNextStage>0</ticksToNextStage>
+        <minParticipants>2</minParticipants>
+        <maxParticipants>3</maxParticipants>
+        <startNewChain>false</startNewChain>
+        <chainOnly>true</chainOnly>
+        <syncLucidityLerp>0.6</syncLucidityLerp>
+        <syncInstabilityLerp>0.65</syncInstabilityLerp>
+        <wakeAll>true</wakeAll>
+        <forceEject>true</forceEject>
+      </li>
+    </modExtensions>
+  </MatrixEventDef>
+</Defs>

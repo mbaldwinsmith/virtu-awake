@@ -34,13 +34,21 @@
     <Compile Include="Components\Hediff_Lucidity.cs" />
     <Compile Include="Components\Need_Lucidity.cs" />
     <Compile Include="Components\InspectTab_LucidityInstability.cs" />
+    <Compile Include="Events\MapComponent_VirtuAwakeEvents.cs" />
+    <Compile Include="Events\MatrixEventChainExtension.cs" />
+    <Compile Include="Events\MatrixEventDef.cs" />
+    <Compile Include="Events\MatrixEventSeverity.cs" />
+    <Compile Include="Events\MatrixEventUtility.cs" />
+    <Compile Include="Events\SharedDreamChainState.cs" />
+    <Compile Include="Events\SharedDreamEventWorker.cs" />
     <Compile Include="Simulation\Building_VRPod.cs" />
     <Compile Include="Simulation\CompProperties_VRPod.cs" />
     <Compile Include="Simulation\CompVRPod.cs" />
     <Compile Include="Simulation\JobDriver_StabilizeVRPod.cs" />
     <Compile Include="Simulation\JobDriver_UseVRPod.cs" />
-    <Compile Include="Simulation\JobDriver_UseVRPodSocial.cs" />
     <Compile Include="Simulation\JoyGiver_UseVRPod.cs" />
+    <Compile Include="Simulation\SocialMemoryUtility.cs" />
+    <Compile Include="Simulation\VRMemorySelector.cs" />
     <Compile Include="Simulation\TraitMemoryExtension.cs" />
     <Compile Include="Simulation\Thought_MemoryTraitVariant.cs" />
     <Compile Include="Simulation\SimTypeDef.cs" />
@@ -49,6 +57,7 @@
     <Compile Include="Simulation\WorkGiver_UseVRPod.cs" />
     <Compile Include="Util\Gizmo_VRPawnStatus.cs" />
     <Compile Include="Util\InteractionPatches.cs" />
+    <Compile Include="Util\ReservationPatches.cs" />
     <Compile Include="Util\VRSessionTracker.cs" />
     <Compile Include="Util\RomancePatches.cs" />
   </ItemGroup>

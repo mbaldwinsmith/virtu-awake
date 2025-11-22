@@ -44,7 +44,7 @@ namespace VirtuAwake
         {
             JobDef job = pawn.CurJobDef;
             if (job == null) return false;
-            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodSocial";
+            return job.defName == "VA_UseVRPod";
         }
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <VA_Glitch_CatastrophicIntro>Multiple pods spike instability. Visuals tear, audio desyncs, and the colony hears echoes from nowhere.</VA_Glitch_CatastrophicIntro>
+  <VA_Glitch_CatastrophicOutcome>Sim cores thrash. Some sleepers jolt awake, others drift, and a few talk to people that are not there.</VA_Glitch_CatastrophicOutcome>
+  <VA_Awakening_Flavour_Compliant>The pod UI thanks the sleeper for their service while asking them not to look behind the curtain.</VA_Awakening_Flavour_Compliant>
+  <VA_Awakening_Flavour_Panic>The world repeats two frames while the sleeper sprints in place, convinced the walls are watching.</VA_Awakening_Flavour_Panic>
+  <VA_Awakening_Flavour_Derealisation>The horizon tiles like a cheap wallpaper; footsteps sound borrowed as the sleeper drifts through a fake sky.</VA_Awakening_Flavour_Derealisation>
+  <VA_Awakening_Flavour_Violent>The HUD cracks, health bars bleed into the air, and rage spills through the seams.</VA_Awakening_Flavour_Violent>
+  <VA_Awakening_Flavour_Pyro>Fire licks away the colour grading. For a moment, the simulation looks honest in the light.</VA_Awakening_Flavour_Pyro>
+  <VA_Letter_GlitchMajor_Label>Major VR glitch detected</VA_Letter_GlitchMajor_Label>
+  <VA_Letter_GlitchMajor_Body>{0} experienced a major VR glitch: {1}.\n\nLucidity and instability are spiking; watch for further anomalies.</VA_Letter_GlitchMajor_Body>
+  <VA_Letter_Breakout_Label>VR breakout in progress</VA_Letter_Breakout_Label>
+  <VA_Letter_Breakout_Body>{0} shattered the simulation ({1}).\n\nAwakening memory: {2}.</VA_Letter_Breakout_Body>
+  <VA_Letter_GlitchModerate_Label>VR anomaly humming</VA_Letter_GlitchModerate_Label>
+  <VA_Letter_GlitchModerate_Body>{0} felt a sustained anomaly: {1}.\n\nInstability creeps upward; monitor the pod.</VA_Letter_GlitchModerate_Body>
+  <VA_Letter_GlitchMinor_Label>VR flicker</VA_Letter_GlitchMinor_Label>
+  <VA_Letter_GlitchMinor_Body>{0} caught a small flicker: {1}.\n\nKeep an eye on lucidity and instability.</VA_Letter_GlitchMinor_Body>
+</LanguageData>

@@ -142,7 +142,7 @@ namespace VirtuAwake
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
                 this.nextStabilizeTick[pawn.thingIDNumber] = 0;
-                VRSessionTracker.Register(pawn);
+                VRSessionTracker.Register(pawn, this);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] SetUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -160,7 +160,7 @@ namespace VirtuAwake
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
                 this.nextStabilizeTick[pawn.thingIDNumber] = 0;
-                VRSessionTracker.Register(pawn);
+                VRSessionTracker.Register(pawn, this);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] AddUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -695,7 +695,7 @@ namespace VirtuAwake
                 return false;
             }
 
-            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodSocial" || job.defName == "VA_UseVRPodDeep";
+            return job.defName == "VA_UseVRPod" || job.defName == "VA_UseVRPodDeep";
         }
 
         private static bool HasTrait(TraitSet set, string defName)
@@ -820,6 +820,11 @@ namespace VirtuAwake
             if (Prefs.DevMode)
             {
                 Log.Message($"[VA] Glitch memory {glitch.defName} applied to {pawn.LabelShortCap} (lucidity {luc:F2}, instability {inst:F2}, mood {mood:F2}).");
+            }
+
+            if (severity == GlitchSeverity.Major)
+            {
+                SendGlitchLetter(pawn, glitch);
             }
         }
 
@@ -1248,6 +1253,30 @@ namespace VirtuAwake
                     Log.Message($"[VA] Awakening memory {thoughtDefName} applied to {pawn.LabelShortCap} (state {stateName ?? "none"}).");
                 }
             }
+
+            SendBreakoutLetter(pawn, thought, stateName);
+        }
+
+        private void SendGlitchLetter(Pawn pawn, ThoughtDef glitch)
+        {
+            LetterDef letterDef = LetterDefOf.NegativeEvent;
+            string label = "VA_Letter_GlitchMajor_Label".Translate();
+            string body = "VA_Letter_GlitchMajor_Body".Translate(pawn.LabelShortCap, glitch?.label ?? "unknown effect");
+            Find.LetterStack.ReceiveLetter(label, body, letterDef, new LookTargets(pawn));
+        }
+
+        private void SendBreakoutLetter(Pawn pawn, ThoughtDef awakening, string stateName)
+        {
+            if (pawn == null)
+            {
+                return;
+            }
+
+            LetterDef letterDef = LetterDefOf.ThreatSmall;
+            string label = "VA_Letter_Breakout_Label".Translate();
+            string thoughtLabel = awakening?.label ?? "awakening";
+            string body = "VA_Letter_Breakout_Body".Translate(pawn.LabelShortCap, stateName ?? "mental break", thoughtLabel);
+            Find.LetterStack.ReceiveLetter(label, body, letterDef, new LookTargets(pawn));
         }
 
         private enum GlitchSeverity
