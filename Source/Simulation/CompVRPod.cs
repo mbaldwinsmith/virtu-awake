@@ -1163,7 +1163,7 @@ namespace VirtuAwake
 
             if (HasTrait(traits, "Nervous") || HasTrait(traits, "Wimp"))
             {
-                def = GetMentalState("PanicFlee");
+                def = GetMentalState("VA_PanicAwakening") ?? GetMentalState("PanicFlee");
             }
             else if (HasTrait(traits, "Gourmand"))
             {
@@ -1183,7 +1183,7 @@ namespace VirtuAwake
             }
             else if (HasTrait(traits, "Depressive"))
             {
-                def = GetMentalState("SadWander");
+                def = GetMentalState("VA_Derealisation") ?? GetMentalState("SadWander");
             }
             else if (HasTrait(traits, "Abrasive"))
             {
@@ -1213,9 +1213,11 @@ namespace VirtuAwake
 
             switch (stateName)
             {
+                case "VA_PanicAwakening":
                 case "PanicFlee":
                     thoughtDefName = "VA_Awakening_PanicBreak";
                     break;
+                case "VA_Derealisation":
                 case "SadWander":
                     thoughtDefName = "VA_Awakening_SadWander";
                     break;

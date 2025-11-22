@@ -124,9 +124,9 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Description:** Add mental states for high lucidity/instability (panic, derealisation)  
 **Category:** C# / MentalStates  
 **Dependencies:** PSY-002, PSY-004  
-**Status:** TODO  
+**Status:** DONE (VR panic + derealisation mental states hooked into breakout)  
 **Output:** MentalStateDefs + classes (e.g., SimulationBreaker, Derealisation)  
-**Owner:** Unassigned
+**Owner:** AI
 
 ## TASK-PSY-006
 **Description:** Add glitch memories that scale with lucidity/instability and mood/traits (positive/neutral/negative tiers)  

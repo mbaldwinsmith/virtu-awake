@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>VA_PanicAwakening</defName>
+    <label>simulation panic</label>
+    <description>The seams split open and nothing felt real. Fight-or-flight triggered inside the headset.</description>
+    <stateClass>MentalState_PanicFlee</stateClass>
+    <workerClass>MentalStateWorker_PanicFlee</workerClass>
+    <category>Aggro</category>
+    <blockRandomInteraction>true</blockRandomInteraction>
+    <minTicksBeforeRecovery>6000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>12000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.06</recoveryMtbDays>
+    <beginLetter>{0} is panicking inside a broken simulation.</beginLetter>
+    <beginLetterDef>ThreatSmall</beginLetterDef>
+    <recoveryMessage>{0} steadied themselves after the panic.</recoveryMessage>
+    <baseInspectLine>Mental state: Simulation panic</baseInspectLine>
+    <recoverFromSleep>true</recoverFromSleep>
+    <inCaravanCanDo>true</inCaravanCanDo>
+  </MentalStateDef>
+
+  <MentalStateDef ParentName="BaseMentalState">
+    <defName>VA_Derealisation</defName>
+    <label>derealisation walk</label>
+    <description>The world repeats like a cheap loop. The pawn wanders, trying to find a corner that isn't duplicated.</description>
+    <stateClass>MentalState_SadWander</stateClass>
+    <workerClass>MentalStateWorker_SadWander</workerClass>
+    <category>Wander</category>
+    <blockRandomInteraction>true</blockRandomInteraction>
+    <minTicksBeforeRecovery>8000</minTicksBeforeRecovery>
+    <maxTicksBeforeRecovery>16000</maxTicksBeforeRecovery>
+    <recoveryMtbDays>0.08</recoveryMtbDays>
+    <beginLetter>{0} is drifting through a derealised simulation.</beginLetter>
+    <beginLetterDef>NegativeEvent</beginLetterDef>
+    <recoveryMessage>{0} grounded themselves; the world feels solid again.</recoveryMessage>
+    <baseInspectLine>Mental state: Derealisation</baseInspectLine>
+    <recoverFromSleep>true</recoverFromSleep>
+    <inCaravanCanDo>true</inCaravanCanDo>
+  </MentalStateDef>
+</Defs>
