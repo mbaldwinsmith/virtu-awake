@@ -3,13 +3,14 @@
   <ThoughtDef>
     <defName>VA_VRGlitch_Negative</defName>
     <label>simulation glitch</label>
-    <description>A flicker cut through the sim, pulling at the seams of memory.</description>
+    <description>A flicker cut through the sim and I felt the seams around me slip.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
       <li>
         <label>unsettling glitch</label>
+        <description>I watched the seams tear and something inside me twisted.</description>
         <baseMoodEffect>-5</baseMoodEffect>
       </li>
     </stages>
@@ -17,13 +18,14 @@
   <ThoughtDef>
     <defName>VA_VRGlitch_NegativeMajor</defName>
     <label>fracturing glitch</label>
-    <description>The sim tore open with jagged echoes and pulled at everything familiar.</description>
+    <description>The sim tore open around me, jagged echoes clawing at everything I thought was real.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>1.2</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
       <li>
         <label>frightening glitch</label>
+        <description>I felt the world split and drag me with it.</description>
         <baseMoodEffect>-10</baseMoodEffect>
       </li>
     </stages>
@@ -31,13 +33,14 @@
   <ThoughtDef>
     <defName>VA_VRGlitch_Positive</defName>
     <label>warming glitch</label>
-    <description>A soft break in the sim felt like a secret doorway, oddly comforting.</description>
+    <description>A soft break in the sim felt like a secret doorway I could step through.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
       <li>
         <label>warming glitch</label>
+        <description>I drifted through the glitch and it warmed me.</description>
         <baseMoodEffect>4</baseMoodEffect>
       </li>
     </stages>
@@ -45,14 +48,90 @@
   <ThoughtDef>
     <defName>VA_VRGlitch_Neutral</defName>
     <label>clinical glitch</label>
-    <description>Glitches appeared, catalogued, then filed away without feeling.</description>
+    <description>The glitch blinked in and out; I logged it and moved on.</description>
     <thoughtClass>Thought_Memory</thoughtClass>
     <durationDays>0.7</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
       <li>
         <label>clinical glitch</label>
+        <description>I noted the error and kept going.</description>
         <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Positive_SanguineModder</defName>
+    <label>welcome glitch</label>
+    <description>The tear hummed through my implants and I felt ready to slip inside.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>embraced the glitch</label>
+        <description>I rode the shimmer like it was built for me.</description>
+        <baseMoodEffect>6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Neutral_Psychopath</defName>
+    <label>sterile glitch</label>
+    <description>I saw the sim break; mostly, I wondered how to reproduce it.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.7</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>logged the glitch</label>
+        <description>I catalogued the tear and nothing stirred.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_Negative_ParanoidSensitive</defName>
+    <label>stalking glitch</label>
+    <description>The flicker felt aimed at me, whispering under my skin.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.9</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>felt watched</label>
+        <description>I knew the glitch saw me; my nerves stayed coiled.</description>
+        <baseMoodEffect>-7</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_NegativeMajor_ParanoidSensitive</defName>
+    <label>hunting glitch</label>
+    <description>The sim snapped with intent; it wanted me specifically.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.4</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>pursued by the tear</label>
+        <description>I felt something crawl through the break and reach for me.</description>
+        <baseMoodEffect>-12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRGlitch_NegativeMajor_Purist</defName>
+    <label>violating glitch</label>
+    <description>The glitch scraped across me like it hated my flesh.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>1.2</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>body panic</label>
+        <description>I recoiled as the sim tried to rewrite me.</description>
+        <baseMoodEffect>-11</baseMoodEffect>
       </li>
     </stages>
   </ThoughtDef>

@@ -616,7 +616,23 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Needs_VirtuAwake.xml uses integer listPriority; load warnings resolved  
 **Owner:** AI
 
----
+## TASK-BUG-017
+**Description:** Add stage descriptions for VR glitch thoughts so mood-affecting defs pass load checks  
+**Category:** Bugfix  
+**Dependencies:** None  
+**Status:** DONE (config errors cleared)  
+**Output:** Thought stages for VA_VRGlitch_* include descriptions to satisfy mood checks  
+**Owner:** AI
+
+## TASK-BUG-018
+**Description:** Retune VR glitch cadence to start near 50% lucidity/instability and add trait-based, first-person glitch memory variants  
+**Category:** Bugfix / Narrative  
+**Dependencies:** None  
+**Status:** DONE (earlier tiered glitches + trait/combo variants)  
+**Output:** Earlier-tier glitch triggers with trait/combo variants and first-person text  
+**Owner:** AI
+
+--- 
 
 # Agent Rules
 
