@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VirtuAwake")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+338840eaf9a6834a5a992fc37b91504ba4fb8828")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64e8e4f3ea6a3a794dff5198fae7562491c30a07")]
 [assembly: System.Reflection.AssemblyProductAttribute("VirtuAwake")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VirtuAwake")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

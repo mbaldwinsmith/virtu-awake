@@ -46,5 +46,7 @@
     <Compile Include="Simulation\VRSimUtility.cs" />
     <Compile Include="Simulation\WorkGiver_UseVRPod.cs" />
     <Compile Include="Util\Gizmo_VRPawnStatus.cs" />
+    <Compile Include="Util\InteractionPatches.cs" />
+    <Compile Include="Util\VRSessionTracker.cs" />
   </ItemGroup>
 </Project>

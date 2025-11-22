@@ -632,6 +632,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Earlier-tier glitch triggers with trait/combo variants and first-person text  
 **Owner:** AI
 
+## TASK-BUG-019
+**Description:** Sustain vitals and isolation during VR sessions (sleep/food/comfort, interaction immunity, environmental shielding)  
+**Category:** Bugfix / Mechanics  
+**Dependencies:** None  
+**Status:** DONE (VR sessions sustain and isolate pawns)  
+**Output:** VR pod sustains rest/food/comfort, blocks external interactions/weather, and satisfies nudist/undergrounder vibes  
+**Owner:** AI
+
 --- 
 
 # Agent Rules

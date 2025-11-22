@@ -100,6 +100,11 @@ namespace VirtuAwake
                 {
                     VRSimUtility.ApplySimTraining(pawn, simType, this.Props.tickInterval);
                     ApplyLucidityAndInstability(pawn);
+                    bool deepSession = pawn?.CurJob?.def?.defName == "VA_UseVRPodDeep";
+                    SustainVitals(pawn, deepSession);
+                    ApplyComfort(pawn);
+                    ApplyTraitSatisfiers(pawn);
+                    ApplyEnvironmentImmunity(pawn);
                     ApplyJoy(pawn, simType);
                     TickMemories(pawn, simType, ref memTimer);
                     Need_Lucidity lucidity = pawn.needs?.TryGetNeed<Need_Lucidity>();
@@ -114,6 +119,10 @@ namespace VirtuAwake
 
         public void SetUser(Pawn pawn)
         {
+            foreach (Pawn existing in this.currentUsers)
+            {
+                VRSessionTracker.Unregister(existing);
+            }
             this.currentUsers.Clear();
             this.sessionSimTypes.Clear();
             this.memoryTimers.Clear();
@@ -124,6 +133,7 @@ namespace VirtuAwake
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
+                VRSessionTracker.Register(pawn);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] SetUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -139,6 +149,7 @@ namespace VirtuAwake
                 this.ResolveSimTypeFor(pawn);
                 this.memoryTimers[pawn] = 0;
                 this.benefitTimers[pawn] = 0;
+                VRSessionTracker.Register(pawn);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] AddUser: {pawn.LabelShortCap} added to {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -154,6 +165,7 @@ namespace VirtuAwake
                 this.sessionSimTypes.Remove(pawn);
                 this.memoryTimers.Remove(pawn);
                 this.benefitTimers.Remove(pawn);
+                VRSessionTracker.Unregister(pawn);
                 if (Prefs.DevMode)
                 {
                     Log.Message($"[VA] RemoveUser: {pawn.LabelShortCap} removed from {this.parent.Label ?? this.parent.def.defName} at tick {Find.TickManager.TicksGame}.");
@@ -791,6 +803,104 @@ namespace VirtuAwake
             }
 
             return false;
+        }
+
+        private void SustainVitals(Pawn pawn, bool deepSession)
+        {
+            var rest = pawn.needs?.rest;
+            if (rest != null)
+            {
+                rest.CurLevel = Mathf.Clamp01(rest.CurLevel + 0.004f);
+                rest.lastRestTick = Find.TickManager.TicksGame;
+            }
+
+            var food = pawn.needs?.food;
+            if (food != null)
+            {
+                float target = deepSession ? 0.95f : 0.8f;
+                if (food.CurLevel < target)
+                {
+                    food.CurLevel = target;
+                }
+            }
+        }
+
+        private void ApplyComfort(Pawn pawn)
+        {
+            var comfort = pawn.needs?.comfort;
+            if (comfort != null)
+            {
+                comfort.GainComfortFromThingIfPossible(this.parent);
+            }
+        }
+
+        private void ApplyTraitSatisfiers(Pawn pawn)
+        {
+            TraitSet traits = pawn.story?.traits;
+            if (traits == null)
+            {
+                return;
+            }
+
+            var memories = pawn.needs?.mood?.thoughts?.memories;
+            if (memories == null)
+            {
+                return;
+            }
+
+            if (HasTrait(traits, "Nudist"))
+            {
+                var nudistThought = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRPod_NudistSatisfied");
+                if (nudistThought != null && !HasActiveThought(pawn, nudistThought))
+                {
+                    memories.TryGainMemory(nudistThought);
+                }
+            }
+
+            if (HasTrait(traits, "Undergrounder"))
+            {
+                var undergrounderThought = DefDatabase<ThoughtDef>.GetNamedSilentFail("VA_VRPod_UndergrounderShelter");
+                if (undergrounderThought != null && !HasActiveThought(pawn, undergrounderThought))
+                {
+                    memories.TryGainMemory(undergrounderThought);
+                }
+
+                var outdoors = pawn.needs?.outdoors;
+                if (outdoors != null)
+                {
+                    outdoors.CurLevel = outdoors.MaxLevel;
+                }
+            }
+        }
+
+        private void ApplyEnvironmentImmunity(Pawn pawn)
+        {
+            var hediffs = pawn.health?.hediffSet?.hediffs;
+            if (hediffs != null)
+            {
+                foreach (var h in hediffs)
+                {
+                    if (h == null)
+                    {
+                        continue;
+                    }
+
+                    if (h.def == HediffDefOf.Hypothermia || h.def == HediffDefOf.Heatstroke)
+                    {
+                        h.Severity = 0f;
+                    }
+                }
+            }
+
+            var memories = pawn.needs?.mood?.thoughts?.memories;
+            if (memories != null)
+            {
+                var soaked = DefDatabase<ThoughtDef>.GetNamedSilentFail("SoakingWet");
+                if (soaked != null)
+                {
+                    memories.RemoveMemoriesOfDef(soaked);
+                }
+            }
         }
 
         private enum GlitchSeverity

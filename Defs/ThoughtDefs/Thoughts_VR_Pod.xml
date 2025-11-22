@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThoughtDef>
+    <defName>VA_VRPod_NudistSatisfied</defName>
+    <label>skin-on-light sim</label>
+    <description>In the pod I shed everything and let the sim air brush against me.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.6</durationDays>
+    <stages>
+      <li>
+        <label>unburdened</label>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VA_VRPod_UndergrounderShelter</defName>
+    <label>sealed sim</label>
+    <description>The sim wrapped me in quiet tunnels and kept the sky far away.</description>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>0.8</durationDays>
+    <stages>
+      <li>
+        <label>safe below</label>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>
