@@ -4,27 +4,17 @@ using Verse;
 
 namespace VirtuAwake
 {
-    [HarmonyPatch(typeof(InteractionUtility), nameof(InteractionUtility.CanInitiateInteraction))]
-    public static class InteractionUtility_CanInitiateInteraction_VRPatch
+    [HarmonyPatch(typeof(Pawn_InteractionsTracker), "TryInteractWith")]
+    public static class Pawn_InteractionsTracker_TryInteractWith_VRPatch
     {
-        public static void Postfix(Pawn pawn, ref bool __result)
+        public static bool Prefix(Pawn ___pawn, Pawn recipient, ref bool __result)
         {
-            if (__result && VRSessionTracker.IsInVR(pawn))
+            if (VRSessionTracker.IsInVR(___pawn) || VRSessionTracker.IsInVR(recipient))
             {
                 __result = false;
+                return false;
             }
-        }
-    }
-
-    [HarmonyPatch(typeof(InteractionUtility), nameof(InteractionUtility.CanReceiveInteraction))]
-    public static class InteractionUtility_CanReceiveInteraction_VRPatch
-    {
-        public static void Postfix(Pawn pawn, ref bool __result)
-        {
-            if (__result && VRSessionTracker.IsInVR(pawn))
-            {
-                __result = false;
-            }
+            return true;
         }
     }
 }

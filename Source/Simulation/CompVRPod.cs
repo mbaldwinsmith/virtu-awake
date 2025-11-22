@@ -811,7 +811,6 @@ namespace VirtuAwake
             if (rest != null)
             {
                 rest.CurLevel = Mathf.Clamp01(rest.CurLevel + 0.004f);
-                rest.lastRestTick = Find.TickManager.TicksGame;
             }
 
             var food = pawn.needs?.food;
@@ -830,7 +829,7 @@ namespace VirtuAwake
             var comfort = pawn.needs?.comfort;
             if (comfort != null)
             {
-                comfort.GainComfortFromThingIfPossible(this.parent);
+                comfort.CurLevel = Mathf.Clamp01(comfort.CurLevel + 0.12f);
             }
         }
 
