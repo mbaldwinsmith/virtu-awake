@@ -935,56 +935,45 @@ namespace VirtuAwake
                 return;
             }
 
-            // Prisoners and slaves use colony break mechanics first.
-            if (pawn.IsPrisonerOfColony && pawn.Map != null)
-            {
-                PrisonBreakUtility.InitiatePrisonBreak(pawn.Map);
-                return;
-            }
-
-            if (pawn.IsSlaveOfColony && pawn.Map != null)
-            {
-                if (!SlaveRebellionUtility.InitiateSlaveRebellion(pawn))
-                {
-                    pawn.mindState?.mentalStateHandler?.TryStartMentalState(MentalStateDefOf.SlaveRebellion, "VR breakout", forceWake: true);
-                }
-                return;
-            }
-
             TraitSet traits = pawn.story?.traits;
             MentalStateDef def = null;
 
             if (HasTrait(traits, "Nervous") || HasTrait(traits, "Wimp"))
             {
-                def = MentalStateDefOf.PanicFlee;
+                def = GetMentalState("PanicFlee");
             }
             else if (HasTrait(traits, "Gourmand"))
             {
-                def = MentalStateDefOf.FoodBinge;
+                def = GetMentalState("FoodBinge");
             }
             else if (HasTrait(traits, "ChemicalInterest") || HasTrait(traits, "ChemicalFascination"))
             {
-                def = MentalStateDefOf.DrugBinge;
+                def = GetMentalState("DrugBinge");
             }
             else if (HasTrait(traits, "Pyromaniac"))
             {
-                def = MentalStateDefOf.FireStartingSpree;
+                def = GetMentalState("FireStartingSpree");
             }
             else if (HasTrait(traits, "Bloodlust") || HasTrait(traits, "Berserk") || HasTrait(traits, "Cannibal"))
             {
-                def = MentalStateDefOf.Berserk;
+                def = GetMentalState("Berserk");
             }
             else if (HasTrait(traits, "Depressive"))
             {
-                def = MentalStateDefOf.SadWander;
+                def = GetMentalState("SadWander");
             }
             else if (HasTrait(traits, "Abrasive"))
             {
-                def = MentalStateDefOf.InsultingSpree;
+                def = GetMentalState("InsultingSpree");
             }
 
-            def ??= MentalStateDefOf.Berserk;
+            def ??= GetMentalState("Berserk");
             pawn.mindState?.mentalStateHandler?.TryStartMentalState(def, "VR breakout", forceWake: true);
+        }
+
+        private MentalStateDef GetMentalState(string defName)
+        {
+            return DefDatabase<MentalStateDef>.GetNamedSilentFail(defName) ?? MentalStateDefOf.Berserk;
         }
 
         private enum GlitchSeverity
