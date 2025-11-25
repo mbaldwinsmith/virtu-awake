@@ -42,6 +42,11 @@ namespace VirtuAwake
                 return;
             }
 
+            if (Prefs.DevMode)
+            {
+                Log.Message($"[VA][Social] Found {vrGroups.Count} VR power-net group(s) at tick {Find.TickManager.TicksGame}.");
+            }
+
             foreach (List<Pawn> group in vrGroups.Values)
             {
                 if (group.NullOrEmpty())
@@ -51,6 +56,10 @@ namespace VirtuAwake
 
                 if (group.Count < 2)
                 {
+                    if (Prefs.DevMode)
+                    {
+                        Log.Message($"[VA][Social] Skipping group (count {group.Count}) - need 2+ pawns.");
+                    }
                     continue;
                 }
 
@@ -66,10 +75,16 @@ namespace VirtuAwake
                 avgInstability /= group.Count;
                 float combined = (avgLucidity + avgInstability) * 0.5f;
 
-                // Base chance scaled by combined state.
-                float chance = Mathf.Lerp(0.02f, 0.1f, Mathf.InverseLerp(0.35f, 1f, combined));
+                // Base chance scaled by combined state (clamped to avoid negative chances when calm).
+                float stateFactor = Mathf.Clamp01(Mathf.InverseLerp(0.35f, 1f, combined));
+                float chance = Mathf.Lerp(0.02f, 0.1f, stateFactor);
                 float groupFactor = Mathf.Lerp(1f, 1.5f, Mathf.Clamp01((group.Count - 1) / 3f));
                 chance *= groupFactor;
+
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA][Social] Group size {group.Count}, avgLucidity {avgLucidity:F2}, avgInstability {avgInstability:F2}, combined {combined:F2}, chance {chance:P1}.");
+                }
 
                 if (!Rand.Chance(chance))
                 {
@@ -380,11 +395,22 @@ namespace VirtuAwake
                 return;
             }
 
-            float chance = Mathf.Lerp(0.04f, 0.18f, Mathf.InverseLerp(0.35f, 0.95f, combinedState));
-            chance *= Mathf.Lerp(1f, 1.4f, Mathf.Clamp01((pawns.Count - 1) / 3f));
+            float stateFactor = Mathf.Clamp01(Mathf.InverseLerp(0.2f, 0.9f, combinedState));
+            float chance = Mathf.Lerp(0.16f, 0.36f, stateFactor); // raised floor + ceiling so socials outpace glitches
+            chance *= Mathf.Lerp(1f, 1.35f, Mathf.Clamp01((pawns.Count - 1) / 3f));
+            chance *= Mathf.Lerp(1f, 1.15f, Mathf.Clamp01(pawns.Count / 5f)); // larger nets get a small extra push
+
+            if (Prefs.DevMode)
+            {
+                Log.Message($"[VA][Social] Social roll for {pawns.Count} pawns: combined {combinedState:F2}, stateFactor {stateFactor:F2}, chance {chance:P1}.");
+            }
 
             if (!Rand.Chance(chance))
             {
+                if (Prefs.DevMode)
+                {
+                    Log.Message("[VA][Social] Social roll failed this tick.");
+                }
                 return;
             }
 
@@ -398,9 +424,14 @@ namespace VirtuAwake
                 }
 
                 CompVRPod pod = VRSessionTracker.GetPod(pawn);
-                if (pod == null || !pod.CanProvideBenefits(pawn))
+                if (pod == null)
                 {
                     continue;
+                }
+
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA][Social] Awarding social sim memory to {pawn.LabelShortCap}.");
                 }
 
                 VRSimUtility.TryGiveSimMemory(pawn, social);
@@ -418,18 +449,7 @@ namespace VirtuAwake
 
             ApplySideEffects(pawn, evt);
 
-            if (!string.IsNullOrEmpty(evt.letterLabelKey) || !string.IsNullOrEmpty(evt.letterTextKey))
-            {
-                string label = string.IsNullOrEmpty(evt.letterLabelKey)
-                    ? evt.label ?? "VR anomaly"
-                    : evt.letterLabelKey.Translate(pawn.LabelShortCap, thought?.label ?? "VR anomaly");
-                string text = string.IsNullOrEmpty(evt.letterTextKey)
-                    ? evt.description ?? "Simulation anomaly fired."
-                    : evt.letterTextKey.Translate(pawn.LabelShortCap, thought?.label ?? "anomaly");
-
-                LetterDef letterDef = evt.letterDef ?? LetterDefOf.NegativeEvent;
-                Find.LetterStack.ReceiveLetter(label, text, letterDef, pawn);
-            }
+            // Notifications are suppressed; effects still apply.
         }
 
         private void ApplySideEffects(Pawn pawn, MatrixEventDef evt)

@@ -137,10 +137,18 @@ namespace VirtuAwake
             if (chosen != null)
             {
                 pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(chosen);
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA][Mem] {pawn.LabelShortCap}: gained sim memory {chosen.defName} (tier {tier}, simType {(simType != null ? simType.defName : "null")}).");
+                }
             }
             else if (simType.thoughtOnSession != null)
             {
                 pawn.needs?.mood?.thoughts?.memories?.TryGainMemory(simType.thoughtOnSession);
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA][Mem] {pawn.LabelShortCap}: fallback sim memory {simType.thoughtOnSession.defName} (simType {(simType != null ? simType.defName : "null")}).");
+                }
             }
 
             var joy = pawn.needs?.joy;

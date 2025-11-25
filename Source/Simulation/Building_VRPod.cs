@@ -224,6 +224,8 @@ namespace VirtuAwake
                 sb.AppendLine("Assign a pawn or use the float menu to start a session.");
             }
 
+            AppendNetworkInfo(comp, sb);
+
             return sb.ToString().TrimEnd();
         }
 
@@ -236,6 +238,48 @@ namespace VirtuAwake
             }
 
             return $"{seconds:0.#}s";
+        }
+
+        private void AppendNetworkInfo(CompVRPod comp, StringBuilder sb)
+        {
+            CompPowerTrader power = this.GetComp<CompPowerTrader>();
+            PowerNet net = power?.PowerNet;
+            if (net == null)
+            {
+                sb.AppendLine("Network: none (no power link).");
+                return;
+            }
+
+            int podCount = 0;
+            foreach (CompPower compPower in net.transmitters)
+            {
+                Building building = compPower?.parent as Building;
+                if (building?.GetComp<CompVRPod>() != null)
+                {
+                    podCount++;
+                }
+            }
+
+            var mapPawns = this.Map?.mapPawns?.AllPawnsSpawned;
+            var networkUsers = new List<string>();
+            if (mapPawns != null)
+            {
+                foreach (Pawn p in mapPawns)
+                {
+                    if (p == null || !VRSessionTracker.IsInVR(p))
+                    {
+                        continue;
+                    }
+
+                    if (VRSessionTracker.GetPowerNet(p) == net)
+                    {
+                        networkUsers.Add(p.LabelShortCap);
+                    }
+                }
+            }
+
+            string users = networkUsers.Count > 0 ? string.Join(", ", networkUsers) : "none";
+            sb.AppendLine($"Network: {podCount} pod(s); VR users on net: {users}");
         }
     }
 }

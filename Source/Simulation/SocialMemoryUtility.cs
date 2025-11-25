@@ -39,6 +39,10 @@ namespace VirtuAwake
                 }
 
                 pawn.needs.mood.thoughts.memories.TryGainMemory(def, partner);
+                if (Prefs.DevMode)
+                {
+                    Log.Message($"[VA][Social] {pawn.LabelShortCap} gained social memory {def.defName} with {(partner?.LabelShortCap ?? "(null)") }.");
+                }
             }
         }
 

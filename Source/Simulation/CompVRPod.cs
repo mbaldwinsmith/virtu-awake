@@ -96,7 +96,7 @@ namespace VirtuAwake
                 if ((Prefs.DevMode || DebugVR) && this.parent.IsHashIntervalTick(500))
                 {
                     Need joy = pawn.needs?.joy;
-                    Log.Message($"[VA] {pawn.LabelShortCap}: timers mem={memTimer} benefit={benefitTimer} canBenefit={canBenefit} joy={joy?.CurLevel:F3} lucidity={(pawn.needs?.TryGetNeed<Need_Lucidity>()?.CurLevel ?? 0f):F3} in pod {this.parent.Label ?? this.parent.def.defName}.");
+                    Log.Message($"[VA][Pod] {pawn.LabelShortCap}: timers mem={memTimer} benefit={benefitTimer} canBenefit={canBenefit} joy={joy?.CurLevel:F3} lucidity={(pawn.needs?.TryGetNeed<Need_Lucidity>()?.CurLevel ?? 0f):F3} in pod {this.parent.Label ?? this.parent.def.defName}.");
                 }
 
                 SimTypeDef simType = this.ResolveSimTypeFor(pawn);
@@ -741,6 +741,10 @@ namespace VirtuAwake
                 {
                     Log.Message($"[VA] {pawn.LabelShortCap}: memory tick (timer {timer}), simType {(simType != null ? simType.defName : "null")}.");
                 }
+                if ((Prefs.DevMode || DebugVR) && timer >= this.Props.memoryIntervalTicks)
+                {
+                    Log.Message($"[VA][Pod] {pawn.LabelShortCap}: triggering sim memory (simType {(simType != null ? simType.defName : "null")}) at timer {timer}.");
+                }
                 VRSimUtility.TryGiveSimMemory(pawn, simType);
                 timer = 0;
             }
@@ -789,20 +793,20 @@ namespace VirtuAwake
             }
 
             float combined = (luc + inst) * 0.5f;
-            float chance = Mathf.Lerp(0.02f, 0.18f, Mathf.InverseLerp(0.45f, 0.95f, combined));
-            chance += Mathf.Lerp(0f, 0.05f, Mathf.InverseLerp(0.6f, 1f, inst));
+            float chance = Mathf.Lerp(0.01f, 0.12f, Mathf.InverseLerp(0.45f, 0.95f, combined));
+            chance += Mathf.Lerp(0f, 0.04f, Mathf.InverseLerp(0.6f, 1f, inst));
             if (severity == GlitchSeverity.Major)
             {
-                chance += 0.03f;
+                chance += 0.015f;
             }
             else if (severity == GlitchSeverity.Mid)
             {
-                chance += 0.015f;
+                chance += 0.0075f;
             }
             chance *= TraitGlitchFactor(pawn);
             chance *= MoodGlitchFactor(mood);
             chance *= this.Props.tickInterval / 200f;
-            chance = Mathf.Clamp(chance, 0.005f, 0.35f);
+            chance = Mathf.Clamp(chance, 0.005f, 0.25f);
 
             if (!Rand.Chance(chance))
             {
@@ -1259,10 +1263,7 @@ namespace VirtuAwake
 
         private void SendGlitchLetter(Pawn pawn, ThoughtDef glitch)
         {
-            LetterDef letterDef = LetterDefOf.NegativeEvent;
-            string label = "VA_Letter_GlitchMajor_Label".Translate();
-            string body = "VA_Letter_GlitchMajor_Body".Translate(pawn.LabelShortCap, glitch?.label ?? "unknown effect");
-            Find.LetterStack.ReceiveLetter(label, body, letterDef, new LookTargets(pawn));
+            // Notifications are suppressed; keep glitch effects only.
         }
 
         private void SendBreakoutLetter(Pawn pawn, ThoughtDef awakening, string stateName)

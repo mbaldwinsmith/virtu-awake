@@ -476,6 +476,14 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Output:** Tuned values in comps/defs, documented notes  
 **Owner:** AI
 
+## TASK-BAL-002
+**Description:** Increase frequency of social VR rolls relative to glitches; rebalance roll curves accordingly  
+**Category:** Balance  
+**Dependencies:** EVT-001, PSY-003  
+**Status:** DONE (social roll curve raised, glitch probability reduced)  
+**Output:** Updated social/glitch roll tuning in events and comp logic  
+**Owner:** AI
+
 ## TASK-REL-001
 **Description:** Finalize About metadata (author, description, preview image hook)  
 **Category:** Packaging  
@@ -702,6 +710,30 @@ Rules: set `Owner: AI` and `Status: IN_PROGRESS` when claiming; set `Status: DON
 **Dependencies:** TASK-BUG-021
 **Status:** DONE
 **Output:** Added `Source/MentalStates/MentalState_PanicFlee.cs`, `MentalStateWorker_PanicFlee.cs`, `MentalState_SadWander.cs`, `MentalStateWorker_SadWander.cs`; updated `Defs/MentalStateDefs/MentalStates_VirtuAwake.xml` to reference these classes.
+**Owner:** AI
+
+## TASK-BUG-023
+**Description:** Fix VR pod status gizmo InvalidCastException when counting pods on the power network
+**Category:** Bugfix / UI
+**Dependencies:** None
+**Status:** DONE
+**Output:** Safe power-net iteration in `Building_VRPod.AppendNetworkInfo` so VR pod status gizmo no longer throws InvalidCastException
+**Owner:** AI
+
+## TASK-BUG-024
+**Description:** Prevent VR pawns from social-interacting with non-VR pawns or with VR pawns on a different power network
+**Category:** Bugfix / AI
+**Dependencies:** None
+**Status:** DONE
+**Output:** Interaction patch now only allows VR interactions when both pawns are in VR on the same power net; all other VR-involved social attempts are blocked
+**Owner:** AI
+
+## TASK-BUG-025
+**Description:** Ensure networked VR pods reliably trigger social/shared memories instead of never firing at low lucidity/instability
+**Category:** Bugfix / Events
+**Dependencies:** None
+**Status:** DONE
+**Output:** Clamped shared-dream/social roll factors so networked pods always have a non-negative chance to fire social memories even at low combined state
 **Owner:** AI
 
 --- 

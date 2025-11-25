@@ -35,6 +35,7 @@
     <Compile Include="Components\Need_Lucidity.cs" />
     <Compile Include="Components\InspectTab_LucidityInstability.cs" />
     <Compile Include="Events\MapComponent_VirtuAwakeEvents.cs" />
+    <Compile Include="Events\MapComponentBootstrap.cs" />
     <Compile Include="Events\MatrixEventChainExtension.cs" />
     <Compile Include="Events\MatrixEventDef.cs" />
     <Compile Include="Events\MatrixEventSeverity.cs" />
